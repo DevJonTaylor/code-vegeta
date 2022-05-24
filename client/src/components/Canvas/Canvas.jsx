@@ -70,25 +70,36 @@ class Canvas extends React.Component {
             },
           },
           {
-            id: 'panel-switcher',
-            el: '.panel__switcher',
-            buttons: [{
-              id: 'show-layers',
-              active: true,
-              label: 'Layers',
-              command: 'show-layers',
-              attributes: { class: 'btn btn-ghost' },
-              // Once actived disable the possibility to turn it off
-              togglable: false,
-            }, {
-              id: 'show-style',
-              active: true,
-              label: 'Styles',
-              attributes: { class: 'btn btn-ghost' },
-              command: 'show-styles',
-              togglable: false
-            }]
-          }
+            id: "panel-switcher",
+            el: ".panel__switcher",
+            buttons: [
+              {
+                id: "show-layers",
+                active: true,
+                label: "Layers",
+                command: "show-layers",
+                attributes: { class: "btn btn-ghost" },
+                // Once actived disable the possibility to turn it off
+                togglable: false,
+              },
+              {
+                id: "show-style",
+                active: true,
+                label: "Styles",
+                attributes: { class: "btn btn-ghost" },
+                command: "show-styles",
+                togglable: false,
+              },
+              {
+                id: "show-traits",
+                active: true,
+                label: "Traits",
+                attributes: { class: 'btn btn-ghost' },
+                command: "show-traits",
+                togglable: false,
+              },
+            ],
+          },
         ],
       },
       blockManager: {
@@ -123,76 +134,103 @@ class Canvas extends React.Component {
         appendTo: ".layers-container",
       },
       selectorManager: {
-        appendTo: '.styles-container'
+        appendTo: ".styles-container",
       },
       styleManager: {
-        appendTo: '.styles-container',
-        sectors: [{
-          name: 'Dimension',
-          open: false,
-          buildProps: ['width', 'min-height', 'padding'],
-          properties: [
-            {
-              // Input Type
-              // int | radio | select | color | slider | file | composite | stack
-              type: 'integer',
-              name: 'The width', // Property label
-              property: 'width', // CSS property
-              units: ['px', '%'], // Units only available for int
-              defaults: 'auto', // default value
-              min: 0 // min value, available for ints only
-            }
-          ]
-        }, {
-          name: 'Extra',
-          open: false,
-          buildProps: ['background-color', 'box-shadow', 'custom-prop'],
-          properties: [
-            {
-              id: 'custom prop',
-              name: 'Custom label',
-              property: 'font-size',
-              type: 'select',
-              defaults: '32px',
-              // List of options, available only for 'select' and 'radio' types
-              options: [
-                { value: '12px', name: 'Tiny' },
-                { value: '18px', name: 'Medium' },
-                { value: '32px', name: 'Big' },
-              ]
-            }
-          ]
-        }]
-      }
+        appendTo: ".styles-container",
+        sectors: [
+          {
+            name: "Dimension",
+            open: false,
+            buildProps: ["width", "min-height", "padding"],
+            properties: [
+              {
+                // Input Type
+                // int | radio | select | color | slider | file | composite | stack
+                type: "integer",
+                name: "The width", // Property label
+                property: "width", // CSS property
+                units: ["px", "%"], // Units only available for int
+                defaults: "auto", // default value
+                min: 0, // min value, available for ints only
+              },
+            ],
+          },
+          {
+            name: "Extra",
+            open: false,
+            buildProps: ["background-color", "box-shadow", "custom-prop"],
+            properties: [
+              {
+                id: "custom prop",
+                name: "Custom label",
+                property: "font-size",
+                type: "select",
+                defaults: "32px",
+                // List of options, available only for 'select' and 'radio' types
+                options: [
+                  { value: "12px", name: "Tiny" },
+                  { value: "18px", name: "Medium" },
+                  { value: "32px", name: "Big" },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      traitManager: {
+        appendTo: ".traits-container",
+      },
     });
 
-    editor.Commands.add('show-layers', {
-      getRowEl(editor) { return editor.getContainer().closest('.editor-row'); },
-      getLayersEl(row) { return row.querySelector('.layers-container') },
+    editor.Commands.add("show-layers", {
+      getRowEl(editor) {
+        return editor.getContainer().closest(".editor-row");
+      },
+      getLayersEl(row) {
+        return row.querySelector(".layers-container");
+      },
 
       run(editor, sender) {
         const lmEl = this.getLayersEl(this.getRowEl(editor));
-        lmEl.style.display = '';
+        lmEl.style.display = "";
       },
       stop(editor, sender) {
         const lmEl = this.getLayersEl(this.getRowEl(editor));
-        lmEl.style.display = 'none';
-      }
+        lmEl.style.display = "none";
+      },
     });
 
-    editor.Commands.add('show-styles', {
-      getRowEl(editor) { return editor.getContainer().closest('.editor-row'); },
-      getStyleEl(row) { return row.querySelector('.styles-container') },
+    editor.Commands.add("show-styles", {
+      getRowEl(editor) {
+        return editor.getContainer().closest(".editor-row");
+      },
+      getStyleEl(row) {
+        return row.querySelector(".styles-container");
+      },
 
       run(editor, sender) {
         const smEl = this.getStyleEl(this.getRowEl(editor));
-        smEl.style.display = '';
+        smEl.style.display = "";
       },
       stop(editor, sender) {
         const smEl = this.getStyleEl(this.getRowEl(editor));
-        smEl.style.display = 'none';
-      }
-    })
+        smEl.style.display = "none";
+      },
+    });
+
+    editor.Commands.add("show-traits", {
+      getTraitsEl(editor) {
+        const row = editor.getContainer().closest(".editor-row");
+        return row.querySelector(".traits-container");
+      },
+      run(editor, sender) {
+        this.getTraitsEl(editor).style.display = "";
+      },
+      stop(editor, sender) {
+        this.getTraitsEl(editor).style.display = "none";
+      },
+    });
   }
   render() {
     return (
@@ -210,6 +248,7 @@ class Canvas extends React.Component {
           <div className="panel__right">
             <div className="layers-container"></div>
             <div className="styles-container"></div>
+            <div className="traits-container"></div>
           </div>
         </div>
         <div id="blocks" style={{ width: "80vw" }}></div>

@@ -1,24 +1,25 @@
 @tailwind components;
+@tailwind utilities;
 
 @layer components {
   .gjs-block {
     @apply btn btn-xs sm:btn-sm md:btn-md lg:btn-lg;
-  };
+  }
   .panel__top {
-    @apply navbar bg-base-100 rounded-t-lg flex justify-between;
-  };
+    @apply navbar flex justify-between rounded-t-lg bg-base-100;
+  }
   .panel__basic-actions {
     @apply bg-base-100;
-  };
+  }
   .editor-canvas {
     @apply rounded-lg;
-  };
+  }
   .panel__right {
     @apply bg-base-100;
-  };
+  }
   .panel__switcher {
     @apply bg-base-100;
-  };
+  }
 }
 
 /* Let's highlight canvas boundaries */
@@ -35,7 +36,7 @@
 
 /* Reset block styling */
 .gjs-block {
-  margin: .5rem auto;
+  margin: 0.5rem auto;
   /* width: auto; */
   height: auto;
   min-height: auto;
