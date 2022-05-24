@@ -12,18 +12,21 @@ function App() {
       <header className="flex min-h-screen flex-col items-center justify-between bg-[#282c34] text-white">
         <Navbar />
       </header>
-      <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
-        VEGETA
-      </p>
-      <p className="mt-3">
-        <button
-          type="button"
-          className="my-6 rounded bg-gray-300 px-2 py-2 text-[#282C34] transition-all hover:bg-gray-200"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is: {count}
-        </button>
-      </p>
+
+      <main>
+        <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
+          VEGETA
+        </p>
+        <p className="mt-3">
+          <button
+            type="button"
+            className="my-6 rounded bg-gray-300 px-2 py-2 text-[#282C34] transition-all hover:bg-gray-200"
+            onClick={() => setCount((count) => count + 1)}
+          >
+            count is: {count}
+          </button>
+        </p>
+      </main>
 
       <footer className="mb-8 flex w-full items-center justify-around">
         <div className="w-48">
