@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import poweredBy from "./powered-by-vitawind-dark.png";
 import Navbar from "./components/Navbar/Navbar";
+import Canvas from "./components/Canvas/Canvas";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,10 +12,13 @@ function App() {
         <Navbar />
       </header>
 
-      <main className="flex min-h-screen flex-col items-center justify-between bg-[#282c34] text-white">
+      <main className="flex min-h-screen flex-col items-center justify-around bg-[#282c34] text-white">
         <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
           VEGETA
         </p>
+
+        <Canvas />
+
         <p className="mt-3">
           <button
             type="button"
