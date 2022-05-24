@@ -1,0 +1,81 @@
+@tailwind components;
+
+@layer components {
+  .gjs-block {
+    @apply btn btn-xs sm:btn-sm md:btn-md lg:btn-lg;
+  };
+  .panel__top {
+    @apply navbar bg-base-100 rounded-t-lg flex justify-between;
+  };
+  .panel__basic-actions {
+    @apply bg-base-100;
+  };
+  .editor-canvas {
+    @apply rounded-lg;
+  };
+  .panel__right {
+    @apply bg-base-100;
+  };
+  .panel__switcher {
+    @apply bg-base-100;
+  };
+}
+
+/* Let's highlight canvas boundaries */
+#gjs {
+  /* border: 3px solid #444; */
+}
+
+/* Reset some default styling */
+.gjs-cv-canvas {
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Reset block styling */
+.gjs-block {
+  margin: .5rem auto;
+  /* width: auto; */
+  height: auto;
+  min-height: auto;
+}
+
+.gjs-blocks-cs {
+  background: transparent;
+}
+
+.panel__top {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  position: initial;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.panel__basic-actions {
+  position: initial;
+}
+
+.editor-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  height: 300px;
+}
+
+.editor-canvas {
+  flex-grow: 1;
+}
+
+.panel__right {
+  flex-basis: 230px;
+  position: relative;
+  overflow-y: auto;
+}
+
+.panel__switcher {
+  position: initial;
+}

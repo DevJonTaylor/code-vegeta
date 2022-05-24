@@ -4,10 +4,14 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl normal-case">Vegeta</a>
+        <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
+          <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
+            <a href="/">VEGETA</a>
+          </p>
+        </div>
       </div>
       <div className="flex-none">
-        <div className="dropdown dropdown-end">
+        <div className="dropdown-end dropdown">
           <label tabIndex="0" className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
@@ -40,7 +44,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="dropdown dropdown-end">
+        <div className="dropdown-end dropdown">
           <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
             <div className="w-10 rounded-full">
               <img src="https://api.lorem.space/image/face?hash=33791" />
