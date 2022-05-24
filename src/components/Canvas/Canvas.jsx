@@ -13,7 +13,7 @@ class Canvas extends React.Component  {
             container: '#gjs',
             fromElement: true,
             height: '300px',
-            widht: 'auto',
+            width: '640px',
             storageManager: false,
             panels: { defaults: [] },
         });
