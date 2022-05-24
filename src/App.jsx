@@ -13,10 +13,6 @@ function App() {
       </header>
 
       <main className="flex min-h-screen flex-col items-center justify-around bg-[#282c34] text-white">
-        <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
-          VEGETA
-        </p>
-
         <Canvas />
 
         <p className="mt-3">
@@ -30,7 +26,7 @@ function App() {
         </p>
       </main>
 
-      <footer className="mb-8 flex w-full items-center justify-around">
+      <footer className="flex w-full items-center justify-around">
         <div className="w-48">
           <p>
             Built with <span alt="sweat">💦</span> by
