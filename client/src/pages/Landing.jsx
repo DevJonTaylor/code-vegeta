@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../components/Navbar/Navbar';
-import runnerBuddy from "./horiseon-meeting.png";
 
 
 const Landing = () => {
@@ -23,6 +22,7 @@ const Landing = () => {
                 </div>
                 <div className='site-image-container'>
                     <div className='welcome-image'><div className='welcome-gif'></div></div>
+                    
                 </div>
             </div>
         </main>
