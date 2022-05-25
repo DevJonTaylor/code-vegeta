@@ -22,5 +22,9 @@
   "homepage": "https://github.com/DevJonTaylor/code-vegeta#readme",
   "devDependencies": {
     "concurrently": "^7.2.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "stripe": "^9.4.0"
   }
 }
