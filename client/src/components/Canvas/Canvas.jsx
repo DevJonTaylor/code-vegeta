@@ -94,8 +94,29 @@ class Canvas extends React.Component {
                 id: "show-traits",
                 active: true,
                 label: "Traits",
-                attributes: { class: 'btn btn-ghost' },
+                attributes: { class: "btn btn-ghost" },
                 command: "show-traits",
+                togglable: false,
+              },
+            ],
+          },
+          {
+            id: "panel-devices",
+            el: ".panel__devices",
+            buttons: [
+              {
+                id: "device desktop",
+                label: "D",
+                command: "set-device-desktop",
+                className: 'btn btn-ghost',
+                active: true,
+                togglable: false,
+              },
+              {
+                id: "device-mobile",
+                label: "M",
+                className: 'btn btn ghost',
+                command: "set-device-mobile",
                 togglable: false,
               },
             ],
@@ -181,6 +202,19 @@ class Canvas extends React.Component {
       traitManager: {
         appendTo: ".traits-container",
       },
+      deviceManager: {
+        devices: [
+          {
+            name: "Desktop",
+            width: "",
+          },
+          {
+            name: "Mobile",
+            width: "320px",
+            widthMedia: "480px",
+          },
+        ],
+      },
     });
 
     editor.Commands.add("show-layers", {
@@ -220,16 +254,27 @@ class Canvas extends React.Component {
     });
 
     editor.Commands.add("show-traits", {
-      getTraitsEl(editor) {
-        const row = editor.getContainer().closest(".editor-row");
+      getRowEl(editor) {
+        return editor.getContainer().closest(".editor-row");
+      },
+      getTraitsEl(row) {
         return row.querySelector(".traits-container");
       },
       run(editor, sender) {
-        this.getTraitsEl(editor).style.display = "";
+        const trEl = this.getTraitsEl(this.getRowEl(editor));
+        trEl.style.display = "";
       },
       stop(editor, sender) {
-        this.getTraitsEl(editor).style.display = "none";
+        const trEl = this.getTraitsEl(this.getRowEl(editor));
+        trEl.style.display = "none";
       },
+    });
+
+    editor.Commands.add("set-device-desktop", {
+      run: (editor) => editor.setDevice("Desktop"),
+    });
+    editor.Commands.add("set-device-mobile", {
+      run: (editor) => editor.setDevice("Mobile"),
     });
   }
   render() {
@@ -237,6 +282,7 @@ class Canvas extends React.Component {
       <div className="flex flex-col">
         <div className="panel__top">
           <div className="panel__basic-actions"></div>
+          <div className="panel__devices"></div>
           <div className="panel__switcher"></div>
         </div>
         <div className="editor-row">

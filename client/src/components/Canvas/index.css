@@ -1,5 +1,4 @@
 @tailwind components;
-@tailwind utilities;
 
 @layer components {
   .gjs-block {
@@ -18,6 +17,9 @@
     @apply bg-base-100;
   }
   .panel__switcher {
+    @apply bg-base-100;
+  }
+  .panel__devices {
     @apply bg-base-100;
   }
 }
@@ -78,5 +80,9 @@
 }
 
 .panel__switcher {
+  position: initial;
+}
+
+.panel__devices {
   position: initial;
 }
