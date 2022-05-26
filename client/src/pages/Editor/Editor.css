@@ -19,9 +19,9 @@
   .panel__switcher {
     @apply bg-base-100;
   }
-  .panel__switcher > .gjs-pn-buttons {
+  /* .panel__switcher > .gjs-pn-buttons {
     @apply flex-col;
-  }
+  } */
   .panel__basic-actions > .gjs-pn-buttons {
     @apply flex-col;
   }
