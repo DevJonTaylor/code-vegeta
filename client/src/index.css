@@ -14,69 +14,90 @@ html {
     height: 80vh;
     display: flex;
     justify-content: space-evenly;
+
 }
 
-.welcome-text {
-    width: 40vw;
+.welcome-text-left  {
     color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    padding-left: 30px;
+    width: 570px;
+    z-index: 11;
+    margin-top: 40px;
 }
 
-.welcome-text h2{
+.welcome-text-right  {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 570px;
+    z-index: 11;
+    align-items: center;
+}
+
+.landing-subheader {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 20px;
 }
 
-.welcome-text h1{
+.landing-header {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 3rem;
     line-height: 1.1em;
     padding-bottom: 18px;
+    text-align: center;
 }
 
 .welcome-btn {
-    margin-top: 20px;
+    margin-top: 40px;
     width: 170px;
 }
 
-.site-image-container {
-    width: 700px;
-}
-
-.welcome-image {
-    background-image: url(../src/pages/horiseon-meeting2.png);
-    width:  90%;
-    height: 100%;
+.background-image {
+    background-image: url(../src/pages/orb-unsplash-sm.jpg);
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    background-size: none;
     background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    box-shadow: 0 0 8px 8px hsla(var(--b1) / var(--tw-bg-opacity, 1))inset;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.welcome-gif {
-    width:  628px;
-    height: 486px;
-    background-position: center ;
+.spacer-border {
+    min-width: 570px;
+    height: 330px;
+}
+
+.moon-border {
+    margin: auto;
+    width: 570px;
+    height: 330px;
+    border: 1px solid white;
+}
+
+.scrolling-image {
+    background-image: url(../src/pages/moon-shot4.png);
+    margin: auto;
+    width: 100.2%;
+    height: 100.2%;
+    background-position: top;
+    background-size: cover;
     background-repeat: no-repeat;
-    z-index: 2;
+    z-index: 11;
+    animation: site-scroll infinite 14s;
+    animation-delay: 2s;
     opacity: 0;
-    animation: animate-gif 2s linear 2s forwards;
-    background-size: contain;
-
+    /* border: 8px solid white; */
 }
 
-@keyframes animate-gif {
+@keyframes site-scroll {
     0% {
-        opacity: 0;
-        border: 5px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
+        opacity: 0.2;
+ 
     }
 
     40% {
@@ -89,17 +110,14 @@ html {
 
     80% {
         opacity: 1;
-        border: 21px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-        background-image: url(../src/pages/horiseon-record5.gif);
+       
+        background-position: top;
     }
 
     100% {
         opacity: 1;
-        border: 21px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-        background-image: url(../src/pages/horiseon-record5.gif);
+        background-image: url(../src/pages/moon-shot4.png);
+        background-position: top;
     }
-  }
+}
+
