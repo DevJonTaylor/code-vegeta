@@ -276,9 +276,9 @@ class Editor extends React.Component {
             width: "",
           },
           {
-            name: "Mobile",
-            width: "320px",
-            widthMedia: "480px",
+            name: "Tablet",
+            width: "768px",
+            widthMedia: "820px",
           },
           {
             name: "Mobile",
@@ -345,6 +345,9 @@ class Editor extends React.Component {
 
     editor.Commands.add("set-device-desktop", {
       run: (editor) => editor.setDevice("Desktop"),
+    });
+    editor.Commands.add("set-device-tablet", {
+      run: (editor) => editor.setDevice("Tablet"),
     });
     editor.Commands.add("set-device-mobile", {
       run: (editor) => editor.setDevice("Mobile"),

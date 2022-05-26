@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import poweredBy from "./powered-by-vitawind-dark.png";
 import Navbar from "./components/Navbar/Navbar";
-import Canvas from "./components/Canvas/Canvas";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,7 +12,6 @@ function App() {
       </header>
 
       <main className="flex min-h-screen flex-col items-center justify-around bg-[#282c34] text-white">
-        <Canvas />
 
         <p className="mt-3">
           <button
