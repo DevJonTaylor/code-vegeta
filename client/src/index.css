@@ -1,97 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
-/* @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap'); */
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
 
 .landing-page {
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  justify-content: space-evenly;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: space-evenly;
+
 }
 
-.welcome-text {
-  width: 40vw;
-  color: white;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-left: 30px;
+.welcome-text-left  {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 570px;
+    z-index: 11;
+    margin-top: 40px;
 }
 
-.welcome-text h2 {
-  font-family: "Libre Franklin", sans-serif;
-  font-size: 20px;
+.welcome-text-right  {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 570px;
+    z-index: 11;
+    align-items: center;
 }
 
-.welcome-text h1 {
-  font-family: "Libre Franklin", sans-serif;
-  font-size: 3rem;
-  line-height: 1.1em;
-  padding-bottom: 18px;
+.landing-subheader {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 20px;
+}
+
+.landing-header {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 3rem;
+    line-height: 1.1em;
+    padding-bottom: 18px;
+    text-align: center;
 }
 
 .welcome-btn {
-  margin-top: 20px;
-  width: 170px;
+    margin-top: 40px;
+    width: 170px;
 }
 
-.site-image-container {
-  width: 50vw;
-  height: 100%;
+.background-image {
+    background-image: url(../src/pages/orb-unsplash-sm.jpg);
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    background-size: none;
+    background-position: center;
+    display: flex;
 }
 
-.welcome-image {
-  background-image: url(../src/pages/horiseon-meeting2.png);
-  border-radius: 47%;
-  width: 100%;
-  height: 100%;
-  /* background-size: cover; */
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 1;
+.spacer-border {
+    min-width: 570px;
+    height: 330px;
 }
 
-.welcome-gif {
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 2;
-  opacity: 0;
-  animation: animate-gif 1.5s linear 2s forwards;
-  background-size: cover;
+.moon-border {
+    margin: auto;
+    width: 570px;
+    height: 330px;
+    border: 1px solid white;
 }
 
-@keyframes animate-gif {
-  0% {
+.scrolling-image {
+    background-image: url(../src/pages/moon-shot4.png);
+    margin: auto;
+    width: 100.2%;
+    height: 100.2%;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 11;
+    animation: site-scroll infinite 14s;
+    animation-delay: 2s;
     opacity: 0;
-    border: 5px solid white;
-    border-bottom: 25px solid white;
-    border-top: none;
-  }
-
-  40% {
-    opacity: 0.3;
-    border: 20px solid white;
-    border-bottom: 25px solid white;
-    border-top: none;
-    background-image: url(../src/pages/horiseon-record5.gif);
-  }
-
-  80% {
-    opacity: 1;
-    border: 20px solid white;
-    border-bottom: 25px solid white;
-    border-top: none;
-    background-image: url(../src/pages/horiseon-record5.gif);
-  }
-
-  100% {
-    opacity: 1;
-    border: 20px solid white;
-    border-bottom: 25px solid white;
-    border-top: none;
-    background-image: url(../src/pages/horiseon-record5.gif);
-  }
+    /* border: 8px solid white; */
 }
+
+@keyframes site-scroll {
+    0% {
+        opacity: 0.2;
+
+    }
+
+    5% {
+        opacity: 0.5;
+    }
+
+    10% {
+        opacity: 1;
+
+        background-position: top;
+    }
+
+    20% {
+        opacity: 1;
+        background-position: top;
+    }
+
+    60% {
+        opacity: 1;
+        background-image: url(../src/pages/moon-shot4.png);
+        background-position: bottom;
+    }
+
+    70% {
+        opacity: 1;
+        background-image: url(../src/pages/moon-shot4.png);
+        background-position: top;
+
+    }
+
+    100% {
+        opacity: 1;
+        background-image: url(../src/pages/moon-shot4.png);
+        background-position: top;
+    }
+}
+

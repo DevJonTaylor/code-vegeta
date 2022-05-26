@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "dotenv/config";
 import "./index.css";
+// import App from "./App";
+import Landing from './pages/Landing';
+// import Editor from './pages/Editor/Editor';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <Landing />
+    {/* <Editor /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
