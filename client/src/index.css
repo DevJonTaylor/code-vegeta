@@ -1,97 +1,97 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap'); */
 
 .landing-page {
-    width: 100%;
-    height: 80vh;
-    display: flex;
-    justify-content: space-evenly;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .welcome-text {
-    width: 40vw;
-    color: white;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 30px;
+  width: 40vw;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 30px;
 }
 
-.welcome-text h2{
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 20px;
+.welcome-text h2 {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 20px;
 }
 
-.welcome-text h1{
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 3rem;
-    line-height: 1.1em;
-    padding-bottom: 18px;
+.welcome-text h1 {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 3rem;
+  line-height: 1.1em;
+  padding-bottom: 18px;
 }
 
 .welcome-btn {
-    margin-top: 20px;
-    width: 170px;
+  margin-top: 20px;
+  width: 170px;
 }
 
 .site-image-container {
-    width: 50vw;
-    height: 100%;
+  width: 50vw;
+  height: 100%;
 }
 
 .welcome-image {
-    background-image: url(../src/pages/horiseon-meeting2.png);
-    border-radius: 47%;
-    width:  100%;
-    height: 100%;
-    /* background-size: cover; */
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
+  background-image: url(../src/pages/horiseon-meeting2.png);
+  border-radius: 47%;
+  width: 100%;
+  height: 100%;
+  /* background-size: cover; */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .welcome-gif {
-    width:  100%;
-    height: 100%;
-    background-position: center ;
-    background-repeat: no-repeat;
-    z-index: 2;
-    opacity: 0;
-    animation: animate-gif 1.5s linear 2s forwards;
-    background-size:cover;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+  opacity: 0;
+  animation: animate-gif 1.5s linear 2s forwards;
+  background-size: cover;
 }
 
 @keyframes animate-gif {
-    0% {
-        opacity: 0;
-        border: 5px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-    }
-  
-    40% {
-        opacity: 0.3;
-        border: 20px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-        background-image: url(../src/pages/horiseon-record5.gif);
-    }
-  
-    80% {
-        opacity: 1;
-        border: 20px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-        background-image: url(../src/pages/horiseon-record5.gif);
-    }
-  
-    100% {
-        opacity: 1;
-        border: 20px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-        background-image: url(../src/pages/horiseon-record5.gif);
-    }
+  0% {
+    opacity: 0;
+    border: 5px solid white;
+    border-bottom: 25px solid white;
+    border-top: none;
   }
+
+  40% {
+    opacity: 0.3;
+    border: 20px solid white;
+    border-bottom: 25px solid white;
+    border-top: none;
+    background-image: url(../src/pages/horiseon-record5.gif);
+  }
+
+  80% {
+    opacity: 1;
+    border: 20px solid white;
+    border-bottom: 25px solid white;
+    border-top: none;
+    background-image: url(../src/pages/horiseon-record5.gif);
+  }
+
+  100% {
+    opacity: 1;
+    border: 20px solid white;
+    border-bottom: 25px solid white;
+    border-top: none;
+    background-image: url(../src/pages/horiseon-record5.gif);
+  }
+}

@@ -1,41 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import React, { useState } from "react";
 import poweredBy from "./powered-by-vitawind-dark.png";
 import Navbar from "./components/Navbar/Navbar";
 import Canvas from "./components/Canvas/Canvas";
-import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
-
-require("dotenv").config();
-
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is your test publishable API key.
-const stripePromise = loadStripe(process.env.STRIPE_TEST_PROMISE);
 
 function App() {
   const [count, setCount] = useState(0);
-
-  const [clientSecret, setClientSecret] = useState("");
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, []);
-
-  const appearance = {
-    theme: "stripe",
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
 
   return (
     <div className="text-center selection:bg-green-900">
@@ -55,15 +24,6 @@ function App() {
             count is: {count}
           </button>
         </p>
-
-        {/* STRIPE FORM */}
-        <div className="App">
-          {clientSecret && (
-            <Elements options={options} stripe={stripePromise}>
-              <CheckoutForm />
-            </Elements>
-          )}
-        </div>
       </main>
 
       <footer className="flex w-full items-center justify-around">
