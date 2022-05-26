@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
-
+import Navbar from '../../components/Navbar/Navbar';
+import './index.css';
 
 const Landing = () => {
 
@@ -24,7 +24,7 @@ const Landing = () => {
                 </div>
                 <div className='spacer-border'></div>
                 <div className='welcome-text-right'>
-                    
+
                     <button className="btn welcome-btn">
                         Start Building
                     </button>
