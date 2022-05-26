@@ -187,7 +187,11 @@ class Editor extends React.Component {
         blocks: [
           {
             id: "section", // id field is required!
-            label: "<b>Section</b>", // You can use HTML/SVG inside labels
+            label: `
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M4,5H20V7H4V5M4,9H20V11H4V9M4,13H20V15H4V13M4,17H14V19H4V17Z" />
+              </svg>
+            `, // You can use HTML/SVG inside labels
             attributes: { class: "gjs-block-section, gjs-block" },
             content: `<section>
                     <h1>This is a simple title</h1>
@@ -197,12 +201,20 @@ class Editor extends React.Component {
           },
           {
             id: "text",
-            label: "Text",
+            label: `
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M4,9H20V11H4V9M4,13H14V15H4V13Z" />
+                </svg>
+            `,
             content: '<div data-gjs-type="text">Insert some text here</div>',
           },
           {
             id: "image",
-            label: "Image",
+            label: `
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M6,20H15L18,20V12L14,16L12,14L6,20M8,9A2,2 0 0,0 6,11A2,2 0 0,0 8,13A2,2 0 0,0 10,11A2,2 0 0,0 8,9Z" />
+              </svg>
+            `,
             select: true, // select the component when dropped
             content: { type: "image" }, // can pass components as JSON (notice use of defined component type 'image')
             activate: true, // triggers 'active' event on component when dropped and 'image' reacts by opening asset manager
