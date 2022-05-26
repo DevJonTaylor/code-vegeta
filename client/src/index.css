@@ -100,18 +100,32 @@ html {
  
     }
 
-    40% {
-        opacity: 0.3;
-        border: 21px solid white;
-        border-bottom: 25px solid white;
-        border-top: none;
-        background-image: url(../src/pages/horiseon-record5.gif);
+    5% {
+        opacity: 0.5;
     }
 
-    80% {
+    10% {
         opacity: 1;
        
         background-position: top;
+    }
+    
+    20% {
+        opacity: 1;
+        background-position: top;
+    }
+
+    60% {
+        opacity: 1;
+        background-image: url(../src/pages/moon-shot4.png);
+        background-position: bottom;
+    }
+
+    70% {
+        opacity: 1;
+        background-image: url(../src/pages/moon-shot4.png);
+        background-position: top;
+
     }
 
     100% {
