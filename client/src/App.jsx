@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// import ReactDOM from "react-dom/client";
+import { Outlet } from "react-router-dom";
 import poweredBy from "./powered-by-vitawind-dark.png";
 import Navbar from "./components/Navbar/Navbar";
 
@@ -6,22 +8,25 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="text-center selection:bg-green-900">
+    <div className="flex flex-col text-center selection:bg-green-900">
       <header>
         <Navbar />
       </header>
 
-      <main className="flex min-h-screen flex-col items-center justify-around bg-[#282c34] text-white">
-
-        <p className="mt-3">
-          <button
-            type="button"
-            className="my-6 rounded bg-gray-300 px-2 py-2 text-[#282C34] transition-all hover:bg-gray-200"
-            onClick={() => setCount((count) => count + 1)}
-          >
-            count is: {count}
-          </button>
-        </p>
+      <main
+        className="grow bg-[#282c34] text-white"
+        style={{ marginBottom: "63px" }}
+      >
+        <Outlet />
+        {/* <p className="mt-3">
+            <button
+              type="button"
+              className="my-6 rounded bg-gray-300 px-2 py-2 text-[#282C34] transition-all hover:bg-gray-200"
+              onClick={() => setCount((count) => count + 1)}
+            >
+              count is: {count}
+            </button>
+          </p> */}
       </main>
 
       <footer className="flex w-full items-center justify-around">
