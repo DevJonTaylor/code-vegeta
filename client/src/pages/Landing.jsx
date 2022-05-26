@@ -4,8 +4,6 @@ import Navbar from '../components/Navbar/Navbar';
 
 const Landing = () => {
 
-
-
     return (
         <main>
             <header>
@@ -22,7 +20,7 @@ const Landing = () => {
                 </div>
                 <div className='site-image-container'>
                     <div className='welcome-image'><div className='welcome-gif'></div></div>
-                    
+
                 </div>
             </div>
         </main>

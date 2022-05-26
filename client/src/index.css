@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
 
 .landing-page {
     width: 100%;
@@ -72,7 +78,7 @@
         border-bottom: 25px solid white;
         border-top: none;
     }
-  
+
     40% {
         opacity: 0.3;
         border: 21px solid white;
@@ -80,7 +86,7 @@
         border-top: none;
         background-image: url(../src/pages/horiseon-record5.gif);
     }
-  
+
     80% {
         opacity: 1;
         border: 21px solid white;
@@ -88,7 +94,7 @@
         border-top: none;
         background-image: url(../src/pages/horiseon-record5.gif);
     }
-  
+
     100% {
         opacity: 1;
         border: 21px solid white;
