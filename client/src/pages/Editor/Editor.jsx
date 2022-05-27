@@ -22,7 +22,7 @@ class Editor extends React.Component {
             'column3',
             'column3-7'
           ],
-          category: 'Columns'
+          category: 'Columns',
         }
       },
       fromElement: true,
