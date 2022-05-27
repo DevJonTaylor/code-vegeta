@@ -1,5 +1,4 @@
 @tailwind components;
-@tailwind utilities;
 
 @layer components {
   .gjs-block {
@@ -20,6 +19,15 @@
   .panel__switcher {
     @apply bg-base-100;
   }
+  /* .panel__switcher > .gjs-pn-buttons {
+    @apply flex-col;
+  } */
+  .panel__basic-actions > .gjs-pn-buttons {
+    @apply flex-col;
+  }
+  .panel__devices {
+    @apply bg-base-100;
+  }
 }
 
 /* Let's highlight canvas boundaries */
@@ -27,19 +35,21 @@
   /* border: 3px solid #444; */
 }
 
+
 /* Reset some default styling */
 .gjs-cv-canvas {
   top: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 /* Reset block styling */
 .gjs-block {
-  margin: 0.5rem auto;
-  /* width: auto; */
+  width: auto;
   height: auto;
   min-height: auto;
+  font-size: .3rem;
 }
 
 .gjs-blocks-cs {
@@ -64,7 +74,7 @@
   justify-content: flex-start;
   align-items: stretch;
   flex-wrap: nowrap;
-  height: 300px;
+  height: 100%;
 }
 
 .editor-canvas {
@@ -74,9 +84,13 @@
 .panel__right {
   flex-basis: 230px;
   position: relative;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .panel__switcher {
+  position: initial;
+}
+
+.panel__devices {
   position: initial;
 }

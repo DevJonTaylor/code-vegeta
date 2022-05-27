@@ -12,7 +12,7 @@ const typeDefs = gql`
     pages: [Page]
   }
 
- type Page {
+  type Page {
     _id: ID
     pageName: String
     createdAt: String
@@ -31,6 +31,11 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addPage(pageId: ID!): User
+    createPaymentIntent: StripeResponse!
+  }
+
+  type StripeResponse {
+    clientSecret: String
   }
 
   type Auth {
