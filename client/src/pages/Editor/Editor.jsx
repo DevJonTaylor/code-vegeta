@@ -3,6 +3,7 @@ import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
 import 'grapesjs-blocks-basic';
+import 'grapesjs-touch';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Editor extends React.Component {
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: ['gjs-blocks-basic'],
+      plugins: ['gjs-blocks-basic', 'grapesjs-touch'],
       pluginsOpts: {
         'gjs-blocks-basic': {
           blocks: [
