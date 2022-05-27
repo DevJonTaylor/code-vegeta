@@ -16,6 +16,7 @@ ReactDOM.render(
           <Route path="editor" element={<Editor />} />
           <Route path="donate" element={<Donate />} />
         </Route>
+        {/* <Route path="editor" element={<Editor />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

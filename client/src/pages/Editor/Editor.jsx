@@ -2,6 +2,8 @@ import React from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
+import 'grapesjs-blocks-basic';
+import 'grapesjs-touch';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -12,21 +14,17 @@ class Editor extends React.Component {
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: ["gjs-blocks-basic"],
-      puginsOpts: {
-        "gjs-blocks-basic": {
+      plugins: ['gjs-blocks-basic', 'grapesjs-touch'],
+      pluginsOpts: {
+        'gjs-blocks-basic': {
           blocks: [
-            "column1",
-            "column2",
-            "column3",
-            "column3-7",
-            "text",
-            "link",
-            "image",
-            "video",
-            "map",
+            'column1',
+            'column2',
+            'column3',
+            'column3-7'
           ],
-        },
+          category: 'Columns',
+        }
       },
       fromElement: true,
       height: "100%",
@@ -183,7 +181,7 @@ class Editor extends React.Component {
       // MANAGERS
       blockManager: {
         appendTo: "#blocks",
-        custom: false,
+        custom: true,
         blocks: [
           {
             id: "section", // id field is required!
