@@ -1,10 +1,10 @@
 import "./index.css";
 
 const Loader = () => (
-  <div class="loader">
-    <svg class="circular">
+  <div className="loader">
+    <svg className="circular">
       <circle
-        class="path"
+        className="path"
         cx="50"
         cy="50"
         r="20"

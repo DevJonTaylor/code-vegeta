@@ -14,7 +14,8 @@ function App() {
       </header>
 
       <main
-        className="grow bg-[#282c34] text-white"
+        // className="grow bg-[#282c34] text-white"  DO WE NEED THIS AS A DIFF COLOR? SORRY FOR CHANGING IF SO - FEEL FREE TO CHANGE BACK
+        className="grow bg-[#2A2F3C] text-white"
         style={{ marginBottom: "63px" }}
       >
         <Outlet />

@@ -31,8 +31,8 @@ const Donate = () => {
     })
       .then((res) => res.json())
       .then(({ data }) => {
-        console.log({ data });
         setClientSecret(data.createPaymentIntent.clientSecret);
+        setLoading(false);
       });
   }, []);
 
@@ -45,13 +45,17 @@ const Donate = () => {
   };
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       {clientSecret && !loading && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
       )}
-      {loading && <Loader />}
+      {loading && (
+        <div style={{ margin: "4rem auto" }}>
+          <Loader />
+        </div>
+      )}
     </div>
   );
 };
