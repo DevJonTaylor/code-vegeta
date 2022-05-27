@@ -1,29 +1,26 @@
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
+const cors = require('cors');
+const express = require('express');
+const path = require('path');
+const { authMiddleware } = require('./utils/auth');
+
 const {
   ApolloServerPluginLandingPageGraphQLPlayground,
   ApolloServerPluginLandingPageDisabled,
 } = require('apollo-server-core');
-const express = require('express');
-const path = require('path');
-const { authMiddleware } = require('./utils/auth');
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  // credentials: true,
-};
-
 const PORT = process.env.PORT || 3001;
+
 // create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
-  cors: corsOptions,
   plugins: [
     process.env.NODE_ENV === 'production'
       ? ApolloServerPluginLandingPageDisabled()
@@ -33,6 +30,11 @@ const server = new ApolloServer({
 
 const app = express();
 
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(express.json());
@@ -45,6 +47,7 @@ if (process.env.NODE_ENV === 'production') {
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
+
   // integrate our Apollo server with the Express application as middleware
   server.applyMiddleware({ app });
 
