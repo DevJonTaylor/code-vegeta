@@ -15,8 +15,8 @@ function App() {
 
       <main
         // className="grow bg-[#282c34] text-white"  DO WE NEED THIS AS A DIFF COLOR? SORRY FOR CHANGING IF SO - FEEL FREE TO CHANGE BACK
-        className="grow bg-[#2A2F3C] text-white"
-        style={{ marginBottom: "63px" }}
+        className="grow bg-black text-white"
+        style={{ marginBottom: "0px" }}
       >
         <Outlet />
         {/* <p className="mt-3">
@@ -30,7 +30,8 @@ function App() {
           </p> */}
       </main>
 
-      <footer className="flex w-full items-center justify-around">
+      {/* ADDED bg-black TO FOOTER */}
+      <footer className="flex w-full items-center justify-around bg-black">
         <div className="w-48">
           <p>
             Built with <span alt="sweat">💦</span> by
