@@ -35,7 +35,6 @@
   /* border: 3px solid #444; */
 }
 
-
 /* Reset some default styling */
 .gjs-cv-canvas {
   top: 0;
@@ -49,10 +48,13 @@
   width: auto;
   height: auto;
   min-height: auto;
-  font-size: .3rem;
+  font-size: 0.3rem;
 }
 
-.gjs-blocks-cs {
+.gjs-blocks-cs,
+.gjs-sm-sectors,
+.gjs-clm-tags,
+.layers-container {
   background: transparent;
 }
 
