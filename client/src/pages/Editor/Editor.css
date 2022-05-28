@@ -94,3 +94,8 @@
 .panel__devices {
   position: initial;
 }
+
+/* Vegeta Save Storage Button  */
+.btn-save-database {
+  font-size: 24px !important;
+}

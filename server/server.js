@@ -2,6 +2,8 @@ const path = require('path');
 
 const { authMiddleware } = require('./utils/auth');
 const express = require('express');
+const cors = require('cors')
+
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
 
@@ -18,22 +20,52 @@ const server = new ApolloServer({
 });
 
 const app = express();
+const whiteList = [
+  'http://localhost:3000',
+  'http://localhost*'
+]
+const corsOptions = {
+  origin: (origin, callback) => {
+    return callback(whiteList.indexOf(origin) !== -1 ? null : new Error('Not Allowed'), true)
+  }
+}
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app
+  .use(express.urlencoded({ extended: false }))
+  .use(express.json())
+  .use(cors())
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
+
+app.all('/editor', ({ method }, res) => {
+  const data = {"gjs-html":"<body><h1>Hello World Component!</h1></body>","gjs-components":"[{\"tagName\":\"h1\",\"type\":\"text\",\"components\":[{\"type\":\"textnode\",\"content\":\"Hello World Component!\"}]}]","gjs-assets":"[]","gjs-css":"* { box-sizing: border-box; } body {margin: 0;}","gjs-styles":"[]"}
+  switch(method) {
+    case 'get':
+      return res.json(data)
+    case 'post':
+      return res.json({
+        code: 200,
+        message: 'ok'
+      })
+    default:
+      return res.json({
+        code: 200,
+        message: 'ok'
+      })
+  }
+})
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
+
   // integrate our Apollo server with the Express application as middleware
   server.applyMiddleware({ app });
 
