@@ -2,8 +2,9 @@ import React from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
-import 'grapesjs-blocks-basic';
-import 'grapesjs-touch';
+import grapesBlocksBasic from 'grapesjs-blocks-basic';
+import grapesTouch from 'grapesjs-touch';
+import './vegetaPlugin'
 
 class Editor extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Editor extends React.Component {
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: ['gjs-blocks-basic', 'grapesjs-touch'],
+      plugins: [grapesBlocksBasic, grapesTouch, 'vegeta'],
       pluginsOpts: {
         'gjs-blocks-basic': {
           blocks: [
@@ -24,12 +25,24 @@ class Editor extends React.Component {
             'column3-7'
           ],
           category: 'Columns',
+        },
+        'vegeta': {
+          endpoint: 'http://localhost:3001/editor'
         }
       },
       fromElement: true,
       height: "100%",
       width: "auto",
-      storageManager: false,
+      // storageManager: false,
+      storageManager: {
+        type: 'vegeta',
+        stepsBeforeSave: 3,
+        storeComponents: true,
+        storeStyles: true,
+        storeHtml: true,
+        storeCss: true,
+        contentTypeJson: true
+      },
       panels: {
         defaults: [
           {
@@ -62,6 +75,14 @@ class Editor extends React.Component {
                 command: "export-template",
                 context: "export-template", // for grouping buttons w/in same panel
               },
+              {
+                id: "vegeta",
+                className: "fa fa-floppy-o btn btn-ghost btn-save-database",
+                command: 'vegeta',
+                attributes: {
+                  title: "Save to database"
+                }
+              }
               // {
               //   id: "show-json",
               //   className: "btn btn-ghost btn-show-json",
@@ -350,6 +371,9 @@ class Editor extends React.Component {
     editor.Commands.add("set-device-mobile", {
       run: (editor) => editor.setDevice("Mobile"),
     });
+    editor.Commands.add('vegeta', {
+      run: editor => editor.store()
+    })
   }
   render() {
     return (

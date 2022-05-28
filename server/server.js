@@ -1,9 +1,11 @@
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
-const cors = require('cors');
-const express = require('express');
+
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+
+const cors = require('cors');
+const express = require('express');
 
 const {
   ApolloServerPluginLandingPageGraphQLPlayground,
@@ -29,15 +31,20 @@ const server = new ApolloServer({
 });
 
 const app = express();
+const whiteList = [
+  'http://localhost:3000',
+  'http://localhost*'
+]
+const corsOptions = {
+  origin: (origin, callback) => {
+    return callback(whiteList.indexOf(origin) !== -1 ? null : new Error('Not Allowed'), true)
+  }
+}
 
-app.use(
-  cors({
-    origin: '*',
-  })
-);
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
-app.use(express.json());
+app
+  .use(express.urlencoded({ extended: false }))
+  .use(express.json())
+  .use(cors())
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
