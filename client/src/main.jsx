@@ -12,8 +12,9 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Landing />} />
+          <Route path="donate" element={<Donate />} />
         </Route>
-          <Route path="editor" element={<Editor />} />
+        <Route path="editor" element={<Editor />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
