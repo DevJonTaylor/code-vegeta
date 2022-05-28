@@ -51,10 +51,7 @@
   font-size: 0.3rem;
 }
 
-.gjs-blocks-cs,
-.gjs-sm-sectors,
-.gjs-clm-tags,
-.layers-container {
+.gjs-one-bg {
   background: transparent;
 }
 
