@@ -17,7 +17,7 @@ const Signup = () => {
 	// 	const { name, value } = event.target;
 
 	// 	setFormState({
-	// 		...formState,
+	// 		...formState,1
 	// 		[name]: value,
 	// 	});
 	// };
@@ -56,8 +56,9 @@ const Signup = () => {
                     <div className='card-body-sign'>
                         {/* <form onSubmit={handleFormSubmit}> */}
                         <div className='form-sign'>
+                            <p className='greeting'>Hello, friend!</p>
                             <input
-                                className='form-input'
+                                className='form-input rounded-full'
                                 placeholder='Username'
                                 name='username'
                                 type='username'
@@ -66,7 +67,7 @@ const Signup = () => {
                                 // onChange={handleChange}
                             />
                             <input
-                                className='form-input'
+                                className='form-input rounded-full'
                                 placeholder='Email'
                                 name='email'
                                 type='email'
@@ -75,7 +76,7 @@ const Signup = () => {
                                 // onChange={handleChange}
                             />
                             <input
-                                className='form-input'
+                                className='form-input rounded-full'
                                 placeholder='******'
                                 name='password'
                                 type='password'
@@ -83,9 +84,10 @@ const Signup = () => {
                                 // value={formState.password}
                                 // onChange={handleChange}
                             />
-                            <button className='btn-sign btn d-block' type='submit'>
-                                <p className='gradient-text'>Sign Up</p>
+                            <button className='btn-sign rounded-full font-black' type='submit'>
+                                CREATE ACCOUNT
                             </button>
+                            <p className='end'>Already have an account? Sign In</p>
                         </div>
                         {/* {error && <div>Sign up failed</div>} */}
                         {/* if there's an error, we'll see a <div> element with a message saying so */}

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap");
 
 .background-image-sign {
-    background-image: url(./adrien-olichon-ilVYjf0J378-unsplash.jpg);
+    /* background-image: url(./adrien-olichon-ilVYjf0J378-unsplash.jpg); */
     position: absolute;
     width: 100%;
     height: 85vh;
@@ -31,6 +31,9 @@
 }
 
 .form-sign {
+    background-image: url(./erik-skof-1MG7FHKp3TU-unsplash.jpg);
+    background-position: right top;
+    background-size: cover;
     width: 100%;
     font-family: "Libre Franklin", sans-serif;
     display: flex;
@@ -41,35 +44,75 @@
     padding: 40px 15px;
 }
 
+.greeting {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.end {
+    font-size: 12px;
+    padding-top: 20px;
+}
+
 .form-input {
-    width: 75%;
+    color: black;
+    width: 70%;
     border-radius: 0.5rem;
-    padding: 0.75rem;
+    padding: 8px 20px;
     align-items: center;
     margin-bottom: 20px;
 }
 
 .btn-sign {
-    width: 30%;
-
+    width: 40%;
+    font-weight: bold;
 }
 
 .btn-sign:hover {
-    color: #191D24;
-    background-image: black;
-    transition: all 0.6s ease-in-out;
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: #214a51;
+    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
     opacity: 0.5;
 }
  
 .btn-sign:not(:hover) {
+    font-family: "Libre Franklin", sans-serif;
     font-weight: bold;
-    color: #214a51 ;
-    background-color: #191D24;
+    font-size: 12px;
     transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: rgb(110 231 183);
+    background-color: black;
 }
 
-.gradient-text {
+/* .btn-sign:hover {
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: rgb(110 231 183);
+    background-color: black;
+    opacity: 0.5;
+}
+ 
+.btn-sign:not(:hover) {
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: #214a51;
+    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
+}
+*/
+
+/* .gradient-text {
     background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
     background-clip: text;
     color: transparent;
-}
+} */
