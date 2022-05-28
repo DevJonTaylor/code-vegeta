@@ -13,10 +13,10 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Landing />} />
-          <Route path="editor" element={<Editor />} />
           <Route path="donate" element={<Donate />} />
         </Route>
-        {/* <Route path="editor" element={<Editor />} /> */}
+        {/* Keep editor out of App route to prevent headers and footers */}
+        <Route path="editor" element={<Editor />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Page } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 // import stripe
@@ -53,19 +53,21 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPage: async (parent, { pageId }, context) => {
+    addPage: async (parent, args, context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { pages: pageId } },
-          { new: true }
-        ).populate('pages');
+          const page = await Page.create({ ...args, username: context.user.username });
 
-        return updatedUser;
+          await User.findByIdAndUpdate(
+              { _id: context.user._id },
+              { $push: { pages: page._id } },
+              { new: true }
+          );
+
+          return page;
       }
 
       throw new AuthenticationError('You need to be logged in!');
-    },
+  },
     createPaymentIntent: async () => {
       try {
         const paymentIntent = await stripe.paymentIntents.create({
