@@ -2,7 +2,7 @@ import React from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
-import grapesBlocksBasic from 'grapesjs-blocks-basic';
+import 'grapesjs-blocks-basic';
 import grapesTouch from 'grapesjs-touch';
 import './vegetaPlugin'
 
@@ -15,7 +15,7 @@ class Editor extends React.Component {
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: [grapesBlocksBasic, grapesTouch, 'vegeta'],
+      plugins: ['gjs-blocks-basic', grapesTouch, 'vegeta'],
       pluginsOpts: {
         'gjs-blocks-basic': {
           blocks: [
