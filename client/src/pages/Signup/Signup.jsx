@@ -55,39 +55,46 @@ const Signup = () => {
                 <div className='card'>
                     <div className='card-body-sign'>
                         {/* <form onSubmit={handleFormSubmit}> */}
-                        <div className='form-sign'>
-                            <p className='greeting'>Hello, friend!</p>
-                            <input
-                                className='form-input rounded-full'
-                                placeholder='Username'
-                                name='username'
-                                type='username'
-                                id='username'
-                                // value={formState.username}
-                                // onChange={handleChange}
-                            />
-                            <input
-                                className='form-input rounded-full'
-                                placeholder='Email'
-                                name='email'
-                                type='email'
-                                id='email'
-                                // value={formState.email}
-                                // onChange={handleChange}
-                            />
-                            <input
-                                className='form-input rounded-full'
-                                placeholder='******'
-                                name='password'
-                                type='password'
-                                id='password'
-                                // value={formState.password}
-                                // onChange={handleChange}
-                            />
-                            <button className='btn-sign rounded-full font-black' type='submit'>
-                                CREATE ACCOUNT
-                            </button>
-                            <p className='end'>Already have an account? Sign In</p>
+                        <div className='form-container form-bg'>
+                            <div className='form-left'>
+                                <p className='greeting'>Hello, friend!</p>
+                                <input
+                                    className='form-input rounded-full'
+                                    placeholder='Username'
+                                    name='username'
+                                    type='username'
+                                    id='username'
+                                    // value={formState.username}
+                                    // onChange={handleChange}
+                                />
+                                <input
+                                    className='form-input rounded-full'
+                                    placeholder='Email'
+                                    name='email'
+                                    type='email'
+                                    id='email'
+                                    // value={formState.email}
+                                    // onChange={handleChange}
+                                />
+                                <input
+                                    className='form-input rounded-full'
+                                    placeholder='******'
+                                    name='password'
+                                    type='password'
+                                    id='password'
+                                    // value={formState.password}
+                                    // onChange={handleChange}
+                                />
+                                <button className='btn-sign d-block rounded-full font-black' type='submit'>
+                                    CREATE ACCOUNT
+                                </button>
+                                <p className='end'>Already have an account? Sign In</p>
+                            </div>
+                            <div className='form-right'>
+                                {/* <h1>Welcome</h1> */}
+                                {/* <h1>Welcome to <span className='gradient-text'>VEGETA</span></h1> */}
+                                <p>Let's build together</p>
+                            </div>
                         </div>
                         {/* {error && <div>Sign up failed</div>} */}
                         {/* if there's an error, we'll see a <div> element with a message saying so */}
