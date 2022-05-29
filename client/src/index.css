@@ -8,6 +8,15 @@
   .bg-black {
     @apply bg-zinc-900
   }
+  .btn-main {
+    @apply text-emerald-300 bg-zinc-900
+  }
+  .btn-hover {
+    @apply hover:text-zinc-900 hover:bg-gradient-to-r hover:from-emerald-300 hover:to-sky-300 hover:transition-colors hover:ease-in hover:duration-1000
+  }
+  .btn-transition {
+    @apply transition-colors ease-in duration-1000
+  } 
 }
 
 body,

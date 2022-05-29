@@ -95,28 +95,10 @@
 }
 
 .btn-sign {
+    font-size: 12px;
     width: 40%;
-    font-weight: bold;
-}
-
-.btn-sign:hover {
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.7s ease-in-out;
+    margin: 0 10px;
     padding: 8px;
-    color: #214a51;
-    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
-    /* opacity: 0.5; */
-    display: inline;
-}
- 
-.btn-sign:not(:hover) {
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.7s ease-in-out;
-    padding: 8px;
-    color: rgb(110 231 183);
-    background-color: black;
     display: inline;
 }
 
@@ -151,25 +133,3 @@
     background-clip: text;
     color: transparent;
 }
-
-/* .btn-sign:hover {
-    font-family: "Libre Franklin", sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.7s ease-in-out;
-    padding: 8px;
-    color: rgb(110 231 183);
-    background-color: black;
-    opacity: 0.5;
-}
- 
-.btn-sign:not(:hover) {
-    font-family: "Libre Franklin", sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.7s ease-in-out;
-    padding: 8px;
-    color: #214a51;
-    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
-}
-*/
