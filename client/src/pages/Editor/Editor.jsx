@@ -5,11 +5,36 @@ import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
+import SavePages from "../../components/SavePages";
+import PageList from "../../components/PageList";
 
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  updateBtn() {
+    const tooltipBtns = document.querySelectorAll('[data-tip]');
+    tooltipBtns.forEach(button => {
+      const dataTip = document.getAttribute("data-tip");
+      const tooltip = document.createElement("span");
+      if (
+        dataTip === "Desktop" ||
+        dataTip === "Tablet" ||
+        dataTip === "Mobile" ||
+        dataTip === "Layers" ||
+        dataTip === "Styles" ||
+        dataTip === "Components"
+      ) {
+        tooltip.classList.add("topbar-tooltip");
+      } else {
+        tooltip.classList.add("sidebar-tooltip");
+      }
+      tooltip.classList.add("group-hover:scale-100");
+      tooltip.textContent = dataTip;
+      button.appendChild(tooltip);
+    })
   }
 
   componentDidMount() {
@@ -98,7 +123,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "preview",
-                attributes: { "data-tip": "Preview"}
+                attributes: { "data-tip": "Preview" },
               },
               {
                 id: "fullscreen",
@@ -109,7 +134,7 @@ class Editor extends React.Component {
                 </svg>
                 `,
                 command: "fullscreen",
-                attributes: { "data-tip": "Fullscreen"}
+                attributes: { "data-tip": "Fullscreen" },
               },
               {
                 id: "undo",
@@ -120,7 +145,7 @@ class Editor extends React.Component {
                     </svg>
                 `,
                 command: "core:undo",
-                attributes: { "data-tip": "Undo"}
+                attributes: { "data-tip": "Undo" },
               },
               {
                 id: "redo",
@@ -131,7 +156,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "core:redo",
-                attributes: { "data-tip": "Redo"}
+                attributes: { "data-tip": "Redo" },
               },
               {
                 id: "clear",
@@ -142,7 +167,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "core:canvas-clear",
-                attributes: { "data-tip": "Clear Canvas"}
+                attributes: { "data-tip": "Clear Canvas" },
               },
               // {
               //   id: "show-json",
@@ -187,7 +212,10 @@ class Editor extends React.Component {
                   </svg>
                 `,
                 command: "show-layers",
-                attributes: { class: "btn btn-ghost" },
+                attributes: {
+                  class: "sidebar-icon group",
+                  "data-tip": "Layers",
+                },
                 // Once actived disable the possibility to turn it off
                 togglable: false,
               },
@@ -199,7 +227,10 @@ class Editor extends React.Component {
                     <path fill="currentColor" d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z" />
                   </svg>
                 `,
-                attributes: { class: "btn btn-ghost" },
+                attributes: {
+                  class: "sidebar-icon group",
+                  "data-tip": "Styles",
+                },
                 command: "show-styles",
                 togglable: false,
               },
@@ -211,7 +242,10 @@ class Editor extends React.Component {
                       <path fill="currentColor" d="M2,2H11V11H2V2M17.5,2C20,2 22,4 22,6.5C22,9 20,11 17.5,11C15,11 13,9 13,6.5C13,4 15,2 17.5,2M6.5,14L11,22H2L6.5,14M19,17H22V19H19V22H17V19H14V17H17V14H19V17Z" />
                     </svg>
                 `,
-                attributes: { class: "btn btn-ghost" },
+                attributes: {
+                  class: "sidebar-icon group",
+                  "data-tip": "Components",
+                },
                 command: "show-blocks",
                 togglable: false,
               },
@@ -229,8 +263,8 @@ class Editor extends React.Component {
                   </svg>
                 `,
                 command: "set-device-desktop",
-                className: "sidebar-icon",
-                active: true,
+                className: "sidebar-icon group",
+                attributes: { "data-tip": "Desktop" },
                 togglable: false,
               },
               {
@@ -240,7 +274,8 @@ class Editor extends React.Component {
                       <path fill="currentColor" d="M19.25,19H4.75V3H19.25M14,22H10V21H14M18,0H6A3,3 0 0,0 3,3V21A3,3 0 0,0 6,24H18A3,3 0 0,0 21,21V3A3,3 0 0,0 18,0Z" />
                     </svg>
               `,
-                className: "sidebar-icon",
+                className: "sidebar-icon group",
+                attributes: { "data-tip": "Tablet" },
                 command: "set-device-tablet",
                 togglable: false,
               },
@@ -251,7 +286,8 @@ class Editor extends React.Component {
                     <path fill="currentColor" d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z" />
                   </svg>
               `,
-                className: "sidebar-icon",
+                className: "sidebar-icon group",
+                attributes: { "data-tip": "Mobile" },
                 command: "set-device-mobile",
                 togglable: false,
               },
@@ -497,15 +533,42 @@ class Editor extends React.Component {
       run: (editor) => editor.store(),
     });
 
+    editor.on("run", (a, b, c) => {
+      // const senderId = document.querySelector(`#${c.sender.attributes.id}`);
+      // const checkForSpan = (el) =>
+      //   el.querySelector(`"[data-tip]='${senderId}'"`)
+      //     ? false
+      //     : this.updateBtn(el);
+      // if (c.sender) {
+      //   checkForSpan(senderId);
+      // }
+
+      this.updateBtn();
+    });
+
+    console.dir(editor.editor._events);
     const tooltipBtns = document.querySelectorAll("[data-tip]");
     tooltipBtns.forEach((button) => {
       const dataTip = button.getAttribute("data-tip");
-      const tooltip = document.createElement('span');
-      tooltip.classList.add('sidebar-tooltip', 'group-hover:scale-100');
+      const tooltip = document.createElement("span");
+      if (
+        dataTip === "Desktop" ||
+        dataTip === "Tablet" ||
+        dataTip === "Mobile" ||
+        dataTip === "Layers" ||
+        dataTip === "Styles" ||
+        dataTip === "Components"
+      ) {
+        tooltip.classList.add("topbar-tooltip");
+      } else {
+        tooltip.classList.add("sidebar-tooltip");
+      }
+      tooltip.classList.add("group-hover:scale-100");
       tooltip.textContent = dataTip;
       button.appendChild(tooltip);
     });
   }
+
   render() {
     return (
       <div className="flex w-full" style={{ height: "100vh" }}>
@@ -516,6 +579,8 @@ class Editor extends React.Component {
             </p>
           </div>
           <div className="panel__basic-actions"></div>
+          {/* <SavePages /> */}
+          {/* <PageList /> */}
         </div>
         <div className="flex w-full flex-col">
           <div className="panel__top border-b-2 border-slate-800">

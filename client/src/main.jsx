@@ -7,6 +7,7 @@ import Editor from "./pages/Editor/Editor";
 import Donate from "./pages/Donate/Donate";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
+
 import "./index.css";
 import './pages/Signup/Signup.css';
 
@@ -18,8 +19,8 @@ ReactDOM.render(
           <Route index element={<Landing />} />
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
-          <Route path="editor" element={<Editor />} />
           <Route path="donate" element={<Donate />} />
+          
         </Route>
         {/* Keep editor out of App route to prevent headers and footers */}
         <Route path="editor" element={<Editor />} />
