@@ -9,7 +9,11 @@ const pageSchema = new Schema(
     mycss: {
       type: String,
       required: 'You need to have CSS!',
-    }
+    },
+    username: {
+      type: String,
+      required: true
+    },
   
   },
   {

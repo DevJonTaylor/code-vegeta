@@ -19,7 +19,6 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-
     // get all users
     users: async () => {
       return User.find().select('-__v -password').populate('pages');
@@ -29,6 +28,14 @@ const resolvers = {
       return User.findOne({ username })
         .select('-__v -password')
         .populate('pages');
+    },
+    pages: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Page.find(params).sort({ createdAt: -1 });
+    },
+    // Get Single Thought
+    page: async (parent, { _id }) => {
+      return Page.findOne({ _id });
     },
   },
   Mutation: {
@@ -55,19 +62,19 @@ const resolvers = {
     },
     addPage: async (parent, args, context) => {
       if (context.user) {
-          const page = await Page.create({ ...args, username: context.user.username });
+        const page = await Page.create({ ...args, username: context.user.username });
 
-          await User.findByIdAndUpdate(
-              { _id: context.user._id },
-              { $push: { pages: page._id } },
-              { new: true }
-          );
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { pages: page._id } },
+          { new: true }
+        );
 
-          return page;
+        return page;
       }
 
       throw new AuthenticationError('You need to be logged in!');
-  },
+    },
     createPaymentIntent: async () => {
       try {
         const paymentIntent = await stripe.paymentIntents.create({
