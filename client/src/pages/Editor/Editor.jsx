@@ -15,14 +15,17 @@ class Editor extends React.Component {
   }
 
   updateBtn() {
-    const tooltipBtns = document.querySelectorAll("[data-tip]");
-    tooltipBtns.forEach((button) => {
-      const dataTip = button.getAttribute("data-tip");
+    const tooltipBtns = document.querySelectorAll('[data-tip]');
+    tooltipBtns.forEach(button => {
+      const dataTip = document.getAttribute("data-tip");
       const tooltip = document.createElement("span");
       if (
         dataTip === "Desktop" ||
         dataTip === "Tablet" ||
-        dataTip === "Mobile"
+        dataTip === "Mobile" ||
+        dataTip === "Layers" ||
+        dataTip === "Styles" ||
+        dataTip === "Components"
       ) {
         tooltip.classList.add("topbar-tooltip");
       } else {
@@ -31,27 +34,7 @@ class Editor extends React.Component {
       tooltip.classList.add("group-hover:scale-100");
       tooltip.textContent = dataTip;
       button.appendChild(tooltip);
-    });
-  }
-
-  updateBtn(el) {
-    const dataTip = el.getAttribute("data-tip");
-    const tooltip = document.createElement("span");
-    if (
-      dataTip === "Desktop" ||
-      dataTip === "Tablet" ||
-      dataTip === "Mobile" ||
-      dataTip === "Layers" ||
-      dataTip === "Styles" ||
-      dataTip === "Components"
-    ) {
-      tooltip.classList.add("topbar-tooltip");
-    } else {
-      tooltip.classList.add("sidebar-tooltip");
-    }
-    tooltip.classList.add("group-hover:scale-100");
-    tooltip.textContent = dataTip;
-    el.appendChild(tooltip);
+    })
   }
 
   componentDidMount() {
@@ -101,7 +84,6 @@ class Editor extends React.Component {
                 `,
                 command: "sw-visibility", // built-in command
                 attributes: {
-                  id: "visibility",
                   "data-tip": "Toggle Gridlines",
                 },
               },
@@ -230,7 +212,6 @@ class Editor extends React.Component {
                   </svg>
                 `,
                 command: "show-layers",
-                attributes: { class: "sidebar-icon" },
                 attributes: {
                   class: "sidebar-icon group",
                   "data-tip": "Layers",
@@ -246,7 +227,6 @@ class Editor extends React.Component {
                     <path fill="currentColor" d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z" />
                   </svg>
                 `,
-                attributes: { class: "sidebar-icon" },
                 attributes: {
                   class: "sidebar-icon group",
                   "data-tip": "Styles",
@@ -554,14 +534,16 @@ class Editor extends React.Component {
     });
 
     editor.on("run", (a, b, c) => {
-      const checkForSpan = (el) =>
-        el.querySelector("[data-class]='.group-hover:scale-100'")
-          ? false
-          : this.updateBtn(el);
-      if (c.sender) {
-        const senderId = document.querySelector(`#${c.sender.attributes.id}`);
-        checkForSpan(senderId);
-      }
+      // const senderId = document.querySelector(`#${c.sender.attributes.id}`);
+      // const checkForSpan = (el) =>
+      //   el.querySelector(`"[data-tip]='${senderId}'"`)
+      //     ? false
+      //     : this.updateBtn(el);
+      // if (c.sender) {
+      //   checkForSpan(senderId);
+      // }
+
+      this.updateBtn();
     });
 
     console.dir(editor.editor._events);
@@ -597,8 +579,8 @@ class Editor extends React.Component {
             </p>
           </div>
           <div className="panel__basic-actions"></div>
-          <SavePages />
-          <PageList />
+          {/* <SavePages /> */}
+          {/* <PageList /> */}
         </div>
         <div className="flex w-full flex-col">
           <div className="panel__top border-b-2 border-slate-800">
