@@ -1,0 +1,13 @@
+.font-bold{
+	font-weight: 700;
+}
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.profile-pic {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
