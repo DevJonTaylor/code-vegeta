@@ -12,6 +12,29 @@ class Editor extends React.Component {
     this.state = {};
   }
 
+<<<<<<< Updated upstream
+=======
+  updateBtn(el) {
+    const dataTip = el.getAttribute("data-tip");
+    const tooltip = document.createElement("span");
+    if (
+      dataTip === "Desktop" ||
+      dataTip === "Tablet" ||
+      dataTip === "Mobile" ||
+      dataTip === "Layers" ||
+      dataTip === "Styles" ||
+      dataTip === "Components"
+    ) {
+      tooltip.classList.add("topbar-tooltip");
+    } else {
+      tooltip.classList.add("sidebar-tooltip");
+    }
+    tooltip.classList.add("group-hover:scale-100");
+    tooltip.textContent = dataTip;
+    el.appendChild(tooltip);
+  }
+
+>>>>>>> Stashed changes
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
@@ -59,6 +82,7 @@ class Editor extends React.Component {
                 `,
                 command: "sw-visibility", // built-in command
                 attributes: {
+                  id: 'visibility',
                   "data-tip": "Toggle Gridlines",
                 },
               },
@@ -187,7 +211,14 @@ class Editor extends React.Component {
                   </svg>
                 `,
                 command: "show-layers",
+<<<<<<< Updated upstream
                 attributes: { class: "btn btn-ghost" },
+=======
+                attributes: {
+                  class: "sidebar-icon group",
+                  "data-tip": "Layers",
+                },
+>>>>>>> Stashed changes
                 // Once actived disable the possibility to turn it off
                 togglable: false,
               },
@@ -199,7 +230,14 @@ class Editor extends React.Component {
                     <path fill="currentColor" d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z" />
                   </svg>
                 `,
+<<<<<<< Updated upstream
                 attributes: { class: "btn btn-ghost" },
+=======
+                attributes: {
+                  class: "sidebar-icon group",
+                  "data-tip": "Styles",
+                },
+>>>>>>> Stashed changes
                 command: "show-styles",
                 togglable: false,
               },
@@ -211,7 +249,14 @@ class Editor extends React.Component {
                       <path fill="currentColor" d="M2,2H11V11H2V2M17.5,2C20,2 22,4 22,6.5C22,9 20,11 17.5,11C15,11 13,9 13,6.5C13,4 15,2 17.5,2M6.5,14L11,22H2L6.5,14M19,17H22V19H19V22H17V19H14V17H17V14H19V17Z" />
                     </svg>
                 `,
+<<<<<<< Updated upstream
                 attributes: { class: "btn btn-ghost" },
+=======
+                attributes: {
+                  class: "sidebar-icon group",
+                  "data-tip": "Components",
+                },
+>>>>>>> Stashed changes
                 command: "show-blocks",
                 togglable: false,
               },
@@ -497,11 +542,33 @@ class Editor extends React.Component {
       run: (editor) => editor.store(),
     });
 
+    editor.on("run", (a, b, c) => {
+      const checkForSpan = (el) =>
+        el.querySelector("[data-class]='.group-hover:scale-100'") ? false : this.updateBtn(el);
+      if (c.sender) {
+        const senderId = document.querySelector(`#${c.sender.attributes.id}`);
+        checkForSpan(senderId);
+      }
+    });
+
+    console.dir(editor.editor._events);
     const tooltipBtns = document.querySelectorAll("[data-tip]");
     tooltipBtns.forEach((button) => {
       const dataTip = button.getAttribute("data-tip");
-      const tooltip = document.createElement('span');
-      tooltip.classList.add('sidebar-tooltip', 'group-hover:scale-100');
+      const tooltip = document.createElement("span");
+      if (
+        dataTip === "Desktop" ||
+        dataTip === "Tablet" ||
+        dataTip === "Mobile" ||
+        dataTip === "Layers" ||
+        dataTip === "Styles" ||
+        dataTip === "Components"
+      ) {
+        tooltip.classList.add("topbar-tooltip");
+      } else {
+        tooltip.classList.add("sidebar-tooltip");
+      }
+      tooltip.classList.add("group-hover:scale-100");
       tooltip.textContent = dataTip;
       button.appendChild(tooltip);
     });
