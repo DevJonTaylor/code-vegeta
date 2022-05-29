@@ -19,7 +19,7 @@ const Landing = () => {
         </div>
         <div className="spacer-border"></div>
         <div className="welcome-text-right">
-          <Link to="/editor" className="welcome-btn btn">
+          <Link to="/editor" className="welcome-btn btn bg-black hover:bg-base-100">
             Start Building
           </Link>
         </div>

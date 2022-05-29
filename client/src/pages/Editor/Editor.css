@@ -5,34 +5,37 @@
     @apply btn btn-xs sm:btn-sm md:btn-md lg:btn-lg;
   }
   .panel__top {
-    @apply navbar flex justify-between rounded-t-lg bg-base-100;
+    @apply navbar flex justify-between rounded-t-lg bg-black;
   }
   .panel__basic-actions {
-    @apply bg-base-100;
+    @apply bg-black;
   }
   .editor-canvas {
     @apply rounded-lg;
   }
   .panel__right {
-    @apply bg-base-100;
+    @apply bg-black;
   }
   .panel__switcher {
-    @apply bg-base-100;
+    @apply bg-black;
   }
   .panel__basic-actions > .gjs-pn-buttons {
     @apply flex-col;
   }
   .panel__devices {
-    @apply bg-base-100;
+    @apply bg-black;
   }
   .sidebar-icon {
-    @apply btn btn-ghost z-50 m-1 rounded-3xl transition-all duration-300 ease-linear hover:rounded-xl hover:bg-green-600;
+    @apply btn btn-ghost z-50 m-1 rounded-3xl transition-all duration-300 ease-linear shadow-md shadow-black hover:rounded-xl hover:bg-green-600;
   }
   .sidebar-tooltip {
     @apply absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
   }
   .topbar-tooltip {
     @apply absolute top-14 m-2 w-auto min-w-max origin-top scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
+  }
+  .gjs-one-bg {
+    @apply bg-zinc-900;
   }
 }
 
@@ -115,10 +118,6 @@
 
 * ::-webkit-scrollbar {
   width: 10px;
-}
-
-.gjs-one-bg {
-  background-color: transparent;
 }
 
 #root > div {
