@@ -294,6 +294,13 @@ class Editor extends React.Component {
             content: { type: "image" }, // can pass components as JSON (notice use of defined component type 'image')
             activate: true, // triggers 'active' event on component when dropped and 'image' reacts by opening asset manager
           },
+          {
+            id: "link",
+            label: 'LINK',
+            select: true,
+            content: { type: "link" },
+            activate: true
+          }
         ],
       },
       layerManager: {
@@ -305,6 +312,27 @@ class Editor extends React.Component {
       styleManager: {
         appendTo: ".styles-container",
         sectors: [
+          {
+            name: 'General',
+            open: false,
+            properties: ['display', 'float', 'position', 'top', 'right', 'left', 'bottom'],
+          },
+          {
+            name: 'Flex',
+            open: false,
+            properties: [
+              'flex-direction',
+              'flex-wrap',
+              'justify-content',
+              'align-items',
+              'align-content',
+              'order',
+              'flex-basis',
+              'flex-grow',
+              'flex-shrink',
+              'align-self',
+            ],
+          },
           {
             name: "Dimension",
             open: false,
@@ -321,6 +349,25 @@ class Editor extends React.Component {
                 min: 0, // min value, available for ints only
               },
             ],
+          },
+          {
+            name: 'Typography',
+            open: false,
+            properties: [
+              'font-family',
+              'font-size',
+              'font-weight',
+              'letter-spacing',
+              'color',
+              'line-height',
+              'text-align',
+              'text-shadow',
+            ],
+          },
+          {
+            name: 'Decorations',
+            open: false,
+            properties: ['background-color', 'border-radius', 'border', 'box-shadow', 'background'],
           },
           {
             name: "Extra",
@@ -435,14 +482,12 @@ class Editor extends React.Component {
     return (
       <div className="flex w-full" style={{ height: "100vh" }}>
         <div className="panel__left border-r-2 border-slate-800">
-          <div className="btn-ghost rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
+          <div className="glass rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
             <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-3xl font-black text-transparent selection:bg-transparent">
               <a href="/">V</a>
             </p>
           </div>
-          <div className="divider"></div>
           <div className="panel__basic-actions"></div>
-          <div className="divider"></div>
         </div>
         <div className="flex w-full flex-col">
           <div className="panel__top border-b-2 border-slate-800">
