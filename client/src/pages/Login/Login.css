@@ -1,0 +1,62 @@
+.login-container {
+    font-family: "Montserrat", sans-serif;
+    width: 90%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    border-radius: 13px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+/* LEFT SIDE OF FORM */
+.login-left {
+    font-family: "Montserrat", sans-serif;
+    opacity: 75%;
+    height: 100%;
+    width: 55%;
+    background-color: black;
+    color: white;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-left p  {
+    font-size: 20px;
+    width: 100%;
+    /* text-align: start; */
+}
+
+/* LEFT SIDE OF FORM */
+.login-right {
+    max-width: 362px !important;
+}
+
+.btn-login {
+    width: 25%;
+    margin: 0 10px;
+}
+
+.btn-login:hover {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: #214a51;
+    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
+    /* opacity: 0.5; */
+    display: inline;
+}
+ 
+.btn-login:not(:hover) {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: rgb(110 231 183);
+    background-color: black;
+    display: inline;
+}
