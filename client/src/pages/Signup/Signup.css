@@ -60,18 +60,18 @@
 .form-container {
     font-family: "Montserrat", sans-serif;
     width: 90%;
-    height: 60%;
+    height: 56%;
     display: flex;
     align-items: center;
     border-radius: 13px;
-
     /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
 /* LEFT SIDE OF FORM */
 
 .form-left {
-
+    resize: both;
+    max-width: 362px !important;
 }
 
 .greeting {
@@ -92,7 +92,7 @@
     opacity: 0.85;
     width: 70%;
     border-radius: 0.5rem;
-    padding: 8px 20px;
+    padding: 5px 20px;
     align-items: center;
     margin-bottom: 20px;
 }

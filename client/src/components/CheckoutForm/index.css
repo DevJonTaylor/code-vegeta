@@ -1,4 +1,4 @@
-form {
+.form-checkout {
   width: 30vw;
   min-width: 500px;
   align-self: center;
@@ -112,7 +112,7 @@ button:disabled {
 }
 
 @media only screen and (max-width: 600px) {
-  form {
+  .form-checkout {
     width: 80vw;
     min-width: initial;
   }

@@ -7,6 +7,7 @@ import Editor from "./pages/Editor/Editor";
 import Donate from "./pages/Donate/Donate";
 import Signup from "./pages/Signup/Signup";
 import "./index.css";
+import './pages/Signup/Signup.css';
 
 ReactDOM.render(
   <React.StrictMode>
