@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import Landing from "./pages/Landing/Landing";
 import Editor from "./pages/Editor/Editor";
+import Donate from "./pages/Donate/Donate";
 import "./index.css";
 
 ReactDOM.render(
@@ -14,9 +15,12 @@ ReactDOM.render(
           <Route index element={<Landing />} />
           <Route path="donate" element={<Donate />} />
         </Route>
+        {/* Keep editor out of App route to prevent headers and footers */}
         <Route path="editor" element={<Editor />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+console.log(process.env.NODE_ENV);

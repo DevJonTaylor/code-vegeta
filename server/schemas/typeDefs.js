@@ -12,11 +12,10 @@ const typeDefs = gql`
     pages: [Page]
   }
 
- type Page {
+  type Page {
     _id: ID
-    pageName: String
-    createdAt: String
-    username: String
+    myhtml: String
+    mycss: String
   }
 
   type Query {
@@ -30,7 +29,12 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPage(pageId: ID!): User
+    addPage(myhtml: String!, mycss: String!): Page
+    createPaymentIntent: StripeResponse!
+  }
+
+  type StripeResponse {
+    clientSecret: String
   }
 
   type Auth {
