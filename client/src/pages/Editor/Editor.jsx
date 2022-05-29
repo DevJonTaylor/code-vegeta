@@ -51,7 +51,7 @@ class Editor extends React.Component {
               {
                 id: "visibility",
                 active: true,
-                className: "btn btn-ghost btn-toggle-borders",
+                className: "btn btn-ghost z-50",
                 label: `
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M10,4V8H14V4H10M16,4V8H20V4H16M16,10V14H20V10H16M16,16V20H20V16H16M14,20V16H10V20H14M8,20V16H4V20H8M8,14V10H4V14H8M8,8V4H4V8H8M10,14H14V10H10V14M4,2H20A2,2 0 0,1 22,4V20A2,2 0 0,1 20,22H4C2.92,22 2,21.1 2,20V4A2,2 0 0,1 4,2Z" />
@@ -59,7 +59,7 @@ class Editor extends React.Component {
                 `,
                 command: "sw-visibility", // built-in command
                 attributes: {
-                  title: "Enable Gridlines",
+                  "data-tip": "Toggle Gridlines",
                 },
               },
               {
@@ -73,7 +73,7 @@ class Editor extends React.Component {
                 command: "export-template",
                 context: "export-template", // for grouping buttons w/in same panel
                 attributes: {
-                  title: "View Code",
+                  "data-tip": "View Code",
                 },
               },
               {
@@ -86,7 +86,7 @@ class Editor extends React.Component {
                 `,
                 command: "vegeta",
                 attributes: {
-                  title: "Save to database",
+                  "data-tip": "Save to database",
                 },
               },
               {
@@ -98,6 +98,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "preview",
+                attributes: { "data-tip": "Preview"}
               },
               {
                 id: "fullscreen",
@@ -108,6 +109,7 @@ class Editor extends React.Component {
                 </svg>
                 `,
                 command: "fullscreen",
+                attributes: { "data-tip": "Fullscreen"}
               },
               {
                 id: "undo",
@@ -118,6 +120,7 @@ class Editor extends React.Component {
                     </svg>
                 `,
                 command: "core:undo",
+                attributes: { "data-tip": "Undo"}
               },
               {
                 id: "redo",
@@ -128,6 +131,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "core:redo",
+                attributes: { "data-tip": "Redo"}
               },
               {
                 id: "clear",
@@ -138,6 +142,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "core:canvas-clear",
+                attributes: { "data-tip": "Clear Canvas"}
               },
               // {
               //   id: "show-json",
@@ -296,11 +301,11 @@ class Editor extends React.Component {
           },
           {
             id: "link",
-            label: 'LINK',
+            label: "LINK",
             select: true,
             content: { type: "link" },
-            activate: true
-          }
+            activate: true,
+          },
         ],
       },
       layerManager: {
@@ -313,24 +318,32 @@ class Editor extends React.Component {
         appendTo: ".styles-container",
         sectors: [
           {
-            name: 'General',
-            open: false,
-            properties: ['display', 'float', 'position', 'top', 'right', 'left', 'bottom'],
-          },
-          {
-            name: 'Flex',
+            name: "General",
             open: false,
             properties: [
-              'flex-direction',
-              'flex-wrap',
-              'justify-content',
-              'align-items',
-              'align-content',
-              'order',
-              'flex-basis',
-              'flex-grow',
-              'flex-shrink',
-              'align-self',
+              "display",
+              "float",
+              "position",
+              "top",
+              "right",
+              "left",
+              "bottom",
+            ],
+          },
+          {
+            name: "Flex",
+            open: false,
+            properties: [
+              "flex-direction",
+              "flex-wrap",
+              "justify-content",
+              "align-items",
+              "align-content",
+              "order",
+              "flex-basis",
+              "flex-grow",
+              "flex-shrink",
+              "align-self",
             ],
           },
           {
@@ -351,23 +364,29 @@ class Editor extends React.Component {
             ],
           },
           {
-            name: 'Typography',
+            name: "Typography",
             open: false,
             properties: [
-              'font-family',
-              'font-size',
-              'font-weight',
-              'letter-spacing',
-              'color',
-              'line-height',
-              'text-align',
-              'text-shadow',
+              "font-family",
+              "font-size",
+              "font-weight",
+              "letter-spacing",
+              "color",
+              "line-height",
+              "text-align",
+              "text-shadow",
             ],
           },
           {
-            name: 'Decorations',
+            name: "Decorations",
             open: false,
-            properties: ['background-color', 'border-radius', 'border', 'box-shadow', 'background'],
+            properties: [
+              "background-color",
+              "border-radius",
+              "border",
+              "box-shadow",
+              "background",
+            ],
           },
           {
             name: "Extra",
@@ -476,6 +495,13 @@ class Editor extends React.Component {
     });
     editor.Commands.add("vegeta", {
       run: (editor) => editor.store(),
+    });
+
+    const tooltipBtns = document.querySelectorAll("[data-tip]");
+    tooltipBtns.forEach((button) => {
+      const dataTip = button.getAttribute("data-tip");
+      button.removeAttribute("data-tip");
+      button.outerHTML = `<div class="tooltip tooltip-right z-50" data-tip="${dataTip}">${button.outerHTML}</div>`;
     });
   }
   render() {
