@@ -64,13 +64,13 @@ function App() {
           <p>
             Built with <span alt="sweat">💦</span> by
             <br />
-            <code className="text-[#8d96a7]">
+            <code className="text-[#8d96a7] montserrat-text">
               Jess, Jonathan, JT, Jordan, and Keenan
             </code>
             {""}
           </p>
         </div>
-        <div className="hidden w-48 sm:flex">
+        <div className="hidden w-49 sm:flex">
           <p className="mt-3 flex gap-3 text-center text-[#8d96a7]">
             <a
               className="text-[#61dafb] transition-all hover:text-blue-400"
@@ -91,8 +91,8 @@ function App() {
             </a>
           </p>
         </div>
-        <div className="hidden w-48 sm:flex">
-          <img src={poweredBy} className="mx-auto my-8" alt="powered-by" />
+        <div className="hidden w-49 sm:flex">
+          <img src={poweredBy} className="mx-auto my-5" alt="powered-by" />
         </div>
       </footer>
     </div>

@@ -2,8 +2,19 @@
 @tailwind utilities;
 @tailwind components;
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400&display=swap");
+
 body,
 html {
   height: 100%;
   margin: 0;
+}
+
+footer {
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+}
+
+.montserrat-text {
+  font-family: "Montserrat", sans-serif;
 }
