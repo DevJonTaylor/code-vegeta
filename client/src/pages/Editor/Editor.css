@@ -31,6 +31,9 @@
   .sidebar-tooltip {
     @apply absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
   }
+  .topbar-tooltip {
+    @apply absolute top-14 m-2 w-auto min-w-max origin-top scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
+  }
 }
 
 /* Let's highlight canvas boundaries */

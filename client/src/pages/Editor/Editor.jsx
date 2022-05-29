@@ -98,7 +98,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "preview",
-                attributes: { "data-tip": "Preview"}
+                attributes: { "data-tip": "Preview" },
               },
               {
                 id: "fullscreen",
@@ -109,7 +109,7 @@ class Editor extends React.Component {
                 </svg>
                 `,
                 command: "fullscreen",
-                attributes: { "data-tip": "Fullscreen"}
+                attributes: { "data-tip": "Fullscreen" },
               },
               {
                 id: "undo",
@@ -120,7 +120,7 @@ class Editor extends React.Component {
                     </svg>
                 `,
                 command: "core:undo",
-                attributes: { "data-tip": "Undo"}
+                attributes: { "data-tip": "Undo" },
               },
               {
                 id: "redo",
@@ -131,7 +131,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "core:redo",
-                attributes: { "data-tip": "Redo"}
+                attributes: { "data-tip": "Redo" },
               },
               {
                 id: "clear",
@@ -142,7 +142,7 @@ class Editor extends React.Component {
             </svg>
                 `,
                 command: "core:canvas-clear",
-                attributes: { "data-tip": "Clear Canvas"}
+                attributes: { "data-tip": "Clear Canvas" },
               },
               // {
               //   id: "show-json",
@@ -229,8 +229,8 @@ class Editor extends React.Component {
                   </svg>
                 `,
                 command: "set-device-desktop",
-                className: "sidebar-icon",
-                active: true,
+                className: "sidebar-icon group",
+                attributes: { "data-tip": "Desktop" },
                 togglable: false,
               },
               {
@@ -240,7 +240,8 @@ class Editor extends React.Component {
                       <path fill="currentColor" d="M19.25,19H4.75V3H19.25M14,22H10V21H14M18,0H6A3,3 0 0,0 3,3V21A3,3 0 0,0 6,24H18A3,3 0 0,0 21,21V3A3,3 0 0,0 18,0Z" />
                     </svg>
               `,
-                className: "sidebar-icon",
+                className: "sidebar-icon group",
+                attributes: { "data-tip": "Tablet" },
                 command: "set-device-tablet",
                 togglable: false,
               },
@@ -251,7 +252,8 @@ class Editor extends React.Component {
                     <path fill="currentColor" d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z" />
                   </svg>
               `,
-                className: "sidebar-icon",
+                className: "sidebar-icon group",
+                attributes: { "data-tip": "Mobile" },
                 command: "set-device-mobile",
                 togglable: false,
               },
@@ -500,11 +502,42 @@ class Editor extends React.Component {
     const tooltipBtns = document.querySelectorAll("[data-tip]");
     tooltipBtns.forEach((button) => {
       const dataTip = button.getAttribute("data-tip");
-      const tooltip = document.createElement('span');
-      tooltip.classList.add('sidebar-tooltip', 'group-hover:scale-100');
+      const tooltip = document.createElement("span");
+      if (
+        dataTip === "Desktop" ||
+        dataTip === "Tablet" ||
+        dataTip === "Mobile"
+      ) {
+        tooltip.classList.add("topbar-tooltip");
+      } else {
+        tooltip.classList.add("sidebar-tooltip");
+      }
+      tooltip.classList.add("group-hover:scale-100");
+      console.log(tooltip);
       tooltip.textContent = dataTip;
       button.appendChild(tooltip);
     });
+  }
+  componentDidUpdate() {
+    const tooltipBtns = document.querySelectorAll("[data-tip]");
+    tooltipBtns.forEach((button) => {
+      const dataTip = button.getAttribute("data-tip");
+      const tooltip = document.createElement("span");
+      if (
+        dataTip === "Desktop" ||
+        dataTip === "Tablet" ||
+        dataTip === "Mobile"
+      ) {
+        tooltip.classList.add("topbar-tooltip");
+      } else {
+        tooltip.classList.add("sidebar-tooltip");
+      }
+      tooltip.classList.add("group-hover:scale-100");
+      console.log(tooltip);
+      tooltip.textContent = dataTip;
+      button.appendChild(tooltip);
+    });
+
   }
   render() {
     return (
