@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
 .login-container {
     width: 90%;
     height: 45%;
@@ -34,27 +38,9 @@
 }
 
 .btn-login {
+    font-size: 12px;
     width: 25%;
     margin: 0 10px;
-}
-
-.btn-login:hover {
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.7s ease-in-out;
     padding: 8px;
-    color: #214a51;
-    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
-    /* opacity: 0.5; */
-    display: inline;
-}
- 
-.btn-login:not(:hover) {
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.7s ease-in-out;
-    padding: 8px;
-    color: rgb(110 231 183);
-    background-color: black;
     display: inline;
 }

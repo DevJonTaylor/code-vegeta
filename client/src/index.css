@@ -8,7 +8,15 @@
   .bg-black {
     @apply bg-zinc-900
   }
+  .btn-main {
+    @apply text-sky-300 bg-zinc-900 btn-ghost hover:text-zinc-900 hover:bg-gradient-to-r hover:from-emerald-300 hover:to-sky-300 hover:btn-ghost hover:transition-colors hover:ease-in hover:duration-1000 transition-colors ease-in duration-1000
+  }
+  .text-color {
+    @apply text-zinc-500
+  }
 }
+
+/* @apply btn btn-ghost z-50 m-1 rounded-3xl transition-all duration-300 ease-linear shadow-md shadow-black hover:rounded-xl hover:bg-green-600; */
 
 body,
 html {
