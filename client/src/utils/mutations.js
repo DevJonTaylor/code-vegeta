@@ -23,3 +23,15 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// Add Page
+export const ADD_PAGE = gql`
+  mutation addPage($myhtml: String!, $mycss: String!,) {
+    addPage(myhtml: $myhtml, mycss: $mycss) {
+    _id
+    myhtml
+    mycss
+    username
+    }
+  }
+`;

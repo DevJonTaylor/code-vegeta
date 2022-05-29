@@ -16,6 +16,7 @@ const typeDefs = gql`
     _id: ID
     myhtml: String
     mycss: String
+    username: String
   }
 
   type Query {
