@@ -22,7 +22,7 @@ const SavePages = () => {
     // find the book in `searchedBooks` state by the matching id
     const htmlToSave = grapesjs.editors[0].getHtml();
     const cssToSave = grapesjs.editors[0].getCss();
-    // console.log(grapesjs.editors[0].getHtml())
+    console.log(grapesjs.editors[0].getHtml())
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 

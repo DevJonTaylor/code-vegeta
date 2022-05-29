@@ -35,9 +35,24 @@ export const QUERY_ME = gql`
         _id
         myhtml
         mycss
-        username
         }
       
+    }
+  }
+`;
+
+//For the Profile Page
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      pages {
+        _id
+        myhtml
+        mycss
+        }
     }
   }
 `;

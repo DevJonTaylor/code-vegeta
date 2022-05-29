@@ -5,7 +5,8 @@ import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
-import SavePages from "../../components/SavePages/SavePages";
+import SavePages from "../../components/SavePages";
+import PageList from "../../components/PageList";
 
 class Editor extends React.Component {
   constructor(props) {
@@ -518,6 +519,7 @@ class Editor extends React.Component {
           </div>
           <div className="panel__basic-actions"></div>
           <SavePages />
+          <PageList />
         </div>
         <div className="flex w-full flex-col">
           <div className="panel__top border-b-2 border-slate-800">

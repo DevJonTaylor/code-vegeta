@@ -31,7 +31,7 @@ export const ADD_PAGE = gql`
     _id
     myhtml
     mycss
-    username: String
+    username
     }
   }
 `;
