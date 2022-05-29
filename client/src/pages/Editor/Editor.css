@@ -84,7 +84,6 @@
 .panel__right {
   flex-basis: 230px;
   position: relative;
-  overflow-y: hidden;
 }
 
 .panel__switcher {
@@ -98,4 +97,26 @@
 /* Vegeta Save Storage Button  */
 .btn-save-database {
   font-size: 24px !important;
+}
+
+
+/* Scrollbar Styling */
+* ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+* ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+* ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.gjs-one-bg {
+  background-color: transparent;
+}
+
+#root >div {
+  overflow: hidden;
 }
