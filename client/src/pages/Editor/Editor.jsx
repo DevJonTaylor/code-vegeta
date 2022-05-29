@@ -229,7 +229,7 @@ class Editor extends React.Component {
                   </svg>
                 `,
                 command: "set-device-desktop",
-                className: "btn btn-ghost",
+                className: "sidebar-icon",
                 active: true,
                 togglable: false,
               },
@@ -240,7 +240,7 @@ class Editor extends React.Component {
                       <path fill="currentColor" d="M19.25,19H4.75V3H19.25M14,22H10V21H14M18,0H6A3,3 0 0,0 3,3V21A3,3 0 0,0 6,24H18A3,3 0 0,0 21,21V3A3,3 0 0,0 18,0Z" />
                     </svg>
               `,
-                className: "btn btn-ghost",
+                className: "sidebar-icon",
                 command: "set-device-tablet",
                 togglable: false,
               },
@@ -251,7 +251,7 @@ class Editor extends React.Component {
                     <path fill="currentColor" d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z" />
                   </svg>
               `,
-                className: "btn btn-ghost",
+                className: "sidebar-icon",
                 command: "set-device-mobile",
                 togglable: false,
               },
