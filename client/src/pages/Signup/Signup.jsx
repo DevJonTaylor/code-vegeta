@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 // // to implement authentication functionality 
 import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
 	const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -86,17 +87,17 @@ const Signup = () => {
                                             onChange={handleChange}
                                         />
                                         <button className='btn-sign d-block rounded-full font-black' type='submit'>
-                                            CREATE ACCOUNT
+                                            Create Account
                                         </button>
-                                        <p className='end'>Already have an account? Sign In</p>
+                                        <p className='end font-bold'>Already have an account? <Link to="/login" className='text-black font-bold'>Sign In</Link></p>
                                 </form>
                             <div className='form-right'>
                                 {/* <h1>Welcome</h1> */}
                                 {/* <h1>Welcome to <span className='gradient-text'>VEGETA</span></h1> */}
                                 <p>Let's build together</p>
+                                {error && <p>Sign up failed</p>}
                             </div>
                         </div>
-                        {error && <div>Sign up failed</div>}
                         {/* if there's an error, we'll see a <div> element with a message saying so */}
                     </div>
                 </div>

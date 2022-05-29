@@ -68,9 +68,7 @@
 }
 
 /* LEFT SIDE OF FORM */
-
 .form-left {
-    resize: both;
     max-width: 362px !important;
 }
 
@@ -82,14 +80,14 @@
 
 .end {
     font-size: 12px;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .form-input {
     font-family: "Montserrat", sans-serif;
     text-align: center;
     color: black;
-    opacity: 0.85;
+    opacity: 0.7;
     width: 70%;
     border-radius: 0.5rem;
     padding: 5px 20px;
@@ -110,7 +108,7 @@
     padding: 8px;
     color: #214a51;
     background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
-    opacity: 0.5;
+    /* opacity: 0.5; */
     display: inline;
 }
  
@@ -126,7 +124,6 @@
 }
 
 /* RIGHT SIDE OF FORM */
-
 .form-right {
     font-family: "Montserrat", sans-serif;
     opacity: 75%;
@@ -136,18 +133,20 @@
     color: white;
     padding: 40px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
-.form-right h1  {
+/* .form-right h1  {
     font-size: 25px;
     font-weight: bold;
     text-align: start;
-}
+} */
 
 .form-right p  {
     font-size: 20px;
+    width: 100%;
     /* text-align: start; */
 }
 
