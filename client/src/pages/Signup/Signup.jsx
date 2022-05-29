@@ -53,7 +53,7 @@ const Signup = () => {
             <div className="background-image-sign">
             </div>
 
-            <div className="signup-container">
+            <div className="signup-container app-text">
                 <div className='card'>
                     <div className='card-body-sign'>
                         <div className='form-container form-bg'>

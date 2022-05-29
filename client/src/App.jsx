@@ -64,7 +64,7 @@ function App() {
           <p>
             Built with <span alt="sweat">💦</span> by
             <br />
-            <code className="text-[#8d96a7] montserrat-text">
+            <code className="text-[#8d96a7] app-text">
               Jess, Jonathan, JT, Jordan, and Keenan
             </code>
             {""}
