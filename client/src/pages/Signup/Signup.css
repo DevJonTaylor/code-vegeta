@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400&display=swap");
+
+.background-image-sign {
+    /* background-image: url(./adrien-olichon-ilVYjf0J378-unsplash.jpg); */
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    background-size: none;
+    background-position: center;
+    display: flex;
+    z-index: 0;
+}
+
+.signup-container {
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 50%;
+}
+
+.card-body-sign {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-bg {
+    background-image: url(./erik-skof-1MG7FHKp3TU-unsplash.jpg);
+    background-position-x: 50%;
+    animation-delay: 0s;
+    animation-duration: 50s;
+    animation-name: panoramic;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    overflow: hidden;
+    margin: 0 auto;
+    /* border: 1px solid gold; */
+    will-change: background-position-x;
+}
+
+@keyframes panoramic {
+    0% {
+      background-position-x: 0%;
+    }
+    50% {
+      background-position-x: 100%;
+    }
+    100% {
+      background-position-x: 0%;
+    }
+}
+
+.form-container {
+    font-family: "Montserrat", sans-serif;
+    width: 90%;
+    height: 56%;
+    display: flex;
+    align-items: center;
+    border-radius: 13px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+/* LEFT SIDE OF FORM */
+
+.form-left {
+    resize: both;
+    max-width: 362px !important;
+}
+
+.greeting {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.end {
+    font-size: 12px;
+    padding-top: 20px;
+}
+
+.form-input {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: black;
+    opacity: 0.85;
+    width: 70%;
+    border-radius: 0.5rem;
+    padding: 5px 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-sign {
+    width: 40%;
+    font-weight: bold;
+}
+
+.btn-sign:hover {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: #214a51;
+    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
+    opacity: 0.5;
+    display: inline;
+}
+ 
+.btn-sign:not(:hover) {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: rgb(110 231 183);
+    background-color: black;
+    display: inline;
+}
+
+/* RIGHT SIDE OF FORM */
+
+.form-right {
+    font-family: "Montserrat", sans-serif;
+    opacity: 75%;
+    height: 100%;
+    width: 80%;
+    background-color: black;
+    color: white;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-right h1  {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.form-right p  {
+    font-size: 20px;
+    /* text-align: start; */
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
+    background-clip: text;
+    color: transparent;
+}
+
+/* .btn-sign:hover {
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: rgb(110 231 183);
+    background-color: black;
+    opacity: 0.5;
+}
+ 
+.btn-sign:not(:hover) {
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.7s ease-in-out;
+    padding: 8px;
+    color: #214a51;
+    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
+}
+*/

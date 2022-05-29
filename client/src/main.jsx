@@ -5,7 +5,9 @@ import App from "./App";
 import Landing from "./pages/Landing/Landing";
 import Editor from "./pages/Editor/Editor";
 import Donate from "./pages/Donate/Donate";
+import Signup from "./pages/Signup/Signup";
 import "./index.css";
+import './pages/Signup/Signup.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +15,8 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Landing />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="editor" element={<Editor />} />
           <Route path="donate" element={<Donate />} />
         </Route>
         {/* Keep editor out of App route to prevent headers and footers */}
