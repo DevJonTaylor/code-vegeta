@@ -1,7 +1,8 @@
 .login-container {
-    font-family: "Montserrat", sans-serif;
     width: 90%;
     height: 45%;
+    min-height: 362px;
+    min-width: 642px;
     display: flex;
     align-items: center;
     border-radius: 13px;
@@ -10,7 +11,6 @@
 
 /* LEFT SIDE OF FORM */
 .login-left {
-    font-family: "Montserrat", sans-serif;
     opacity: 75%;
     height: 100%;
     width: 55%;
@@ -39,7 +39,6 @@
 }
 
 .btn-login:hover {
-    font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 12px;
     transition: all 0.7s ease-in-out;
@@ -51,7 +50,6 @@
 }
  
 .btn-login:not(:hover) {
-    font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 12px;
     transition: all 0.7s ease-in-out;

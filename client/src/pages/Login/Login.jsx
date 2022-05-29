@@ -59,7 +59,7 @@ const Login = () => {
             </div>
 
             {/* this class is fine */}
-            <div className="signup-container">
+            <div className="signup-container app-text">
                 {/* this class is fine */}
                 <div className='card'>
                     {/* this class is fine */}
