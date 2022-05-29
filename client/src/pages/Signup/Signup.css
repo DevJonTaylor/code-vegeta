@@ -25,8 +25,13 @@
 .card-body-sign {
     height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-content: center;
     justify-content: center;
+}
+
+.failed {
+    padding-bottom:20px;
 }
 
 .form-bg {

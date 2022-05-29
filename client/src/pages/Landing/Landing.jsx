@@ -18,9 +18,9 @@ const Landing = () => {
           <p>Build your online presence with Vegeta.</p>
         </div>
         <div className="spacer-border"></div>
-        <div className="welcome-text-right">
-          <Link to="/editor" className="welcome-btn btn btn-main btn-transition btn-hover">
-            Start Building
+        <div className="welcome-text-right app-text">
+          <Link to="/editor" className="welcome-btn btn-main text-color">
+            START BUILDING
           </Link>
         </div>
         <div className="site-image-container">

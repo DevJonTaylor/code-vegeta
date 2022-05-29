@@ -56,6 +56,7 @@ const Signup = () => {
             <div className="signup-container app-text">
                 <div className='card'>
                     <div className='card-body-sign'>
+                        {error && <p className='failed text-color'>Sign in failed, please try again.</p>}
                         <div className='form-container form-bg'>
                                 <form className='form-left' onSubmit={handleFormSubmit}>
                                         <p className='greeting'>Hello, friend!</p>
@@ -86,7 +87,7 @@ const Signup = () => {
                                             value={formState.password}
                                             onChange={handleChange}
                                         />
-                                        <button className='btn-sign d-block rounded-full btn-main btn-hover btn-transition' type='submit'>
+                                        <button className='btn-sign d-block rounded-full btn-main' type='submit'>
                                             Create Account
                                         </button>
                                         <p className='end font-bold'>Already have an account? <Link to="/login" className='text-black font-bold'>Sign In</Link></p>

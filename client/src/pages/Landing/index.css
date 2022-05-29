@@ -43,9 +43,12 @@
 }
 
 .welcome-btn {
+  font-size: 15px;
+  font-weight: bold;
   margin-top: 40px;
   width: 170px;
-  border: none;
+  padding: 15px 0;
+  border-radius: 10px;
 }
 
 .background-image {

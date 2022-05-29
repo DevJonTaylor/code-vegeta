@@ -54,21 +54,16 @@ const Login = () => {
 
     return (
         <div className='relative'>
-            {/* this class is fine */}
             <div className="background-image-sign">
             </div>
 
-            {/* this class is fine */}
             <div className="signup-container app-text">
-                {/* this class is fine */}
                 <div className='card'>
-                    {/* this class is fine */}
                     <div className='card-body-sign'>
-                        {/* this class is fine */}
+                        {error && <p className='failed text-color'>Sign in failed, please try again.</p>}
                         <div className='login-container form-bg'>
                             <div className='login-left'>
                                 <p>Welcome Back</p>
-                                {error && <p>Sign in failed</p>}
                             </div>
                             <form className='login-right' onSubmit={handleFormSubmit}>
                                 <p className='greeting'>Start Creating</p>
@@ -90,7 +85,7 @@ const Login = () => {
                                     value={formState.password}
                                     onChange={handleChange}
                                 />
-                                <button className='btn-login d-block rounded-full btn-transition' type='submit'>
+                                <button className='btn-login d-block rounded-full btn-main' type='submit'>
                                     Sign In
                                 </button>
                                 <p className='end font-bold'>Don't have an account? <Link to="/signup" className='text-black font-bold'>Sign Up</Link></p>
