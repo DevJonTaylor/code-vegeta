@@ -16,8 +16,6 @@
   }
 }
 
-/* @apply btn btn-ghost z-50 m-1 rounded-3xl transition-all duration-300 ease-linear shadow-md shadow-black hover:rounded-xl hover:bg-green-600; */
-
 body,
 html {
   height: 100%;
@@ -29,6 +27,6 @@ footer {
   font-family: "Montserrat", sans-serif;
 }
 
-.montserrat-text {
+.app-text {
   font-family: "Montserrat", sans-serif;
 }
