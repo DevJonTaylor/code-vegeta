@@ -5,6 +5,7 @@ import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
 import "grapesjs-component-countdown";
 import "grapesjs-navbar";
+import "grapesjs-lory-slider";
 import gjsForms from "grapesjs-plugin-forms";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
@@ -53,6 +54,7 @@ class Editor extends React.Component {
         "gjs-blocks-basic",
         "gjs-navbar",
         "gjs-component-countdown",
+        "grapesjs-lory-slider"
       ],
       pluginsOpts: {
         "gjs-blocks-basic": {
