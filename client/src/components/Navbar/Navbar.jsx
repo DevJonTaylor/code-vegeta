@@ -69,10 +69,9 @@ const Navbar = () => {
               className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to="profile">
+                  <p>Profile</p>
+                </Link>
               </li>
               <li>
                 <a>Settings</a>
@@ -106,6 +105,11 @@ const Navbar = () => {
               <li>
                 <Link to="signup">
                   <p>Sign Up</p>
+                </Link>
+              </li>
+              <li>
+                <Link to="donate">
+                  <p>Donate</p>
                 </Link>
               </li>
             </ul>

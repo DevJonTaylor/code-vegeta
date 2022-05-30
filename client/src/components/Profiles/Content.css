@@ -7,11 +7,11 @@
 }
 
 .profile-pic {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
-
 
 .btn-profile {
     font-size: 12px;
