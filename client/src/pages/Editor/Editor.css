@@ -26,13 +26,16 @@
     @apply bg-black;
   }
   .sidebar-icon {
-    @apply btn btn-ghost z-50 m-1 rounded-3xl transition-all duration-300 ease-linear shadow-md shadow-black hover:rounded-xl hover:bg-green-600;
+    @apply btn btn-ghost z-50 m-1 rounded-3xl transition-all duration-200 ease-linear shadow-md shadow-black hover:rounded-xl hover:bg-green-600;
   }
   .sidebar-tooltip {
     @apply absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
   }
   .topbar-tooltip {
     @apply absolute top-14 m-2 w-auto min-w-max origin-top scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
+  }
+  .topbar-tooltip__left {
+    @apply absolute right-14 m-2 w-auto min-w-max origin-right scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100;
   }
   .gjs-one-bg {
     @apply bg-zinc-900;

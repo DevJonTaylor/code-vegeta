@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
           <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
             <Link to="/">
-              <p>VEGETA</p>
+              VEGETA
             </Link>
           </p>
         </div>
