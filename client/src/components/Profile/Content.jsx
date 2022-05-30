@@ -27,7 +27,7 @@ export default function Content() {
                                             rounded
                                             className='rounded-full'
                                         /> */}
-                                        <img alt="Profile picture" src="https://api.lorem.space/image/face?hash=33791" class="rounded-full shadow-lg w-40 h-40 align-middle border-none profile-pic"></img>
+                                        <img alt="Profile picture" src="https://api.lorem.space/image/face?hash=33791" className="rounded-full shadow-lg w-40 h-40 align-middle border-none profile-pic"></img>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@ export default function Content() {
                                 {/* <Button color="lightBlue" ripple="light">
                                     Connect
                                 </Button> */}
-                                <button className='btn-login d-block rounded-lg btn-main'>Add Friend</button>
+                                <button className='btn-login d-block rounded-lg btn-main'>ADD Friend</button>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
@@ -95,7 +95,9 @@ export default function Content() {
                                         with a solid groove structure. An artist
                                         of considerable range.
                                     </LeadText> */}
-                                    <p class="text-color text-lg font-light leading-relaxed mt-6 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
+                                    <p className="text-color text-lg font-light leading-relaxed mt-6 mb-4">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                                    </p>
                                     <a
                                         href="#pablo"
                                         onClick={(e) => e.preventDefault()}
