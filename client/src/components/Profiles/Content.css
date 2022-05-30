@@ -1,0 +1,22 @@
+.font-bold{
+	font-weight: 700;
+}
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.profile-pic {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.btn-profile {
+    font-size: 12px;
+    width: 32%;
+    margin: 0 10px;
+    padding: 12px;
+    display: inline;
+}
