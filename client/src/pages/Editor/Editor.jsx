@@ -15,26 +15,28 @@ class Editor extends React.Component {
   }
 
   updateBtn() {
-    const tooltipBtns = document.querySelectorAll('[data-tip]');
-    tooltipBtns.forEach(button => {
-      const dataTip = document.getAttribute("data-tip");
-      const tooltip = document.createElement("span");
-      if (
-        dataTip === "Desktop" ||
-        dataTip === "Tablet" ||
-        dataTip === "Mobile" ||
-        dataTip === "Layers" ||
-        dataTip === "Styles" ||
-        dataTip === "Components"
-      ) {
-        tooltip.classList.add("topbar-tooltip");
-      } else {
-        tooltip.classList.add("sidebar-tooltip");
+    const tooltipBtns = document.querySelectorAll("[data-tip]");
+    tooltipBtns.forEach((button) => {
+      if (button.lastChild.nodeName === "#text") {
+        const dataTip = button.getAttribute("data-tip");
+        const tooltip = document.createElement("span");
+        if (
+          dataTip === "Desktop" ||
+          dataTip === "Tablet" ||
+          dataTip === "Mobile" ||
+          dataTip === "Layers" ||
+          dataTip === "Styles" ||
+          dataTip === "Components"
+        ) {
+          tooltip.classList.add("topbar-tooltip");
+        } else {
+          tooltip.classList.add("sidebar-tooltip");
+        }
+        tooltip.classList.add("group-hover:scale-100");
+        tooltip.textContent = dataTip;
+        button.appendChild(tooltip);
       }
-      tooltip.classList.add("group-hover:scale-100");
-      tooltip.textContent = dataTip;
-      button.appendChild(tooltip);
-    })
+    });
   }
 
   componentDidMount() {
@@ -160,7 +162,7 @@ class Editor extends React.Component {
               },
               {
                 id: "clear",
-                className: "sidebar-icon group",
+                className: "sidebar-icon hover:bg-red-600 group",
                 label: `
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
@@ -535,14 +537,14 @@ class Editor extends React.Component {
 
     editor.on("run", (a, b, c) => {
       // const senderId = document.querySelector(`#${c.sender.attributes.id}`);
-      // const checkForSpan = (el) =>
+      // const checkForSpan = (el) => {
       //   el.querySelector(`"[data-tip]='${senderId}'"`)
       //     ? false
       //     : this.updateBtn(el);
-      // if (c.sender) {
-      //   checkForSpan(senderId);
-      // }
-
+      //   if (c.sender) {
+      //     checkForSpan(senderId);
+      //   }
+      // };
       this.updateBtn();
     });
 
