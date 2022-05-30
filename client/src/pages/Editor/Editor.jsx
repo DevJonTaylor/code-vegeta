@@ -6,11 +6,14 @@ import "grapesjs-blocks-basic";
 import "grapesjs-component-countdown";
 import "grapesjs-navbar";
 import "grapesjs-lory-slider";
+import "grapesjs-tabs";
 import gjsForms from "grapesjs-plugin-forms";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
 import SavePages from "../../components/SavePages";
 import PageList from "../../components/PageList";
+
+import RunBuddy from "../../components/RunBuddy/RunBuddy";
 
 class Editor extends React.Component {
   constructor(props) {
@@ -47,6 +50,9 @@ class Editor extends React.Component {
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
+      canvas: {
+        styles: ['https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css']
+      },
       plugins: [
         grapesTouch,
         gjsForms,
@@ -54,7 +60,8 @@ class Editor extends React.Component {
         "gjs-blocks-basic",
         "gjs-navbar",
         "gjs-component-countdown",
-        "grapesjs-lory-slider"
+        "grapesjs-lory-slider",
+        "grapesjs-tabs",
       ],
       pluginsOpts: {
         "gjs-blocks-basic": {
@@ -68,7 +75,7 @@ class Editor extends React.Component {
           /* options */
         },
         "gjs-component-countdown": {
-          startTime: '2022-06-01 21:00'
+          startTime: "2022-06-01 21:00",
         },
       },
       fromElement: true,
@@ -76,8 +83,10 @@ class Editor extends React.Component {
       width: "auto",
       // storageManager: false,
       storageManager: {
-        type: "vegeta",
-        stepsBeforeSave: 3,
+        type: "local",
+        autosave: true,
+        autoload: true,
+        stepsBeforeSave: 1,
         storeComponents: true,
         storeStyles: true,
         storeHtml: true,
@@ -591,7 +600,7 @@ class Editor extends React.Component {
           <div className="editor-row">
             <div className="editor-canvas">
               <div id="gjs">
-                <h1>Hello World Component!</h1>
+                <RunBuddy />
               </div>
             </div>
             <div className="panel__right">
