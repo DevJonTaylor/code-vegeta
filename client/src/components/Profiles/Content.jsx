@@ -50,7 +50,7 @@ const Content = () => {
                         </div>
 
                         <div className="text-center my-8">
-                            <h1 class="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">Jenna Stones</h1>
+                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">Jenna Stones</h1>
                             <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
                                 {/* <Icon name="place" size="xl" /> */}
                                 <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>

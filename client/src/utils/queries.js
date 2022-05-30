@@ -35,8 +35,8 @@ export const QUERY_ME = gql`
         _id
         myhtml
         mycss
+        username
         }
-      
     }
   }
 `;
@@ -52,6 +52,7 @@ export const QUERY_USER = gql`
         _id
         myhtml
         mycss
+        username
         }
     }
   }

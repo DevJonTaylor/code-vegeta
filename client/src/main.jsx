@@ -21,10 +21,12 @@ ReactDOM.render(
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="donate" element={<Donate />} />
+          <Route path="editor" element={<Editor />} />
         </Route>
         {/* Keep editor out of App route to prevent headers and footers */}
-        <Route path="editor" element={<Editor />} />
+        
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
