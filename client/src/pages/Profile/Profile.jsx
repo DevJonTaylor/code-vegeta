@@ -40,7 +40,7 @@ export default function Profile() {
     return (
         <div>
             <Header />
-            <Content pages={user.pages} title={`${user.username}'s pages...`}/>
+            <Content pages={user.pages} title={user.username}/>
         </div>
     );
 };

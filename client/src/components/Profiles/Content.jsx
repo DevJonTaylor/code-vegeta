@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Content.css';
 
-import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -121,7 +120,7 @@ const Content = ({ pages, title }) => {
 
                                     {pages &&
                                         pages.map(page => (
-                                            <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg bg-sky-300">
+                                            <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg">
 
                                                 <iframe height="100%" width='100%' srcDoc={`<html>
                                                 <head>
@@ -133,8 +132,6 @@ const Content = ({ pages, title }) => {
                                                      ${page.myhtml}
                                                 </html>`} title="description" >
 
-                                                    {/* {page.myhtml} */}
-
                                                 </iframe>
 
 
@@ -142,8 +139,7 @@ const Content = ({ pages, title }) => {
                                         ))}
 
 
-                                    <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
-                                    <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
+                                    {/* <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div> */}
                                     {/* <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div>
                                     <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div> */}
                                     {/* <a
