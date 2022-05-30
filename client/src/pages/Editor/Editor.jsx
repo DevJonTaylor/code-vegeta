@@ -3,6 +3,9 @@ import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
+import "grapesjs-component-countdown";
+import "grapesjs-navbar";
+import gjsForms from "grapesjs-plugin-forms";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
 import SavePages from "../../components/SavePages";
@@ -43,7 +46,14 @@ class Editor extends React.Component {
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: ["gjs-blocks-basic", grapesTouch, "vegeta"],
+      plugins: [
+        grapesTouch,
+        gjsForms,
+        "vegeta",
+        "gjs-blocks-basic",
+        "gjs-navbar",
+        "gjs-component-countdown",
+      ],
       pluginsOpts: {
         "gjs-blocks-basic": {
           blocks: ["column1", "column2", "column3", "column3-7"],
@@ -51,6 +61,12 @@ class Editor extends React.Component {
         },
         vegeta: {
           endpoint: "http://localhost:3001/editor",
+        },
+        [gjsForms]: {
+          /* options */
+        },
+        "gjs-component-countdown": {
+          startTime: '2022-06-01 21:00'
         },
       },
       fromElement: true,
