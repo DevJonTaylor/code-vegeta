@@ -5,7 +5,7 @@ import '../../components/Profiles/Content.css';
 import Auth from '../../utils/auth';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import SavedPages from '../../components/SavedPages';
+
 import { Navigate, useParams } from 'react-router-dom';
 
 export default function Profile() {
@@ -40,9 +40,7 @@ export default function Profile() {
     return (
         <div>
             <Header />
-            <Content />
-
-            <SavedPages pages={user.pages} title={`${user.username}'s pages...`}/>
+            <Content pages={user.pages} title={`${user.username}'s pages...`}/>
         </div>
     );
 };

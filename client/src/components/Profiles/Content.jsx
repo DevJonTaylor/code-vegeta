@@ -1,7 +1,62 @@
 import React, { useState } from 'react';
 import './Content.css';
 
-const Content = () => {
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
+
+import { Navigate, useParams } from 'react-router-dom';
+
+
+
+import "grapesjs/dist/css/grapes.min.css";
+
+import grapesjs from "grapesjs";
+import "grapesjs-blocks-basic";
+import "grapesjs-component-countdown";
+import "grapesjs-navbar";
+import "grapesjs-lory-slider";
+import "grapesjs-tabs";
+import gjsForms from "grapesjs-plugin-forms";
+import grapesTouch from "grapesjs-touch";
+import RunBuddy from '../RunBuddy/RunBuddy';
+
+
+
+
+const Content = ({ pages, title }) => {
+    const { username: userParam } = useParams();
+
+    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { username: userParam }
+    });
+
+    const user = data?.me || data?.user || {};
+
+
+    // navigate to personal profile page if username is the logged-in user's
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+        return <Navigate to="/profile" />;
+    }
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    // What happens if you navigate to /profile and you aren't logged in?
+    if (!user?.username) {
+        return (
+            <h4>
+                You need to be logged in to see this page. Use the navigation links above to sign up or log in!
+            </h4>
+        );
+    }
+    console.log(user)
+
+
+
+
     return (
         <section className="relative py-16 bg-gray-100 app-text">
             <div className="container max-w-7xl px-4 mx-auto">
@@ -16,7 +71,7 @@ const Content = () => {
                                 </div>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
-    
+
                                 <button className='btn-profile d-block rounded-lg btn-main'>ADD FRIEND</button>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
@@ -50,11 +105,11 @@ const Content = () => {
                         </div>
 
                         <div className="text-center my-8">
-                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">Jenna Stones</h1>
+                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">{title}</h1>
                             <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
                                 {/* <Icon name="place" size="xl" /> */}
                                 <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                            </div>        
+                            </div>
                         </div>
 
                         <div className="mb-10 py-2 border-t border-gray-200 text-center">
@@ -63,7 +118,30 @@ const Content = () => {
                                       TEMPLATES HERE
                                 </p> */}
                                 <div className="w-full lg:w-11/12 flex justify-between flex-wrap items-center px-10 pt-8">
-                                    <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
+
+                                    {pages &&
+                                        pages.map(page => (
+                                            <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg bg-sky-300">
+
+                                                <iframe height="100%" width='100%' srcDoc={`<html>
+                                                <head>
+                                                    <meta charset="utf-8">
+                                                </head>
+                                                <style type="text/css">
+                                                    ${page.mycss}
+                                                </style>
+                                                     ${page.myhtml}
+                                                </html>`} title="description" >
+
+                                                    {/* {page.myhtml} */}
+
+                                                </iframe>
+
+
+                                            </div>
+                                        ))}
+
+
                                     <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
                                     <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
                                     {/* <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div>
