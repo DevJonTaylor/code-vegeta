@@ -87,7 +87,7 @@ const Signup = () => {
                                             value={formState.password}
                                             onChange={handleChange}
                                         />
-                                        <button className='btn-sign d-block rounded-full btn-main' type='submit'>
+                                        <button className='btn-sign d-block rounded-full btn-main shadow-lg' type='submit'>
                                             Create Account
                                         </button>
                                         <p className='end font-bold'>Already have an account? <Link to="/login" className='text-black font-bold'>Sign In</Link></p>

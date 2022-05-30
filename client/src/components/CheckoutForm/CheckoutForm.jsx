@@ -78,12 +78,12 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form className="form-checkout" id="payment-form" onSubmit={handleSubmit}>
+    <form className="form-checkout checkout-bg app-text" id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="btn btn-secondary"
+        className="btn-checkout rounded-full btn-main shadow-lg"
       >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}

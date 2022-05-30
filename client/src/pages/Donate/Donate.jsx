@@ -45,7 +45,7 @@ const Donate = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="signup-container">
       {clientSecret && !loading && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

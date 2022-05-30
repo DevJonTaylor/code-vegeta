@@ -4,9 +4,35 @@
   align-self: center;
   box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
     0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 7px;
+  border-radius: 13px;
   padding: 40px;
   margin: 0 auto;
+}
+
+.checkout-bg {
+  background-image: url(./erik-skof-1MG7FHKp3TU-unsplash.jpg);
+  background-position-y: 50%;
+  animation-delay: 0s;
+  animation-duration: 170s;
+  animation-name: sliding-vertical;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  overflow: hidden;
+  margin: 0 auto;
+  will-change: background-position-y;
+}
+
+@keyframes sliding-vertical {
+  0% {
+    background-position-y: 0%;
+  }
+  50% {
+    background-position-y: 100%;
+  }
+  100% {
+    background-position-y: 0%;
+  }
 }
 
 #payment-message {
@@ -22,7 +48,7 @@
 }
 
 /* Buttons and links */
-button {
+/* .btn-checkout {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -35,17 +61,26 @@ button {
   display: block;
   transition: all 0.2s ease;
   box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-  width: 100%;
+  width: 30%;
+} */
+
+.btn-checkout {
+  font-weight: 600;
+  font-size: 15px;
+  width: 30%;
+  margin: 0 10px;
+  padding: 8px;
+  display: inline;
 }
 
-button:hover {
+/* .btn-checkout:hover {
   filter: contrast(115%);
 }
 
-button:disabled {
+.btn-checkout:disabled {
   opacity: 0.5;
   cursor: default;
-}
+} */
 
 /* spinner/processing state, errors */
 .spinner,
