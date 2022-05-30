@@ -35,8 +35,7 @@ export const QUERY_ME = gql`
         _id
         myhtml
         mycss
-        }
-      
+      }
     }
   }
 `;
