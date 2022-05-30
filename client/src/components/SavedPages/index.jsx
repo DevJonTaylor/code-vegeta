@@ -20,7 +20,7 @@ const SavedPages = ({ pages, title }) => {
                                 style={{ fontWeight: 700 }}
                                 className="text-light"
                             >
-                                {page.username}
+                                {page.mycss}
                             </Link>{' '}
                             
                         </p>

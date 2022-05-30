@@ -24,7 +24,7 @@ const userSchema = new Schema(
     pages: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Page',
       },
     ],
   },
