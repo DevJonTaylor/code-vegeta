@@ -24,11 +24,12 @@ class Editor extends React.Component {
           dataTip === "Desktop" ||
           dataTip === "Tablet" ||
           dataTip === "Mobile" ||
-          dataTip === "Layers" ||
           dataTip === "Styles" ||
           dataTip === "Components"
         ) {
           tooltip.classList.add("topbar-tooltip");
+        } else if (dataTip === "Layers") {
+          tooltip.classList.add("topbar-tooltip__left");
         } else {
           tooltip.classList.add("sidebar-tooltip");
         }
@@ -547,28 +548,7 @@ class Editor extends React.Component {
       // };
       this.updateBtn();
     });
-
-    console.dir(editor.editor._events);
-    const tooltipBtns = document.querySelectorAll("[data-tip]");
-    tooltipBtns.forEach((button) => {
-      const dataTip = button.getAttribute("data-tip");
-      const tooltip = document.createElement("span");
-      if (
-        dataTip === "Desktop" ||
-        dataTip === "Tablet" ||
-        dataTip === "Mobile" ||
-        dataTip === "Layers" ||
-        dataTip === "Styles" ||
-        dataTip === "Components"
-      ) {
-        tooltip.classList.add("topbar-tooltip");
-      } else {
-        tooltip.classList.add("sidebar-tooltip");
-      }
-      tooltip.classList.add("group-hover:scale-100");
-      tooltip.textContent = dataTip;
-      button.appendChild(tooltip);
-    });
+    this.updateBtn();
   }
 
   render() {
