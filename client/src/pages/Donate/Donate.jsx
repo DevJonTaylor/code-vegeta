@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import Loader from "../../components/Loader/Loader";
+import "./index.css";
 
 const stripePromise = loadStripe(
   "pk_test_51L3RgwGfhsrOhMHZmZkwybKYLysZCcm1OBGdbHeCmlx85qbymMARL7qDcmORLqD6hVcH0jtyAkeTsKHfDZGaFNBT00h7dLI53P"
@@ -37,7 +38,7 @@ const Donate = () => {
   }, []);
 
   const appearance = {
-    theme: "stripe",
+    theme: "night",
   };
   const options = {
     clientSecret,
@@ -46,6 +47,10 @@ const Donate = () => {
 
   return (
     <div style={{ position: "relative" }}>
+      <h1 className="title">Thank you for your support!</h1>
+      <p className="subtitle">
+        Your contribution allows us to continue to improve this application.
+      </p>
       {clientSecret && !loading && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

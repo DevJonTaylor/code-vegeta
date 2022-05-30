@@ -62,7 +62,10 @@ const resolvers = {
     },
     addPage: async (parent, args, context) => {
       if (context.user) {
-        const page = await Page.create({ ...args, username: context.user.username });
+        const page = await Page.create({
+          ...args,
+          username: context.user.username,
+        });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
