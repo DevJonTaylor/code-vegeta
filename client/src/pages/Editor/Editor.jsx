@@ -3,6 +3,10 @@ import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
+import "grapesjs-component-countdown";
+import "grapesjs-navbar";
+import "grapesjs-lory-slider";
+import gjsForms from "grapesjs-plugin-forms";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
 import SavePages from "../../components/SavePages";
@@ -15,32 +19,43 @@ class Editor extends React.Component {
   }
 
   updateBtn() {
-    const tooltipBtns = document.querySelectorAll('[data-tip]');
-    tooltipBtns.forEach(button => {
-      const dataTip = document.getAttribute("data-tip");
-      const tooltip = document.createElement("span");
-      if (
-        dataTip === "Desktop" ||
-        dataTip === "Tablet" ||
-        dataTip === "Mobile" ||
-        dataTip === "Layers" ||
-        dataTip === "Styles" ||
-        dataTip === "Components"
-      ) {
-        tooltip.classList.add("topbar-tooltip");
-      } else {
-        tooltip.classList.add("sidebar-tooltip");
+    const tooltipBtns = document.querySelectorAll("[data-tip]");
+    tooltipBtns.forEach((button) => {
+      if (button.lastChild.nodeName === "#text") {
+        const dataTip = button.getAttribute("data-tip");
+        const tooltip = document.createElement("span");
+        if (
+          dataTip === "Desktop" ||
+          dataTip === "Tablet" ||
+          dataTip === "Mobile" ||
+          dataTip === "Styles" ||
+          dataTip === "Components"
+        ) {
+          tooltip.classList.add("topbar-tooltip");
+        } else if (dataTip === "Layers") {
+          tooltip.classList.add("topbar-tooltip__left");
+        } else {
+          tooltip.classList.add("sidebar-tooltip");
+        }
+        tooltip.classList.add("group-hover:scale-100");
+        tooltip.textContent = dataTip;
+        button.appendChild(tooltip);
       }
-      tooltip.classList.add("group-hover:scale-100");
-      tooltip.textContent = dataTip;
-      button.appendChild(tooltip);
-    })
+    });
   }
 
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: ["gjs-blocks-basic", grapesTouch, "vegeta"],
+      plugins: [
+        grapesTouch,
+        gjsForms,
+        "vegeta",
+        "gjs-blocks-basic",
+        "gjs-navbar",
+        "gjs-component-countdown",
+        "grapesjs-lory-slider"
+      ],
       pluginsOpts: {
         "gjs-blocks-basic": {
           blocks: ["column1", "column2", "column3", "column3-7"],
@@ -48,6 +63,12 @@ class Editor extends React.Component {
         },
         vegeta: {
           endpoint: "http://localhost:3001/editor",
+        },
+        [gjsForms]: {
+          /* options */
+        },
+        "gjs-component-countdown": {
+          startTime: '2022-06-01 21:00'
         },
       },
       fromElement: true,
@@ -160,7 +181,7 @@ class Editor extends React.Component {
               },
               {
                 id: "clear",
-                className: "sidebar-icon group",
+                className: "sidebar-icon hover:bg-red-600 group",
                 label: `
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
@@ -535,38 +556,17 @@ class Editor extends React.Component {
 
     editor.on("run", (a, b, c) => {
       // const senderId = document.querySelector(`#${c.sender.attributes.id}`);
-      // const checkForSpan = (el) =>
+      // const checkForSpan = (el) => {
       //   el.querySelector(`"[data-tip]='${senderId}'"`)
       //     ? false
       //     : this.updateBtn(el);
-      // if (c.sender) {
-      //   checkForSpan(senderId);
-      // }
-
+      //   if (c.sender) {
+      //     checkForSpan(senderId);
+      //   }
+      // };
       this.updateBtn();
     });
-
-    console.dir(editor.editor._events);
-    const tooltipBtns = document.querySelectorAll("[data-tip]");
-    tooltipBtns.forEach((button) => {
-      const dataTip = button.getAttribute("data-tip");
-      const tooltip = document.createElement("span");
-      if (
-        dataTip === "Desktop" ||
-        dataTip === "Tablet" ||
-        dataTip === "Mobile" ||
-        dataTip === "Layers" ||
-        dataTip === "Styles" ||
-        dataTip === "Components"
-      ) {
-        tooltip.classList.add("topbar-tooltip");
-      } else {
-        tooltip.classList.add("sidebar-tooltip");
-      }
-      tooltip.classList.add("group-hover:scale-100");
-      tooltip.textContent = dataTip;
-      button.appendChild(tooltip);
-    });
+    this.updateBtn();
   }
 
   render() {
