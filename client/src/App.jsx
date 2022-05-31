@@ -1,12 +1,12 @@
 import React from "react";
 
-import poweredBy from "./powered-by-vitawind-dark.png";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Profile from "./pages/Profile/Profile";
 import Donate from "./pages/Donate/Donate";
+import Footer from "./components/Footer/Footer";
 import Editor from "./pages/Editor/Editor";
 import { Routes, Route } from "react-router-dom";
 
@@ -26,29 +26,7 @@ function App() {
           <Route path="/profile/:username" element={<Profile />} />
         </Routes>
       </div>
-      <div className="w-49 hidden sm:flex">
-        <p className="mt-3 flex gap-3 text-center text-[#8d96a7]">
-          <a
-            className="text-[#61dafb] transition-all hover:text-blue-400"
-            href="https://github.com/DevJonTaylor/code-vegeta"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github
-          </a>
-          {" | "}
-          <a
-            className="text-[#61dafb] transition-all hover:text-blue-400"
-            href="/donate"
-            rel="noopener noreferrer"
-          >
-            Donate
-          </a>
-        </p>
-      </div>
-      <div className="w-49 hidden sm:flex">
-        <img src={poweredBy} className="mx-auto my-5" alt="powered-by" />
-      </div>
+      <Footer />
     </div>
   );
 }
