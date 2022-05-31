@@ -13,7 +13,7 @@ import Auth from '../../utils/auth';
 
 const SavePages = () => {
   // NEW
-  // const [savePage] = useMutation(ADD_PAGE);
+  const [savePage] = useMutation(ADD_PAGE);
   // END NEW
 
   ///////////////////////////////////
