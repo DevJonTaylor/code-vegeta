@@ -220,7 +220,7 @@ class Editor extends React.Component {
             id: "layers",
             el: ".panel__right",
             resizable: {
-              maxDim: 350,
+              maxDim: 500,
               minDim: 200,
               tc: 0, // Top
               cr: 0, // Right
