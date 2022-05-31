@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { themeChange } from "theme-change";
+import React from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
