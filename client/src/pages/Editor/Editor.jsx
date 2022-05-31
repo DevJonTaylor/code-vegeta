@@ -602,7 +602,7 @@ class Editor extends React.Component {
       <div className="flex w-full" style={{ height: "100vh" }}>
         <div className="panel__left border-r-2 border-slate-800">
           <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
-            <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
+            <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
               <a href="/">V</a>
             </p>
           </div>
