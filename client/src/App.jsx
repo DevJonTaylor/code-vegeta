@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="flex flex-col text-center selection:bg-green-900">
       <Navbar />
-      <div className="container">
         <Routes>
           <Route path="editor" element={<Editor />} />
           <Route path="/" element={<Landing />} />
@@ -25,7 +24,6 @@ function App() {
           <Route path="/donate" element={<Donate />} />
           <Route path="/profile/:username" element={<Profile />} />
         </Routes>
-      </div>
       <Footer />
     </div>
   );
