@@ -1,5 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing/Landing";
+import Editor from "./pages/Editor/Editor";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
+import Profile from "./pages/Profile/Profile";
+import Donate from "./pages/Donate/Donate";
 import App from "./App";
 import "./index.css";
 import './pages/Signup/Signup.css';
