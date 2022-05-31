@@ -4,26 +4,8 @@
   .gjs-block {
     @apply btn btn-xs sm:btn-sm md:btn-md lg:btn-lg;
   }
-  .panel__top {
-    @apply navbar flex justify-between rounded-t-lg bg-black;
-  }
-  .panel__basic-actions {
-    @apply bg-black;
-  }
-  .editor-canvas {
-    @apply rounded-lg;
-  }
-  .panel__right {
-    @apply bg-black;
-  }
-  .panel__switcher {
-    @apply bg-black;
-  }
   .panel__basic-actions > .gjs-pn-buttons {
     @apply flex-col;
-  }
-  .panel__devices {
-    @apply bg-black;
   }
   .sidebar-icon {
     @apply btn z-50 m-1 rounded-3xl transition-all duration-200 ease-linear shadow-md shadow-black hover:rounded-xl hover:bg-primary;
@@ -109,6 +91,7 @@
 .panel__right {
   flex-basis: 230px;
   position: relative;
+  overflow: auto;
 }
 
 .panel__switcher {
