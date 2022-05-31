@@ -2,70 +2,39 @@ import React, { useEffect } from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
-import "grapesjs-blocks-basic";
-import "grapesjs-component-countdown";
-import "grapesjs-navbar";
-// import "grapesjs-lory-slider";
-// import "grapesjs-tabs";
-import gjsForms from "grapesjs-plugin-forms";
-import SavePages from "../SavePages";
-import PageList from "../PageList";
 
 import RunBuddy from "../RunBuddy/RunBuddy";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import panels from "./panels";
-import blockManager from './blockManager';
+import blockManager from "./blockManager";
+import plugins from "./plugins/index";
+import pluginsOpts from "./plugins/options";
+import storageManager from "./storageManager";
+import styleManager from "./styleManager";
+import deviceManager from "./deviceManager";
+
+import LeftPanel from "./panels/LeftPanel";
+import TopPanel from "./panels/TopPanel";
+import RightPanel from "./panels/RightPanel";
 
 const Editor = () => {
   useEffect(() => {
     const editor = grapesjs.init({
       container: "#gjs",
+      fromElement: true,
+      height: "100%",
+      width: "auto",
       canvas: {
         // TEMPLATES
         styles: [
           "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
         ],
       },
-      plugins: [
-        gjsForms,
-        "vegeta",
-        "gjs-blocks-basic",
-        "gjs-navbar",
-        "gjs-component-countdown",
-        // "grapesjs-lory-slider",
-        // "grapesjs-tabs",
-      ],
-      pluginsOpts: {
-        "gjs-blocks-basic": {
-          blocks: ["column1", "column2", "column3", "column3-7"],
-          category: "Columns",
-        },
-        vegeta: {
-          endpoint: "http://localhost:3001/editor",
-        },
-        [gjsForms]: {
-          /* options */
-        },
-        "gjs-component-countdown": {
-          startTime: "2022-06-01 21:00",
-        },
-      },
-      fromElement: true,
-      height: "100%",
-      width: "auto",
+      plugins: plugins,
+      pluginsOpts: pluginsOpts,
       // storageManager: false,
       // Enables progress to be saved to localStorage
-      storageManager: {
-        type: "local",
-        autosave: true,
-        autoload: true,
-        stepsBeforeSave: 1,
-        storeComponents: true,
-        storeStyles: true,
-        storeHtml: true,
-        storeCss: true,
-        contentTypeJson: true,
-      },
+      storageManager: storageManager,
       panels: panels,
 
       // MANAGERS
@@ -76,120 +45,8 @@ const Editor = () => {
       selectorManager: {
         appendTo: ".styles-container",
       },
-      styleManager: {
-        appendTo: ".styles-container",
-        sectors: [
-          {
-            name: "General",
-            open: false,
-            properties: [
-              "display",
-              "float",
-              "position",
-              "top",
-              "right",
-              "left",
-              "bottom",
-            ],
-          },
-          {
-            name: "Flex",
-            open: false,
-            properties: [
-              "flex-direction",
-              "flex-wrap",
-              "justify-content",
-              "align-items",
-              "align-content",
-              "order",
-              "flex-basis",
-              "flex-grow",
-              "flex-shrink",
-              "align-self",
-            ],
-          },
-          {
-            name: "Dimension",
-            open: false,
-            buildProps: ["width", "min-height", "padding"],
-            properties: [
-              {
-                // Input Type
-                // int | radio | select | color | slider | file | composite | stack
-                type: "integer",
-                name: "The width", // Property label
-                property: "width", // CSS property
-                units: ["px", "%"], // Units only available for int
-                defaults: "auto", // default value
-                min: 0, // min value, available for ints only
-              },
-            ],
-          },
-          {
-            name: "Typography",
-            open: false,
-            properties: [
-              "font-family",
-              "font-size",
-              "font-weight",
-              "letter-spacing",
-              "color",
-              "line-height",
-              "text-align",
-              "text-shadow",
-            ],
-          },
-          {
-            name: "Decorations",
-            open: false,
-            properties: [
-              "background-color",
-              "border-radius",
-              "border",
-              "box-shadow",
-              "background",
-            ],
-          },
-          {
-            name: "Extra",
-            open: false,
-            buildProps: ["background-color", "box-shadow", "custom-prop"],
-            properties: [
-              {
-                id: "custom prop",
-                name: "Custom label",
-                property: "font-size",
-                type: "select",
-                defaults: "32px",
-                // List of options, available only for 'select' and 'radio' types
-                options: [
-                  { value: "12px", name: "Tiny" },
-                  { value: "18px", name: "Medium" },
-                  { value: "32px", name: "Big" },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      deviceManager: {
-        devices: [
-          {
-            name: "Desktop",
-            width: "",
-          },
-          {
-            name: "Tablet",
-            width: "768px",
-            widthMedia: "820px",
-          },
-          {
-            name: "Mobile",
-            width: "320px",
-            widthMedia: "480px",
-          },
-        ],
-      },
+      styleManager: styleManager,
+      deviceManager: deviceManager,
     });
 
     editor.Commands.add("show-layers", {
@@ -299,35 +156,20 @@ const Editor = () => {
 
   return (
     <div className="flex w-full" style={{ height: "100vh" }}>
-      <div className="panel__left border-r-2 border-neutral">
-        <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
-          <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
-            <a href="/">V</a>
-          </p>
-        </div>
-        <div className="panel__basic-actions"></div>
-        <SavePages />
-        {/* <PageList /> */}
-      </div>
+      {/* LEFTSIDE Panel with basic actions */}
+      <LeftPanel />
       <div className="flex w-full flex-col">
-        <div className="panel__top border-b-2 border-neutral">
-          <div className="panel__devices"></div>
-          <div className="divider"></div>
-          <ThemeSwitcher />
-          <div className="divider"></div>
-          <div className="panel__switcher"></div>
-        </div>
+        {/* TOP Panel with device-, theme-, and panel-switchers */}
+        <TopPanel />
         <div className="editor-row">
           <div className="editor-canvas">
             <div id="gjs">
+                {/* TEMPLATE GOES HERE */}
               <RunBuddy />
             </div>
           </div>
-          <div className="panel__right">
-            <div className="layers-container"></div>
-            <div className="styles-container"></div>
-            <div id="blocks"></div>
-          </div>
+          {/* RIGHTSIDE Panel with layer-, style-, and block-managers */}
+          <RightPanel />
         </div>
       </div>
     </div>
