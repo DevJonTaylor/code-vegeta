@@ -31,6 +31,11 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      friendCount
+      friends {
+        _id
+        username
+      }
       pages {
         _id
         myhtml
@@ -51,7 +56,12 @@ export const QUERY_USER = gql`
         _id
         myhtml
         mycss
-        }
+      }
+      friendCount
+      friends {
+        _id
+        username
+      }
     }
   }
 `;

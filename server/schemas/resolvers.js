@@ -12,7 +12,8 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('pages');
+          .populate('pages')
+          .populate('friends');
 
         return userData;
       }
@@ -21,12 +22,16 @@ const resolvers = {
     },
     // get all users
     users: async () => {
-      return User.find().select('-__v -password').populate('pages');
+      return User.find()
+      .select('-__v -password')
+      .populate('friends')
+      .populate('pages');
     },
     // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
+        .populate('friends')
         .populate('pages');
     },
     pages: async (parent, { username }) => {
@@ -94,6 +99,21 @@ const resolvers = {
         throw new Error('No worky');
       }
     },
+    addFriend: async (parent, { friendId }, context) => {
+      // This mutation will look for an incoming friendId and add that to the current user's friends array
+      // A user can't be friends with the same person twice, though, hence why we're using the $addToSet operator instead of $push to prevent duplicate entries
+
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: friendId } },
+          { new: true }
+        ).populate('friends');
+    
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
   },
 };
 

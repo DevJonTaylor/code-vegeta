@@ -132,9 +132,3 @@
     width: 100%;
     /* text-align: start; */
 }
-
-.gradient-text {
-    background-image: linear-gradient(to right, rgb(110 231 183) , rgb(125 211 252));
-    background-clip: text;
-    color: transparent;
-}

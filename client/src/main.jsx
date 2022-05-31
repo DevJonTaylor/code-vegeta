@@ -21,6 +21,7 @@ ReactDOM.render(
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="donate" element={<Donate />} />
         </Route>
         {/* Keep editor out of App route to prevent headers and footers */}

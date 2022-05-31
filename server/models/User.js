@@ -27,6 +27,12 @@ const userSchema = new Schema(
         ref: 'User',
       },
     ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
   },
   { collation: { locale: 'en_US', strength: 1 } },
   {
@@ -50,6 +56,10 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('friendCount').get(function() {
+  return this.friends.length;
+});
 
 const User = model('User', userSchema);
 

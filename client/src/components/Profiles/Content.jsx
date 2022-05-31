@@ -1,7 +1,27 @@
 import React, { useState } from 'react';
-import './Content.css';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
-const Content = () => {
+import { ADD_FRIEND } from '../../utils/mutations';
+import { useQuery, useMutation } from '@apollo/client';
+
+import './Content.css';
+import '../Navbar/Navbar.css';
+
+const Content = ({ friendCount, username, friends, userParam, user_id }) => {
+
+    const [addFriend] = useMutation(ADD_FRIEND);
+
+    const handleClick = async () => {
+        try {
+          await addFriend({
+            variables: { id: user_id }
+        });
+        } catch (e) {
+          console.error(e);
+        }
+    };
+
     return (
         <section className="relative py-16 bg-gray-100 app-text">
             <div className="container max-w-7xl px-4 mx-auto">
@@ -14,26 +34,65 @@ const Content = () => {
                                 </div>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
-    
-                                <button className='btn-profile d-block rounded-lg btn-main shadow-lg'>ADD FRIEND</button>
+                            {userParam ? (
+                                <>
+                                    <button className='btn-profile rounded-lg font-black btn-main shadow-lg' onClick={handleClick}>ADD FRIEND</button>
+                                </>
+                                ) : (
+                                <>
+                                    <button className='btn-build rounded-lg font-black btn-main shadow-lg'>
+                                        <Link to='/editor'>
+                                            START BUILDING
+                                        </Link>
+                                    </button>
+                                </>
+                                )}
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
                                     <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
+                                        <span className="text-xl font-black block uppercase tracking-wide text-gray-900">
                                             22
                                         </span>
-                                        <span className="text-sm text-gray-700">
+                                        <span className="text-sm text-gray-700 font-black">
                                             Templates
                                         </span>
                                     </div>
                                     <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            10
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Friends
-                                        </span>
+                                        <div className="flex-none">
+                                            <div className="dropdown dropdown-hover">
+                                                <label tabIndex="0" className="avatar btn-ghost btn-friends">
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-gray-900 font-black">
+                                                        {friendCount}
+                                                    </span>
+
+                                                    {friendCount > 0 ? (
+                                                    <>
+                                                        <span x="50%" y="60%"  text-anchor="middle"  className='text-sm font-black luminance'>
+                                                            Friends
+                                                        </span>
+                                                    </>
+                                                    ) : (
+                                                    <>
+                                                        <span className='text-sm gradient-text font-black'>
+                                                            Friends
+                                                        </span>
+                                                    </>
+                                                    )}
+                                                </label>
+
+                                                {friendCount > 0 && 
+                                                    // <ul tabIndex="0" className="dropdown-content rounded-box mt-3 w-48 bg-base-100 py-3 shadow app-text justify-content-center text-color">
+                                                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48 justify-content-center">
+                                                        {friends.map(friend => (
+                                                            <li className="friends-list" key={friend._id}>
+                                                                <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
                                     {/* <div className="lg:mr-4 p-3 text-center">
                                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
@@ -47,37 +106,26 @@ const Content = () => {
                             </div>
                         </div>
 
-                        <div className="text-center my-8">
-                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">Jenna Stones</h1>
-                            <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
-                                {/* <Icon name="place" size="xl" /> */}
-                                <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                            </div>        
+                        <div className="text-center mt-1 mb-6">
+                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2 animate-character">{username}</h1>
+                            {Auth.loggedIn() ? (
+                            <>
+                            </>
+                            ) : (
+                            <>
+                                <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
+                                    <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
+                                </div>       
+                            </>
+                            )} 
                         </div>
 
                         <div className="mb-10 py-2 border-t border-gray-200 text-center">
                             <div className="flex flex-wrap justify-center">
-                                {/* <p className="w-full text-color text-lg font-light leading-relaxed mt-6 mb-4">
-                                      TEMPLATES HERE
-                                </p> */}
                                 <div className="w-full lg:w-11/12 flex justify-between flex-wrap items-center px-10 pt-8">
                                     <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
                                     <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
                                     <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div>
-                                    {/* <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div>
-                                    <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div> */}
-                                    {/* <a
-                                        href="#pablo"
-                                        onClick={(e) => e.preventDefault()}
-                                    >
-                                        <Button
-                                            color="lightBlue"
-                                            buttonType="link"
-                                            ripple="dark"
-                                        >
-                                            Show more
-                                        </Button>
-                                    </a> */}
                                 </div>
                             </div>
                         </div>
