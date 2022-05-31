@@ -67,7 +67,10 @@ const resolvers = {
     },
     addPage: async (parent, args, context) => {
       if (context.user) {
-        const page = await Page.create({ ...args, username: context.user.username });
+        const page = await Page.create({
+          ...args,
+          username: context.user.username,
+        });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -91,7 +94,10 @@ const resolvers = {
         });
 
         if (paymentIntent?.client_secret) {
-          return { clientSecret: paymentIntent.client_secret };
+          return {
+            clientSecret: paymentIntent.client_secret,
+            id: paymentIntent.id,
+          };
         }
         return new Error('No client secret created.');
       } catch (err) {
@@ -113,7 +119,17 @@ const resolvers = {
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+    updatePaymentIntent: async (parent, { id, amount }) => {
+      try {
+        await stripe.paymentIntents.update(id, {
+          amount: 100 * amount,
+        });
+        return { success: true };
+      } catch (err) {
+        return { success: false };
+      }
+    },
   },
 };
 

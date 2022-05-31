@@ -5,8 +5,9 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import "./index.css";
+import generateStripePayment from "../../services/stripe";
 
-export default function CheckoutForm() {
+const CheckoutForm = ({ paymentIntent }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -55,13 +56,16 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    const res = await generateStripePayment(paymentIntent);
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
+        return_url: "http://localhost:3000/donate",
       },
     });
+    console.log({ error });
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
@@ -78,12 +82,16 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form className="form-checkout checkout-bg app-text" id="payment-form" onSubmit={handleSubmit}>
+    <form
+      className="form-checkout checkout-bg app-text"
+      id="payment-form"
+      onSubmit={handleSubmit}
+    >
       <PaymentElement id="payment-element" />
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="btn-checkout rounded-full btn-main shadow-lg"
+        className="btn-checkout btn-main rounded-full shadow-lg"
       >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
@@ -93,4 +101,6 @@ export default function CheckoutForm() {
       {message && <div id="payment-message">{message}</div>}
     </form>
   );
-}
+};
+
+export default CheckoutForm;

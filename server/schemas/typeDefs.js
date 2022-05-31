@@ -44,6 +44,21 @@ const typeDefs = gql`
     addPage(myhtml: String!, mycss: String!): Page
     addFriend(friendId: ID!): User
     createPaymentIntent: StripeResponse!
+    updatePaymentIntent(id: String!, amount: Int!): UpdateStripeResponse!
+  }
+
+  type StripeResponse {
+    clientSecret: String
+    id: String
+  }
+
+  type UpdateStripeResponse {
+    success: Boolean
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 `;
 
