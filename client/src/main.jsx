@@ -11,6 +11,7 @@ import Profile from "./pages/Profile/Profile";
 
 import "./index.css";
 import './pages/Signup/Signup.css';
+import { Templates } from './pages/Templates'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,10 +22,14 @@ ReactDOM.render(
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/templates" element={<Templates />} />
+          <Route path="/templates/:templateId" element={<Templates />} />
           <Route path="donate" element={<Donate />} />
+          <Route path="editor" element={<Editor />} />
         </Route>
         {/* Keep editor out of App route to prevent headers and footers */}
-        <Route path="editor" element={<Editor />} />
+        
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

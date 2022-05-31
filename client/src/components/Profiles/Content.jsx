@@ -4,7 +4,24 @@ import './Content.css';
 import Auth from '../../utils/auth';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+
 import { Navigate, useParams } from 'react-router-dom';
+
+
+
+import "grapesjs/dist/css/grapes.min.css";
+
+import grapesjs from "grapesjs";
+import "grapesjs-blocks-basic";
+import "grapesjs-component-countdown";
+import "grapesjs-navbar";
+import "grapesjs-lory-slider";
+import "grapesjs-tabs";
+import gjsForms from "grapesjs-plugin-forms";
+import grapesTouch from "grapesjs-touch";
+import RunBuddy from '../RunBuddy/RunBuddy';
+
+
 
 
 const Content = ({ pages, title }) => {
@@ -36,6 +53,9 @@ const Content = ({ pages, title }) => {
     }
     console.log(user)
 
+
+
+
     return (
         <section className="relative py-16 bg-gray-100 app-text">
             <div className="container max-w-7xl px-4 mx-auto">
@@ -49,7 +69,7 @@ const Content = ({ pages, title }) => {
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
 
-                                <button className='btn-profile d-block rounded-lg btn-main shadow-lg'>ADD FRIEND</button>
+                                <button className='btn-profile d-block rounded-lg btn-main'>ADD FRIEND</button>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
@@ -117,7 +137,7 @@ const Content = ({ pages, title }) => {
                                         ))}
 
 
-
+                                    {/* <div className="w-[300px] h-[200px] border border-gray-200 text-color border rounded-lg bg-sky-300"></div> */}
                                     {/* <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div>
                                     <div className="w-[450px] h-[280px] border border-gray-200 text-color rounded-lg bg-emerald-300"></div> */}
                                     {/* <a

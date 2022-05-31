@@ -14,7 +14,7 @@ import '../Login/Login.css';
 const Login = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
 
-	//  initialize our LOGIN_USER mutation with the useMutation() Hook first
+	//  initialize our LOGIN_USER mutation with the useMutation() Hooks first
 	const [login, { error }] = useMutation(LOGIN_USER);
 
 	// update state based on form input changes

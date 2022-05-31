@@ -33,7 +33,7 @@ const resolvers = {
       const params = username ? { username } : {};
       return Page.find(params).sort({ createdAt: -1 });
     },
-    // Get Single Thought
+    // Get Single Page
     page: async (parent, { _id }) => {
       return Page.findOne({ _id });
     },

@@ -10,17 +10,18 @@ import { Navigate, useParams } from 'react-router-dom';
 
 export default function Profile() {
 
-    const { username: userParam } = useParams();
+    /** {string} username The parameter used to get to a user's profile page. */
+    const { username } = useParams();
 
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam }
+    const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
+        variables: { username }
     });
 
     const user = data?.me || data?.user || {};
 
 
     // navigate to personal profile page if username is the logged-in user's
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
         return <Navigate to="/profile" />;
     }
 
@@ -40,7 +41,7 @@ export default function Profile() {
     return (
         <div>
             <Header />
-            <Content pages={user.pages} title={user.username} />
+            <Content pages={user.pages} title={user.username}/>
         </div>
     );
 };
