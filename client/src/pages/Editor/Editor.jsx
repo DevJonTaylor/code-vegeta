@@ -9,7 +9,7 @@ import "grapesjs-navbar";
 // import "grapesjs-tabs";
 import gjsForms from "grapesjs-plugin-forms";
 import grapesTouch from "grapesjs-touch";
-import "./vegetaPlugin";
+import "../../components/Editor/vegetaPlugin";
 import SavePages from "../../components/SavePages";
 import PageList from "../../components/PageList";
 
