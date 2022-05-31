@@ -43,13 +43,13 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Landing />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="donate" element={<Donate />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/donate" element={<Donate />} />
           </Route>
           {/* Keep editor out of App route to prevent headers and footers */}
-          <Route path="editor" element={<Editor />} />
+          <Route path="/editor" element={<Editor />} />
         </Routes>
       </BrowserRouter>
 
