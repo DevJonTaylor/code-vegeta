@@ -12,6 +12,7 @@ import "./index.css";
 import './pages/Signup/Signup.css';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import Test from './pages/Test/Test'
 
 // establish the connection to the back-end server's /graphql endpoint
 const httpLink = createHttpLink({
@@ -34,6 +35,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+  notifyOnNetworkStatusChange: true
 });
 
 ReactDOM.render(
@@ -47,6 +49,7 @@ ReactDOM.render(
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/donate" element={<Donate />} />
+            <Route path="/test" element={<Test />} />
           </Route>
           {/* Keep editor out of App route to prevent headers and footers */}
           <Route path="/editor" element={<Editor />} />

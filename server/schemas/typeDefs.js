@@ -31,6 +31,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addPage(myhtml: String!, mycss: String!): Page
+    updatePage(_id: ID!, myhtml: String, mycss: String): Page
+    deletePage(_id: ID!): Page
     createPaymentIntent: StripeResponse!
   }
 

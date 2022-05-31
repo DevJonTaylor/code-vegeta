@@ -6,6 +6,10 @@ const stripe = require('stripe')(
   'sk_test_51L3RgwGfhsrOhMHZNiEAtQIhmSnAyJMnTz5uB8FGSygAOLHAGIcoknv2IlZQBBs0rs4l9Z7PXjDlcLiiSQ0TVOfe008dDQtUrN'
 );
 
+const notLoggedIn = () => {
+  throw new AuthenticationError('You need to be logged in!')
+}
+
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
@@ -61,19 +65,48 @@ const resolvers = {
       return { token, user };
     },
     addPage: async (parent, args, context) => {
-      if (context.user) {
-        const page = await Page.create({ ...args, username: context.user.username });
+      if (!context.user) return notLoggedIn()
 
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { pages: page._id } },
-          { new: true }
-        );
+      const page = await Page.create({ ...args, username: context.user.username });
+
+      await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $push: { pages: page._id } },
+        { new: true }
+      );
 
         return page;
-      }
+    },
+    updatePage: async (parent, { _id, mycss, myhtml }, context) => {
+      try {
+        if (!context.user) return notLoggedIn()
+        const updateObject = {}
+        if(mycss !== undefined) updateObject.mycss = mycss
+        if(myhtml !== undefined) updateObject.myhtml = myhtml
 
-      throw new AuthenticationError('You need to be logged in!');
+        return Page.findByIdAndUpdate( { _id }, updateObject, { new: true } )
+      } catch(error) {
+        console.error(error)
+        return Promise.reject(error)
+      }
+    },
+    deletePage: async (parent, { _id }, context) => {
+      if (!context.user) return notLoggedIn()
+
+      try {
+        const page = await Page.findOne({ _id })
+        const user = await User.updateOne(
+          { username: page.username },
+          { $pull: { pages: { _id } } },
+          { new: true }
+        )
+        await page.remove()
+
+        return user
+      } catch(error) {
+        console.log(error)
+        return Promise.reject(error)
+      }
     },
     createPaymentIntent: async () => {
       try {
