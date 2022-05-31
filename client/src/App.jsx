@@ -15,35 +15,13 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 // import function from Apollo Client that will retrieve the token from localStorage and include it with each request to the API.
 import { setContext } from "@apollo/client/link/context";
 
-// establish the connection to the back-end server's /graphql endpoint
-const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
-});
-// URI stands for "Uniform Resource Identifier."
-
-// With this function, setContext, we can create essentially a middleware function (this one) that will retrieve the token for us and combine it with the existing httpLink
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  };
-});
-
-// here, combine the authLink and httpLink objects so that every request retrieves the token and sets the request headers before making the request to the API
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
+function App() {
+  const [count, setCount] = useState(0);
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+      <div className="flex flex-col text-center selection:bg-green-900">
+        <header>
           <Navbar />
           <div className="container">
             <Routes>
@@ -82,10 +60,30 @@ function App() {
               />
             </Routes>
           </div>
-          {/* <Footer /> */}
-        </div>
-      </Router>
-    </ApolloProvider>
+          <div className="w-49 hidden sm:flex">
+            <p className="mt-3 flex gap-3 text-center text-[#8d96a7]">
+              <a
+                className="text-[#61dafb] transition-all hover:text-blue-400"
+                href="https://github.com/DevJonTaylor/code-vegeta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Github
+              </a>
+              {" | "}
+              <a
+                className="text-[#61dafb] transition-all hover:text-blue-400"
+                href="/donate"
+                rel="noopener noreferrer"
+              >
+                Donate
+              </a>
+            </p>
+          </div>
+          <div className="w-49 hidden sm:flex">
+            <img src={poweredBy} className="mx-auto my-5" alt="powered-by" />
+          </div>
+      </div>
   );
 }
 
