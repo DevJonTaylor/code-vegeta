@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Content.css';
+// import './Content.css';
 
 import Auth from '../../utils/auth';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
@@ -7,34 +7,11 @@ import { useQuery } from '@apollo/client';
 import { Navigate, useParams } from 'react-router-dom';
 
 
-const Content = ({ pages, title }) => {
-    const { username: userParam } = useParams();
-
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam }
-    });
-
-    const user = data?.me || data?.user || {};
-
-
-    // navigate to personal profile page if username is the logged-in user's
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-        return <Navigate to="/profile" />;
+const GalleryContent = ({ pages, title }) => {
+    if (!pages.length) {
+        return <h3>No Thoughts Yet</h3>;
     }
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    // What happens if you navigate to /profile and you aren't logged in?
-    if (!user?.username) {
-        return (
-            <h4>
-                You need to be logged in to see this page. Use the navigation links above to sign up or log in!
-            </h4>
-        );
-    }
-    console.log(user)
 
     return (
         <section className="relative py-16 bg-gray-100 app-text">
@@ -44,45 +21,21 @@ const Content = ({ pages, title }) => {
                         <div className="flex flex-wrap justify-center">
                             <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                                 <div className="-mt-20 w-40 h-40">
-                                    <img alt="Profile picture" src="https://api.lorem.space/image/face?hash=33791" className="profile-pic shadow-lg"></img>
+                                    <div className="profile-pic shadow-lg custom-profile-pic"></div>
                                 </div>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
 
-                                <button className='btn-profile d-block rounded-lg btn-main shadow-lg'>ADD FRIEND</button>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                                    <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            22
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Templates
-                                        </span>
-                                    </div>
-                                    <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            10
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Friends
-                                        </span>
-                                    </div>
-                                    {/* <div className="lg:mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            89
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Comments
-                                        </span>
-                                    </div> */}
+                                   
                                 </div>
                             </div>
                         </div>
 
                         <div className="text-center my-8">
-                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">{title}</h1>
+                            <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">Public Templates</h1>
                             <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
                                 {/* <Icon name="place" size="xl" /> */}
                                 <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
@@ -142,4 +95,4 @@ const Content = ({ pages, title }) => {
     );
 }
 
-export default Content;
+export default GalleryContent;
