@@ -7,34 +7,28 @@ import { ADD_PAGE, UPDATE_PAGE, DELETE_PAGE } from '../utils/mutations'
 import { QUERY_PAGE, QUERY_PAGES } from '../utils/queries'
 import { useQuery, useMutation } from '@apollo/client'
 
-function usePageRead(id) {
-  const [ isLoading, setLoading ] = useState(true)
-  const [ data, setData ] = useState({})
 
-
-}
+const getOptions = ( variables = {} ) => ({ variables, 'no-cache': true })
 
 export function useGetPage(id) {
-  return useQuery(QUERY_PAGE, { variables: { _id: id } })
+  const options = getOptions({ id: id })
+  console.log(options)
+  return useQuery(QUERY_PAGE, options)
 }
 
 export function useGetPages() {
 
-  const { loading, error, data }  = useQuery(QUERY_PAGES)
-
-  if(error) return { error }
-  if(loading) return { loading }
-  return { data }
+  return useQuery(QUERY_PAGES, getOptions())
 }
 
-export function useCreatePage({ mycss, myhtml }) {
-  return useMutation(ADD_PAGE, { variables: { myhtml, mycss } })
+export function useCreatePage() {
+  return useMutation(ADD_PAGE)
 }
 
-export function useUpdatePage(id, updateObject = {} ) {
-  return useMutation(UPDATE_PAGE, { variables: { _id: id, ...updateObject } })
+export function useUpdatePage() {
+  return useMutation(UPDATE_PAGE)
 }
 
 export function useDeletePage(id) {
-  return useMutation(DELETE_PAGE, { variables: { _id: id }})
+  return useMutation(DELETE_PAGE)
 }
