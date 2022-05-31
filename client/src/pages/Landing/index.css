@@ -8,7 +8,6 @@
 }
 
 .welcome-text-left {
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +18,6 @@
 }
 
 .welcome-text-right {
-  color: white;
   display: flex;
   justify-content: center;
   align-items: flex-end;
