@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { themeChange } from "theme-change";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
 import "grapesjs-component-countdown";
-// import "grapesjs-navbar";
+import "grapesjs-navbar";
 // import "grapesjs-lory-slider";
 // import "grapesjs-tabs";
 import gjsForms from "grapesjs-plugin-forms";
@@ -14,18 +15,25 @@ import SavePages from "../../components/SavePages";
 import PageList from "../../components/PageList";
 
 import RunBuddy from "../../components/RunBuddy/RunBuddy";
+import ThemeSwitcher from "./ThemeSwitcher";
 
+/* We have to render the GrapesJS editor using a React component as a class */
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  /* Render tooltips */
   updateBtn() {
+    /* Iterate over elements with a data-tip attribute */
     const tooltipBtns = document.querySelectorAll("[data-tip]");
     tooltipBtns.forEach((button) => {
+      /* elements who don't have a tooltip */
       if (button.lastChild.nodeName === "#text") {
+        /* pull the tooltip text from the custom data attribute */
         const dataTip = button.getAttribute("data-tip");
+        /* and create a span containing the tooltip */
         const tooltip = document.createElement("span");
         if (
           dataTip === "Desktop" ||
@@ -40,6 +48,7 @@ class Editor extends React.Component {
         } else {
           tooltip.classList.add("sidebar-tooltip");
         }
+        /* group-hover: lets us effect the styles of a child element when a parent is hovered */
         tooltip.classList.add("group-hover:scale-100");
         tooltip.textContent = dataTip;
         button.appendChild(tooltip);
@@ -47,11 +56,19 @@ class Editor extends React.Component {
     });
   }
 
+  /**
+   * The function is called when the component mounts and initializes the GrapesJS editor
+   * @returns The return value of the last statement in the function.
+   * Uses the lifecycle hook to render editor inside of container element
+   */
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
       canvas: {
-        styles: ['https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css']
+        // TEMPLATES
+        styles: [
+          "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
+        ],
       },
       plugins: [
         grapesTouch,
@@ -82,6 +99,7 @@ class Editor extends React.Component {
       height: "100%",
       width: "auto",
       // storageManager: false,
+      // Enables progress to be saved to localStorage
       storageManager: {
         type: "local",
         autosave: true,
@@ -99,12 +117,13 @@ class Editor extends React.Component {
             id: "panel-top",
             el: ".panel__top",
           },
+          // Sidebar panel buttons
           {
             id: "basic-actions",
             el: ".panel__basic-actions",
             buttons: [
               {
-                id: "visibility",
+                id: "visibility", // id field required
                 active: true,
                 className: "sidebar-icon group",
                 label: `
@@ -582,8 +601,8 @@ class Editor extends React.Component {
     return (
       <div className="flex w-full" style={{ height: "100vh" }}>
         <div className="panel__left border-r-2 border-slate-800">
-          <div className="glass rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
-            <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-3xl font-black text-transparent selection:bg-transparent">
+          <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
+            <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
               <a href="/">V</a>
             </p>
           </div>
@@ -594,6 +613,8 @@ class Editor extends React.Component {
         <div className="flex w-full flex-col">
           <div className="panel__top border-b-2 border-slate-800">
             <div className="panel__devices"></div>
+            <div className="divider"></div>
+            <ThemeSwitcher />
             <div className="divider"></div>
             <div className="panel__switcher"></div>
           </div>
