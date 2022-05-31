@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import ThemeSwitcher from "../../pages/Editor/ThemeSwitcher";
 import Auth from '../../utils/auth';
 import './Navbar.css';
 
@@ -10,7 +11,7 @@ const Navbar = () => {
 	};
 
   return (
-    <div className="navbar bg-black">
+    <div className="navbar bg-neutral">
       <div className="flex-1">
         <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
           <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
@@ -20,6 +21,8 @@ const Navbar = () => {
           </p>
         </div>
       </div>
+
+      <ThemeSwitcher />
 
       {/* FOR USER */}
       {Auth.loggedIn() ? (
