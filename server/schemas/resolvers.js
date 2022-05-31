@@ -89,12 +89,25 @@ const resolvers = {
         });
 
         if (paymentIntent?.client_secret) {
-          return { clientSecret: paymentIntent.client_secret };
+          return {
+            clientSecret: paymentIntent.client_secret,
+            id: paymentIntent.id,
+          };
         }
         return new Error('No client secret created.');
       } catch (err) {
         console.log({ err });
         throw new Error('No worky');
+      }
+    },
+    updatePaymentIntent: async (parent, { id, amount }) => {
+      try {
+        await stripe.paymentIntents.update(id, {
+          amount: 100 * amount,
+        });
+        return { success: true };
+      } catch (err) {
+        return { success: false };
       }
     },
   },
