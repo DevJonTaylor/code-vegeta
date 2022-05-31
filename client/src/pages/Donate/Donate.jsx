@@ -45,6 +45,7 @@ const Donate = () => {
   };
 
   return (
+    
     <div className="signup-container">
       {clientSecret && !loading && (
         <Elements options={options} stripe={stripePromise}>

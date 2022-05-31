@@ -76,8 +76,8 @@ class Editor extends React.Component {
         "gjs-blocks-basic",
         "gjs-navbar",
         "gjs-component-countdown",
-        "grapesjs-lory-slider",
-        "grapesjs-tabs",
+        // "grapesjs-lory-slider",
+        // "grapesjs-tabs",
       ],
       pluginsOpts: {
         "gjs-blocks-basic": {
@@ -624,7 +624,7 @@ class Editor extends React.Component {
             </p>
           </div>
           <div className="panel__basic-actions"></div>
-          {/* <SavePages /> */}
+           <SavePages />
           {/* <PageList /> */}
         </div>
         <div className="flex w-full flex-col">
