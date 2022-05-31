@@ -600,7 +600,7 @@ class Editor extends React.Component {
   render() {
     return (
       <div className="flex w-full" style={{ height: "100vh" }}>
-        <div className="panel__left border-r-2 border-slate-800">
+        <div className="panel__left border-r-2 border-neutral">
           <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
             <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
               <a href="/">V</a>
@@ -611,7 +611,7 @@ class Editor extends React.Component {
           {/* <PageList /> */}
         </div>
         <div className="flex w-full flex-col">
-          <div className="panel__top border-b-2 border-slate-800">
+          <div className="panel__top border-b-2 border-neutral">
             <div className="panel__devices"></div>
             <div className="divider"></div>
             <ThemeSwitcher />
