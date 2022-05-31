@@ -87,7 +87,7 @@ const Signup = () => {
                                             value={formState.password}
                                             onChange={handleChange}
                                         />
-                                        <button className='btn-sign d-block rounded-full btn-main' type='submit'>
+                                        <button className='btn-sign d-block rounded-full btn-main shadow-lg' type='submit'>
                                             Create Account
                                         </button>
                                         <p className='end font-bold'>Already have an account? <Link to="/login" className='text-black font-bold'>Sign In</Link></p>
@@ -96,7 +96,6 @@ const Signup = () => {
                                 {/* <h1>Welcome</h1> */}
                                 {/* <h1>Welcome to <span className='gradient-text'>VEGETA</span></h1> */}
                                 <p>Let's build together</p>
-                                {error && <p>Sign up failed</p>}
                             </div>
                         </div>
                         {/* if there's an error, we'll see a <div> element with a message saying so */}

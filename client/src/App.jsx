@@ -48,7 +48,7 @@ function App() {
 
         <main
           // className="grow bg-[#282c34] text-white"  DO WE NEED THIS AS A DIFF COLOR? SORRY FOR CHANGING IF SO - FEEL FREE TO CHANGE BACK
-          className="grow bg-black text-white"
+          className="grow bg-neutral text-accent"
           style={{ marginBottom: "0px" }}
         >
           <Outlet />
@@ -64,7 +64,7 @@ function App() {
         </main>
 
         {/* ADDED bg-black TO FOOTER */}
-        <footer className="flex w-full items-center justify-around bg-black">
+        <footer className="flex w-full items-center justify-around bg-neutral">
           <div className="w-48">
             <p>
               Built with <span alt="sweat">💦</span> by
@@ -89,7 +89,6 @@ function App() {
               <a
                 className="text-[#61dafb] transition-all hover:text-blue-400"
                 href="/donate"
-                target="_blank"
                 rel="noopener noreferrer"
               >
                 Donate

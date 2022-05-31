@@ -38,6 +38,7 @@
 }
 
 .btn-login {
+    font-weight: 600;
     font-size: 12px;
     width: 25%;
     margin: 0 10px;

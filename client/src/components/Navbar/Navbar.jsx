@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import Auth from '../../utils/auth';
 import './Navbar.css';
 
@@ -10,16 +11,18 @@ const Navbar = () => {
 	};
 
   return (
-    <div className="navbar bg-black">
+    <div className="navbar bg-neutral">
       <div className="flex-1">
         <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
-          <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
+          <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
             <Link to="/">
-              <p>VEGETA</p>
+              VEGETA
             </Link>
           </p>
         </div>
       </div>
+
+      <ThemeSwitcher />
 
       {/* FOR USER */}
       {Auth.loggedIn() ? (
@@ -69,10 +72,9 @@ const Navbar = () => {
               className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to="profile">
+                  <p>Profile</p>
+                </Link>
               </li>
               <li>
                 <a>Settings</a>
@@ -106,6 +108,11 @@ const Navbar = () => {
               <li>
                 <Link to="signup">
                   <p>Sign Up</p>
+                </Link>
+              </li>
+              <li>
+                <Link to="donate">
+                  <p>Donate</p>
                 </Link>
               </li>
             </ul>

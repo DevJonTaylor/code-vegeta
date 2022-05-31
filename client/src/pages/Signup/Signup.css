@@ -13,7 +13,7 @@
 
 .signup-container {
     width: 100%;
-    height: 85vh;
+    height: 75vh;
     display: flex;
     justify-content: space-around;
 }
@@ -45,7 +45,6 @@
     animation-fill-mode: both;
     overflow: hidden;
     margin: 0 auto;
-    /* border: 1px solid gold; */
     will-change: background-position-x;
 }
 
@@ -100,6 +99,7 @@
 }
 
 .btn-sign {
+    font-weight: 600;
     font-size: 12px;
     width: 40%;
     margin: 0 10px;

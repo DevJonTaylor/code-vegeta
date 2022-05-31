@@ -1,46 +1,85 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { themeChange } from "theme-change";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import grapesjs from "grapesjs";
 import "grapesjs-blocks-basic";
+import "grapesjs-component-countdown";
+import "grapesjs-navbar";
+// import "grapesjs-lory-slider";
+// import "grapesjs-tabs";
+import gjsForms from "grapesjs-plugin-forms";
 import grapesTouch from "grapesjs-touch";
 import "./vegetaPlugin";
 import SavePages from "../../components/SavePages";
 import PageList from "../../components/PageList";
 
+import RunBuddy from "../../components/RunBuddy/RunBuddy";
+import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
+
+/* We have to render the GrapesJS editor using a React component as a class */
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  /* Render tooltips */
   updateBtn() {
-    const tooltipBtns = document.querySelectorAll('[data-tip]');
-    tooltipBtns.forEach(button => {
-      const dataTip = document.getAttribute("data-tip");
-      const tooltip = document.createElement("span");
-      if (
-        dataTip === "Desktop" ||
-        dataTip === "Tablet" ||
-        dataTip === "Mobile" ||
-        dataTip === "Layers" ||
-        dataTip === "Styles" ||
-        dataTip === "Components"
-      ) {
-        tooltip.classList.add("topbar-tooltip");
-      } else {
-        tooltip.classList.add("sidebar-tooltip");
+    /* Iterate over elements with a data-tip attribute */
+    const tooltipBtns = document.querySelectorAll("[data-tip]");
+    tooltipBtns.forEach((button) => {
+      /* elements who don't have a tooltip */
+      if (button.lastChild.nodeName === "#text") {
+        /* pull the tooltip text from the custom data attribute */
+        const dataTip = button.getAttribute("data-tip");
+        /* and create a span containing the tooltip */
+        const tooltip = document.createElement("span");
+        if (
+          dataTip === "Desktop" ||
+          dataTip === "Tablet" ||
+          dataTip === "Mobile" ||
+          dataTip === "Styles" ||
+          dataTip === "Components"
+        ) {
+          tooltip.classList.add("topbar-tooltip");
+        } else if (dataTip === "Layers") {
+          tooltip.classList.add("topbar-tooltip__left");
+        } else {
+          tooltip.classList.add("sidebar-tooltip");
+        }
+        /* group-hover: lets us effect the styles of a child element when a parent is hovered */
+        tooltip.classList.add("group-hover:scale-100");
+        tooltip.textContent = dataTip;
+        button.appendChild(tooltip);
       }
-      tooltip.classList.add("group-hover:scale-100");
-      tooltip.textContent = dataTip;
-      button.appendChild(tooltip);
-    })
+    });
   }
 
+  /**
+   * The function is called when the component mounts and initializes the GrapesJS editor
+   * @returns The return value of the last statement in the function.
+   * Uses the lifecycle hook to render editor inside of container element
+   */
   componentDidMount() {
     const editor = grapesjs.init({
       container: "#gjs",
-      plugins: ["gjs-blocks-basic", grapesTouch, "vegeta"],
+      canvas: {
+        // TEMPLATES
+        styles: [
+          "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
+        ],
+      },
+      plugins: [
+        grapesTouch,
+        gjsForms,
+        "vegeta",
+        "gjs-blocks-basic",
+        "gjs-navbar",
+        "gjs-component-countdown",
+        "grapesjs-lory-slider",
+        "grapesjs-tabs",
+      ],
       pluginsOpts: {
         "gjs-blocks-basic": {
           blocks: ["column1", "column2", "column3", "column3-7"],
@@ -49,14 +88,23 @@ class Editor extends React.Component {
         vegeta: {
           endpoint: "http://localhost:3001/editor",
         },
+        [gjsForms]: {
+          /* options */
+        },
+        "gjs-component-countdown": {
+          startTime: "2022-06-01 21:00",
+        },
       },
       fromElement: true,
       height: "100%",
       width: "auto",
       // storageManager: false,
+      // Enables progress to be saved to localStorage
       storageManager: {
-        type: "vegeta",
-        stepsBeforeSave: 3,
+        type: "local",
+        autosave: true,
+        autoload: true,
+        stepsBeforeSave: 1,
         storeComponents: true,
         storeStyles: true,
         storeHtml: true,
@@ -69,12 +117,13 @@ class Editor extends React.Component {
             id: "panel-top",
             el: ".panel__top",
           },
+          // Sidebar panel buttons
           {
             id: "basic-actions",
             el: ".panel__basic-actions",
             buttons: [
               {
-                id: "visibility",
+                id: "visibility", // id field required
                 active: true,
                 className: "sidebar-icon group",
                 label: `
@@ -160,7 +209,7 @@ class Editor extends React.Component {
               },
               {
                 id: "clear",
-                className: "sidebar-icon group",
+                className: "sidebar-icon hover:bg-red-600 group",
                 label: `
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
@@ -190,7 +239,7 @@ class Editor extends React.Component {
             id: "layers",
             el: ".panel__right",
             resizable: {
-              maxDim: 350,
+              maxDim: 500,
               minDim: 200,
               tc: 0, // Top
               cr: 0, // Right
@@ -303,33 +352,44 @@ class Editor extends React.Component {
         blocks: [
           {
             id: "section", // id field is required!
+            category: "Text",
             label: `
+            <div class="flex flex-col items-center">
               <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M4,5H20V7H4V5M4,9H20V11H4V9M4,13H20V15H4V13M4,17H14V19H4V17Z" />
+              <path fill="currentColor" d="M4,5H20V7H4V5M4,9H20V11H4V9M4,13H20V15H4V13M4,17H14V19H4V17Z" />
               </svg>
+              <br/>
+              SECTION
+            </div>
             `, // You can use HTML/SVG inside labels
             attributes: { class: "gjs-block-section, gjs-block" },
             content: `<section>
-                    <h1>This is a simple title</h1>
-                    <div>This is just Lorem Ipsum: Lorem the fuckin' ipsum dude...</div>
-                    <section>
-                  `,
+            <h1>This is a simple title</h1>
+            <div>This is just Lorem Ipsum: Lorem the fuckin' ipsum dude...</div>
+            <section>
+            `,
           },
           {
             id: "text",
+            category: "Text",
             label: `
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M4,9H20V11H4V9M4,13H14V15H4V13Z" />
-                </svg>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4,9H20V11H4V9M4,13H14V15H4V13Z" />
+            </svg>
+            <br/>
+            TEXT
             `,
             content: '<div data-gjs-type="text">Insert some text here</div>',
           },
           {
             id: "image",
+            category: "Extra",
             label: `
-              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M6,20H15L18,20V12L14,16L12,14L6,20M8,9A2,2 0 0,0 6,11A2,2 0 0,0 8,13A2,2 0 0,0 10,11A2,2 0 0,0 8,9Z" />
-              </svg>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M6,20H15L18,20V12L14,16L12,14L6,20M8,9A2,2 0 0,0 6,11A2,2 0 0,0 8,13A2,2 0 0,0 10,11A2,2 0 0,0 8,9Z" />
+            </svg>
+            <br/>
+            IMAGE
             `,
             select: true, // select the component when dropped
             content: { type: "image" }, // can pass components as JSON (notice use of defined component type 'image')
@@ -337,7 +397,14 @@ class Editor extends React.Component {
           },
           {
             id: "link",
-            label: "LINK",
+            category: "Text",
+            label: `
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" />
+                </svg>
+                <br/>
+                LINK
+            `,
             select: true,
             content: { type: "link" },
             activate: true,
@@ -535,46 +602,25 @@ class Editor extends React.Component {
 
     editor.on("run", (a, b, c) => {
       // const senderId = document.querySelector(`#${c.sender.attributes.id}`);
-      // const checkForSpan = (el) =>
+      // const checkForSpan = (el) => {
       //   el.querySelector(`"[data-tip]='${senderId}'"`)
       //     ? false
       //     : this.updateBtn(el);
-      // if (c.sender) {
-      //   checkForSpan(senderId);
-      // }
-
+      //   if (c.sender) {
+      //     checkForSpan(senderId);
+      //   }
+      // };
       this.updateBtn();
     });
-
-    console.dir(editor.editor._events);
-    const tooltipBtns = document.querySelectorAll("[data-tip]");
-    tooltipBtns.forEach((button) => {
-      const dataTip = button.getAttribute("data-tip");
-      const tooltip = document.createElement("span");
-      if (
-        dataTip === "Desktop" ||
-        dataTip === "Tablet" ||
-        dataTip === "Mobile" ||
-        dataTip === "Layers" ||
-        dataTip === "Styles" ||
-        dataTip === "Components"
-      ) {
-        tooltip.classList.add("topbar-tooltip");
-      } else {
-        tooltip.classList.add("sidebar-tooltip");
-      }
-      tooltip.classList.add("group-hover:scale-100");
-      tooltip.textContent = dataTip;
-      button.appendChild(tooltip);
-    });
+    this.updateBtn();
   }
 
   render() {
     return (
       <div className="flex w-full" style={{ height: "100vh" }}>
-        <div className="panel__left border-r-2 border-slate-800">
-          <div className="glass rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
-            <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-3xl font-black text-transparent selection:bg-transparent">
+        <div className="panel__left border-r-2 border-neutral">
+          <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
+            <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
               <a href="/">V</a>
             </p>
           </div>
@@ -583,15 +629,17 @@ class Editor extends React.Component {
           {/* <PageList /> */}
         </div>
         <div className="flex w-full flex-col">
-          <div className="panel__top border-b-2 border-slate-800">
+          <div className="panel__top border-b-2 border-neutral">
             <div className="panel__devices"></div>
+            <div className="divider"></div>
+            <ThemeSwitcher />
             <div className="divider"></div>
             <div className="panel__switcher"></div>
           </div>
           <div className="editor-row">
             <div className="editor-canvas">
               <div id="gjs">
-                <h1>Hello World Component!</h1>
+                <RunBuddy />
               </div>
             </div>
             <div className="panel__right">

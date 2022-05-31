@@ -46,11 +46,7 @@ const Donate = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <h1 className="title">Thank you for your support!</h1>
-      <p className="subtitle">
-        Your contribution allows us to continue to improve this application.
-      </p>
+    <div className="signup-container">
       {clientSecret && !loading && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
