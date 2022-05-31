@@ -3,7 +3,7 @@ import axios from "axios";
 const generateStripePayment = async ({ id, amount }) => {
   console.log({ id });
   console.log({ amount });
-  const clientSecret = null;
+  let clientSecret = null;
 
   // Create PaymentIntent as soon as the page loads
   const { data } = await axios.post(
