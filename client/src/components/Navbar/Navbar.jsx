@@ -61,7 +61,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown-end dropdown p-3">
+          <div className="dropdown-end dropdown dropdown-hover p-3">
             <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
               <div className="w-10 rounded-full">
                 <img src="https://api.lorem.space/image/face?hash=33791" />
@@ -91,7 +91,7 @@ const Navbar = () => {
       ) : (
       <>
         <div className="flex-none">
-          <div className="dropdown-end dropdown p-3">
+          <div className="dropdown dropdown-hover dropdown-end p-3">
             <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
               <div className="w-10 rounded-full dropdown-img">
               </div>

@@ -25,3 +25,51 @@ background-position: center;
     padding: 12px;
     display: inline;
 }
+
+.btn-build {
+    font-size: 12px;
+    width: 40%;
+    margin: 0 10px;
+    padding: 12px;
+    display: inline;
+}
+
+.btn-friends {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 9999px;
+    padding: 0px;
+    display: inline-flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: var(--rounded-btn, 0.5rem);
+    height: 3.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: 1em;
+    min-height: 3rem;
+    text-decoration-line: none;
+    animation: button-pop var(--animation-btn, 0.25s) ease-out;
+}
+
+/* DROPDOWN MENU */
+.friends-list {
+    transition: all 2s;
+    -webkit-transition: all 2s;
+    color: white;
+}
+
+.friends-list:hover {
+    font-weight: bold;
+    color: rgb(125 211 252);
+    transition: all 2s;
+}
+
+

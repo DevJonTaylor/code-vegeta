@@ -2,22 +2,22 @@ import React from 'react';
 import Header from '../../components/Profiles/Header';
 import Content from '../../components/Profiles/Content';
 import '../../components/Profiles/Content.css';
-import Auth from '../../utils/auth';
-import { QUERY_USER, QUERY_ME } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
 
 import { Navigate, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
+
+import Auth from '../../utils/auth';
 
 export default function Profile() {
-
     const { username: userParam } = useParams();
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam }
     });
 
-    const user = data?.me || data?.user || {};
-
+    const user = data?.me || data?.user || {};    
+    console.log(user);
 
     // navigate to personal profile page if username is the logged-in user's
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -25,22 +25,30 @@ export default function Profile() {
     }
 
     if (loading) {
-        return <div>Loading...</div>;
+      return <div>Loading...</div>;
     }
 
-    // What happens if you navigate to /profile and you aren't logged in?
     if (!user?.username) {
-        return (
-            <h4>
-                You need to be logged in to see this page. Use the navigation links above to sign up or log in!
-            </h4>
-        );
-    }
-    console.log(user)
+		return (
+		  <div className='signup-container flex flex-wrap justify-center content-center gradient-text'>
+			<p>You need to be logged in to see this page. <br />
+            Use the navigation links above to sign up or log in!</p>
+		  </div>
+		);
+	}
+
     return (
         <div>
             <Header />
-            <Content pages={user.pages} title={user.username} />
+            <Content 
+                username={user.username}
+                friendCount={user.friendCount}
+                friends={user.friends}
+                // username at url
+                userParam={userParam}
+                // user id of friend
+                user_id={user._id}
+            />
         </div>
     );
 };
