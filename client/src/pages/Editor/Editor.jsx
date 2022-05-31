@@ -15,7 +15,7 @@ import SavePages from "../../components/SavePages";
 import PageList from "../../components/PageList";
 
 import RunBuddy from "../../components/RunBuddy/RunBuddy";
-import ThemeSwitcher from "./ThemeSwitcher";
+import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 
 /* We have to render the GrapesJS editor using a React component as a class */
 class Editor extends React.Component {

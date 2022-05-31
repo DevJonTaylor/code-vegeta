@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import ThemeSwitcher from "../../pages/Editor/ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import Auth from '../../utils/auth';
 import './Navbar.css';
 
