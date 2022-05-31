@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Signup = () => {
 	const [formState, setFormState] = useState({ username: '', email: '', password: '' });
 
-	// the useMutation() Hook creates and prepares a JavaScript function that wraps around our mutation code and returns it to us. In our case, it returns in the form of the addUser function that's returned. We also get the ability to check for errors.
+	// the useMutation() Hooks creates and prepares a JavaScript function that wraps around our mutation code and returns it to us. In our case, it returns in the form of the addUser function that's returned. We also get the ability to check for errors.
 	const [addUser, { error }] = useMutation(ADD_USER);
 
 	// update state based on form input changes
@@ -20,7 +20,7 @@ const Signup = () => {
 			[name]: value,
 		});
 	};
-	// functionality for capturing form field data from a user and storing it in state using the useState() Hook from React
+	// functionality for capturing form field data from a user and storing it in state using the useState() Hooks from React
 
 	// submit form (notice the async!)
 	const handleFormSubmit = async event => {
