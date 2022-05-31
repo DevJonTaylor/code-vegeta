@@ -9,9 +9,12 @@ const stripePromise = loadStripe(
   "pk_test_51L3RgwGfhsrOhMHZmZkwybKYLysZCcm1OBGdbHeCmlx85qbymMARL7qDcmORLqD6hVcH0jtyAkeTsKHfDZGaFNBT00h7dLI53P"
 );
 
+// const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PROMISE);
+
 const Donate = () => {
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
+  const [amount, amountInput] = useInput({ placeholder: "amount" });
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -37,6 +40,19 @@ const Donate = () => {
       });
   }, []);
 
+  function useInput(opts) {
+    const [value, setValue] = useState("");
+    const input = (
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        {...opts}
+      />
+    );
+
+    return [value, input];
+  }
+
   const appearance = {
     theme: "night",
   };
@@ -47,6 +63,10 @@ const Donate = () => {
 
   return (
     <div className="signup-container">
+      <div>
+        {amountInput}
+        <p>{amount}</p>
+      </div>
       {clientSecret && !loading && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
