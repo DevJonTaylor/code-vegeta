@@ -6,19 +6,19 @@ const Footer = () => {
   return (
     <footer className="flex w-full items-center justify-around bg-neutral">
       <div className="w-48">
-        <p>
+        <p className="text-primary">
           Built with <span alt="sweat">💦</span> by
           <br />
-          <code className="app-text text-[#8d96a7]">
+          <code className="app-text text-accent">
             Jess, Jonathan, JT, Jordan, and Keenan
           </code>
           {""}
         </p>
       </div>
       <div className="w-49 hidden sm:flex">
-        <p className="mt-3 flex gap-3 text-center text-[#8d96a7]">
+        <p className="mt-3 flex gap-3 text-center">
           <a
-            className="text-[#61dafb] transition-all hover:text-blue-400"
+            className="text-primary transition-all hover:text-blue-400"
             href="https://github.com/DevJonTaylor/code-vegeta"
             target="_blank"
             rel="noopener noreferrer"
@@ -27,7 +27,7 @@ const Footer = () => {
           </a>
           {" | "}
           <a
-            className="text-[#61dafb] transition-all hover:text-blue-400"
+            className="text-primary transition-all hover:text-blue-400"
             href="/donate"
             rel="noopener noreferrer"
           >

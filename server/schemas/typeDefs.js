@@ -9,7 +9,9 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    friendCount: Int
     pages: [Page]
+    friends: [User]
   }
 
   type Page {
@@ -17,6 +19,15 @@ const typeDefs = gql`
     myhtml: String
     mycss: String
     username: String
+  }
+
+  type StripeResponse {
+    clientSecret: String
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
@@ -33,11 +44,18 @@ const typeDefs = gql`
     addPage(myhtml: String!, mycss: String!): Page
     updatePage(_id: ID!, myhtml: String, mycss: String): Page
     deletePage(_id: ID!): Page
+    addFriend(friendId: ID!): User
     createPaymentIntent: StripeResponse!
+    updatePaymentIntent(id: String!, amount: Int!): UpdateStripeResponse!
   }
 
   type StripeResponse {
     clientSecret: String
+    id: String
+  }
+
+  type UpdateStripeResponse {
+    success: Boolean
   }
 
   type Auth {

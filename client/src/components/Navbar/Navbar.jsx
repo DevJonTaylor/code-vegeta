@@ -11,7 +11,7 @@ const Navbar = () => {
 	};
 
   return (
-    <div className="navbar bg-neutral">
+    <header className="navbar bg-neutral">
       <div className="flex-1">
         <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
           <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
@@ -61,7 +61,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown-end dropdown p-3">
+          <div className="dropdown-end dropdown dropdown-hover p-3">
             <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
               <div className="w-10 rounded-full">
                 <img src="https://api.lorem.space/image/face?hash=33791" />
@@ -91,7 +91,7 @@ const Navbar = () => {
       ) : (
       <>
         <div className="flex-none">
-          <div className="dropdown-end dropdown p-3">
+          <div className="dropdown dropdown-hover dropdown-end p-3">
             <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
               <div className="w-10 rounded-full dropdown-img">
               </div>
@@ -120,7 +120,7 @@ const Navbar = () => {
         </div>
       </>
       )}
-    </div>
+    </header>
   );
 };
 

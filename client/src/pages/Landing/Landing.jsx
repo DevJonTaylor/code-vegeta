@@ -22,6 +22,9 @@ const Landing = () => {
           <Link to="/editor" className="welcome-btn text-primary bg-neutral">
             START BUILDING
           </Link>
+          <Link to="/gallery" className="welcome-btn-2 text-primary bg-neutral">
+            VIEW GALLERY
+          </Link>
         </div>
         <div className="site-image-container">
           <div className="welcome-image">

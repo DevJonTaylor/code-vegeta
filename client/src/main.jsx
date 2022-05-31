@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
-import Editor from "./pages/Editor/Editor";
+import Editor from "./components/Editor/Editor";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Donate from "./pages/Donate/Donate";
+import Gallery from "./pages/Gallery/Gallery";
 import App from "./App";
 import "./index.css";
 import './pages/Signup/Signup.css';
@@ -47,8 +48,9 @@ ReactDOM.render(
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:username" element={<Profile />} />
             <Route path="/donate" element={<Donate />} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/gallery" element={<Gallery />} />
           </Route>
           {/* Keep editor out of App route to prevent headers and footers */}
           <Route path="/editor" element={<Editor />} />
