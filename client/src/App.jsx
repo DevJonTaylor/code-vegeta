@@ -89,7 +89,6 @@ function App() {
               <a
                 className="text-[#61dafb] transition-all hover:text-blue-400"
                 href="/donate"
-                target="_blank"
                 rel="noopener noreferrer"
               >
                 Donate
