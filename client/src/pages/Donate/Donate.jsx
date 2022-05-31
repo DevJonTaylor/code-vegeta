@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import axios from "axios";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import Loader from "../../components/Loader/Loader";
+
 import "./index.css";
 
 const stripePromise = loadStripe(
@@ -12,64 +14,61 @@ const stripePromise = loadStripe(
 // const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PROMISE);
 
 const Donate = () => {
-  const [clientSecret, setClientSecret] = useState("");
+  const [paymentIntent, setPaymentIntent] = useState(null);
+  const [options, setOptions] = useState({
+    clientSecret: "",
+    appearance: {
+      theme: "night",
+    },
+  });
   const [loading, setLoading] = useState(true);
-  const [amount, amountInput] = useInput({ placeholder: "amount" });
+  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:3001/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
-             mutation CreatePaymentIntent {
-             createPaymentIntent {
+    const generateClientSecret = async () => {
+      const { data } = await axios.post(
+        "http://localhost:3001/graphql",
+        {
+          query: `
+              mutation CreatePaymentIntent {
+              createPaymentIntent {
                clientSecret
+               id
              }
-           }
+          }
         `,
-      }),
-    })
-      .then((res) => res.json())
-      .then(({ data }) => {
-        setClientSecret(data.createPaymentIntent.clientSecret);
-        setLoading(false);
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      setPaymentIntent(data.data.createPaymentIntent);
+      setOptions({
+        clientSecret: data.data.createPaymentIntent.clientSecret,
+        appearance: { ...options.appearance },
       });
+      setLoading(false);
+    };
+
+    generateClientSecret();
   }, []);
-
-  function useInput(opts) {
-    const [value, setValue] = useState("");
-    const input = (
-      <input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        {...opts}
-      />
-    );
-
-    return [value, input];
-  }
-
-  const appearance = {
-    theme: "night",
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
 
   return (
     <div className="signup-container">
-      <div>
-        {amountInput}
-        <p>{amount}</p>
-      </div>
-      {clientSecret && !loading && (
+      <input
+        type="number"
+        placeholder="Type here"
+        className="input w-full max-w-xs"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      {paymentIntent && !loading && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm paymentIntent={{ id: paymentIntent.id, amount }} />
         </Elements>
       )}
       {loading && (
