@@ -49,6 +49,15 @@
   border-radius: 10px;
 }
 
+.welcome-btn-2 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 170px;
+  padding: 15px 0;
+  border-radius: 10px;
+}
+
 .background-image {
   background-image: url(./orb-unsplash-sm.jpg);
   position: absolute;
