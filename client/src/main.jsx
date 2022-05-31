@@ -41,13 +41,7 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<Landing />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="donate" element={<Donate />} />
-          </Route>
+          <Route path="/" element={<App />} />
           {/* Keep editor out of App route to prevent headers and footers */}
           <Route path="editor" element={<Editor />} />
         </Routes>
