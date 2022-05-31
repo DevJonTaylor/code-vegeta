@@ -13,7 +13,7 @@ const ThemeSwitcher = () => {
             <label tabIndex="0" className="sidebar-icon">Theme</label>
             <ul tabIndex="0" className='dropdown-content menu p-0 shadow bg-base-100 rounded-box w-48'>
                 {themes.map((theme) => {
-                    return <li><button data-set-theme={theme} data-act-class="ACTIVECLASS">{theme.toUpperCase()}</button></li>
+                    return <li key={theme}><button data-set-theme={theme} data-act-class="ACTIVECLASS">{theme.toUpperCase()}</button></li>
                 })}
             </ul>
         </div>
