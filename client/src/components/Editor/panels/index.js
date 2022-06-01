@@ -17,8 +17,8 @@ const panels = {
       id: "layers",
       el: ".panel__right",
       resizable: {
-        maxDim: 500,
-        minDim: 200,
+        maxDim: 350,
+        minDim: 180,
         tc: 0, // Top
         cr: 0, // Right
         bc: 0, // Bottom
