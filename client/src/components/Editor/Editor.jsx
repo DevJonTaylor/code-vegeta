@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
 import editorConfig from "./editorConfig";
-import styles from './template.css';
+// import styles from './template.css';
 
 import RunBuddy from "../RunBuddy/RunBuddy";
 
@@ -26,9 +26,9 @@ const Editor = () => {
           <div className="editor-canvas">
             <div id="gjs">
                 {/* TEMPLATE GOES HERE */}
-              <style>
+              {/* <style>
                 {styles}
-              </style>
+              </style> */}
               <RunBuddy />
             </div>
           </div>
