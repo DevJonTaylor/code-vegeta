@@ -28,7 +28,7 @@ const Navbar = () => {
       {Auth.loggedIn() ? (
       <>
         <div className="flex-none">
-          <div className="dropdown-end dropdown bg-neutral text-primary pr-3 pl-6">
+          <div className="dropdown-end dropdown dropdown-hover bg-neutral text-primary pr-3 pl-6">
             <label tabIndex="0" className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
