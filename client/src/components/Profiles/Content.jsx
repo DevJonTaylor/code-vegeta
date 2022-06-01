@@ -11,6 +11,8 @@ import '../Navbar/Navbar.css';
 
 const Content = ({ friendCount, username, friends, userParam, user_id, pages }) => {
 
+    console.log('these are the user login friends', friends)
+
     /**
      * Setup for deletePage event handler. As long as there is not an error and loading finishes then everything was
      * successful
@@ -60,11 +62,11 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
                             {userParam ? (
                                 <>
-                                    <button className='btn-profile rounded-lg font-black btn-main shadow-lg' onClick={handleClick}>ADD FRIEND</button>
+                                    <button className='btn-profile rounded-lg btn-second shadow-lg text-primary bg-neutral' onClick={handleClick}>ADD FRIEND</button>
                                 </>
                                 ) : (
                                 <>
-                                    <button className='btn-build rounded-lg font-black btn-main shadow-lg'>
+                                    <button className='btn-build rounded-lg btn-second shadow-lg text-primary bg-neutral'>
                                         <Link to='/editor'>
                                             START BUILDING
                                         </Link>
@@ -75,10 +77,10 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
                                     <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-black block uppercase tracking-wide text-gray-900">
+                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
                                             22
                                         </span>
-                                        <span className="text-sm text-gray-700 font-black">
+                                        <span className="text-sm text-gray-700 font-bold">
                                             Templates
                                         </span>
                                     </div>
@@ -86,19 +88,19 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                                         <div className="flex-none">
                                             <div className="dropdown dropdown-hover">
                                                 <label tabIndex="0" className="avatar btn-ghost btn-friends">
-                                                    <span className="text-xl font-bold block uppercase tracking-wide text-gray-900 font-black">
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
                                                         {friendCount}
                                                     </span>
 
                                                     {friendCount > 0 ? (
                                                     <>
-                                                        <span x="50%" y="60%"  text-anchor="middle"  className='text-sm font-black luminance'>
+                                                        <span x="50%" y="60%"  text-anchor="middle"  className='text-sm luminance font-bold'>
                                                             Friends
                                                         </span>
                                                     </>
                                                     ) : (
                                                     <>
-                                                        <span className='text-sm gradient-text font-black'>
+                                                        <span className='text-sm text-gray-700 font-black'>
                                                             Friends
                                                         </span>
                                                     </>
@@ -107,9 +109,9 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
 
                                                 {friendCount > 0 && 
                                                     // <ul tabIndex="0" className="dropdown-content rounded-box mt-3 w-48 bg-base-100 py-3 shadow app-text justify-content-center text-color">
-                                                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48 justify-content-center">
+                                                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48 justify-content-center bg-neutral">
                                                         {friends.map(friend => (
-                                                            <li className="friends-list" key={friend._id}>
+                                                            <li className="friends-list text-primary" key={friend._id}>
                                                                 <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
                                                             </li>
                                                         ))}

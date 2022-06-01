@@ -20,18 +20,18 @@ background-position: center;
 }
 
 .btn-profile {
-    font-size: 12px;
-    width: 32%;
+    font-size: 15px;
+    width: 170px;
     margin: 0 10px;
-    padding: 12px;
+    padding: 15px 0;
     display: inline;
 }
 
 .btn-build {
-    font-size: 12px;
-    width: 40%;
+    font-size: 15px;
+    width: 170px;
     margin: 0 10px;
-    padding: 12px;
+    padding: 15px;
     display: inline;
 }
 
@@ -68,8 +68,7 @@ background-position: center;
 }
 
 .friends-list:hover {
-    font-weight: bold;
-    color: rgb(125 211 252);
+    text-decoration: underline;
     transition: all 2s;
 }
 
