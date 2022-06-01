@@ -7,19 +7,30 @@ const ThemeSwitcher = () => {
   }, []);
 
   const themes = [
+    // "corporate",
     "synthwave",
-    "retro",
+    // "retro",
     "cyberpunk",
-    "halloween",
+    "valentine",
+    // "halloween",
+    // "garden",
+    "forest",
     "aqua",
-    "wireframe",
+    // "lofi",
+    // "pastel",
+    // "fantasy",
+    // "wireframe",
+    // "black",
     "luxury",
-    "dracula",
-    "business",
+    // "dracula",
+    // "cmyk",
+    // "autumn",
+    // "business",
     "acid",
+    // "lemonade",
     "night",
     "coffee",
-    "winter",
+    // "winter",
   ];
 
   return (
