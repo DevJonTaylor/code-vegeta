@@ -29,6 +29,6 @@ export function useUpdatePage() {
   return useMutation(UPDATE_PAGE)
 }
 
-export function useDeletePage(id) {
+export function useDeletePage(_id) {
   return useMutation(DELETE_PAGE)
 }

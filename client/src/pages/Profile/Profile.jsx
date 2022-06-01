@@ -38,7 +38,7 @@ export default function Profile() {
 	}
 
     return (
-        <div >
+        <div>
             <Header />
             <Content
                 pages={user.pages}
