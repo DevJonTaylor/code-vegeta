@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
-import { ADD_FRIEND } from '../../utils/mutations';
+import { ADD_FRIEND, DELETE_PAGE } from '../../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import { useDeletePage } from '../../hooks/usePage'
 
@@ -17,34 +17,34 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
      * Setup for deletePage event handler. As long as there is not an error and loading finishes then everything was
      * successful
      */
-    const [ deletePage, { loading, error } ] = useDeletePage()
+    const [deletePage, { loading, error }] = useDeletePage()
 
     /**
      * <ReactComponent onClick={event => handleDeletePageEvent(event, id)}
      * @param event
      * @param id
      */
-    const handleDeletePageEvent = async (event, id) => {
-        await deletePage({ variables: { _id: id } })
+    const handleDeletePageEvent = async (_id) => {
+        await deletePage({ variables: { _id: _id } })
     }
 
     const IsDeleteLoading = () => loading
-      ? ( <>{/* Handle user interaction for loading results from deletePage. */}</> )
-      : ''
+        ? (<>{/* Handle user interaction for loading results from deletePage. */}</>)
+        : ''
 
     const IsDeleteError = () => error
-      ? ( <>{/* Handle user interaction for error results from deletePage. */}</> )
-      : ''
+        ? (<>{/* Handle user interaction for error results from deletePage. */}</>)
+        : ''
 
-    const [ addFriend ] = useMutation(ADD_FRIEND);
+    const [addFriend] = useMutation(ADD_FRIEND);
 
     const handleClick = async () => {
         try {
-          await addFriend({
-            variables: { id: user_id }
-        });
+            await addFriend({
+                variables: { id: user_id }
+            });
         } catch (e) {
-          console.error(e);
+            console.error(e);
         }
     };
 
@@ -107,7 +107,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                                                     )}
                                                 </label>
 
-                                                {friendCount > 0 && 
+                                                {friendCount > 0 &&
                                                     // <ul tabIndex="0" className="dropdown-content rounded-box mt-3 w-48 bg-base-100 py-3 shadow app-text justify-content-center text-color">
                                                     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48 justify-content-center bg-neutral">
                                                         {friends.map(friend => (
@@ -135,15 +135,15 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                         <div className="text-center mt-1 mb-6">
                             <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2 animate-character">{username}</h1>
                             {userParam ? (
-                            <>
-                                <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
-                                    <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-2 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                                </div>  
-                            </>
+                                <>
+                                    <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
+                                        <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-2 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
+                                    </div>
+                                </>
                             ) : (
-                            <>     
-                            </>
-                            )} 
+                                <>
+                                </>
+                            )}
                         </div>
 
                         <div className="mb-10 py-2 border-t border-gray-200 text-center">
@@ -151,7 +151,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                                 <div className="w-full lg:w-11/12 flex justify-between flex-wrap items-center px-10 pt-8">
                                     {pages &&
                                         pages.map(page => (
-                                            <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg">
+                                            <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg iframe-card">
 
                                                 <iframe height="100%" width='100%' srcDoc={`<html>
                                                 <head>
@@ -164,7 +164,9 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                                                 </html>`} title="description" >
 
                                                 </iframe>
-
+                                                <button className='delete-btn' onClick={() => handleDeletePageEvent(page._id)}>
+                                                    <span className="sidebar-icon hover:bg-red-600"><svg style={{ width: '24px', height: '24px' }} viewBox="0 0 24 24"><path fill="black" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></span>
+                                                </button>
 
                                             </div>
                                         ))}

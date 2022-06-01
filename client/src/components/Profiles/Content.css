@@ -72,4 +72,12 @@ background-position: center;
     transition: all 2s;
 }
 
+.iframe-card{ 
+    margin: 50px 0;
+}
 
+.delete-btn {
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
