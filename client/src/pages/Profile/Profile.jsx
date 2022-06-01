@@ -40,7 +40,8 @@ export default function Profile() {
     return (
         <div className='h-[85vh]'>
             <Header />
-            <Content 
+            <Content
+                pages={user.pages}
                 username={user.username}
                 friendCount={user.friendCount}
                 friends={user.friends}

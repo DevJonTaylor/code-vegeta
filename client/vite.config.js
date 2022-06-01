@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { config } from "dotenv";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  envDir: `${__dirname}/`,
   server: {
     watch: {
       usePolling: true,
@@ -12,5 +12,3 @@ export default defineConfig({
   },
 });
 
-config();
-global.test = "test";
