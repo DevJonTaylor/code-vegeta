@@ -8,7 +8,7 @@
     @apply flex-col;
   }
   .sidebar-icon {
-    @apply btn z-50 bg-neutral text-primary m-1 rounded-3xl transition-all duration-200 ease-linear shadow-md shadow-accent hover:rounded-xl hover:bg-primary hover:text-neutral;
+    @apply btn z-50 bg-neutral text-primary m-1 rounded-3xl transition-all duration-200 ease-linear shadow-md shadow-accent hover:shadow-neutral hover:rounded-xl hover:bg-primary hover:text-neutral;
   }
   .sidebar-tooltip {
     @apply absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-neutral p-2 text-xs font-bold text-accent shadow-md transition-all duration-100;
