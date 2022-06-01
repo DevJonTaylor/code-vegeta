@@ -91,7 +91,7 @@ const CheckoutForm = ({ paymentIntent }) => {
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="btn-checkout btn-main rounded-full shadow-lg"
+        className="btn-checkout btn-main rounded-full shadow-lg text-primary bg-neutral"
       >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}

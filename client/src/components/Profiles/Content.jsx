@@ -4,13 +4,37 @@ import Auth from '../../utils/auth';
 
 import { ADD_FRIEND } from '../../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
+import { useDeletePage } from '../../hooks/usePage'
 
 import './Content.css';
 import '../Navbar/Navbar.css';
 
 const Content = ({ friendCount, username, friends, userParam, user_id, pages }) => {
 
-    const [addFriend] = useMutation(ADD_FRIEND);
+    /**
+     * Setup for deletePage event handler. As long as there is not an error and loading finishes then everything was
+     * successful
+     */
+    const [ deletePage, { loading, error } ] = useDeletePage()
+
+    /**
+     * <ReactComponent onClick={event => handleDeletePageEvent(event, id)}
+     * @param event
+     * @param id
+     */
+    const handleDeletePageEvent = async (event, id) => {
+        await deletePage({ variables: { _id: id } })
+    }
+
+    const IsDeleteLoading = () => loading
+      ? ( <>{/* Handle user interaction for loading results from deletePage. */}</> )
+      : ''
+
+    const IsDeleteError = () => error
+      ? ( <>{/* Handle user interaction for error results from deletePage. */}</> )
+      : ''
+
+    const [ addFriend ] = useMutation(ADD_FRIEND);
 
     const handleClick = async () => {
         try {
@@ -23,7 +47,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
     };
 
     return (
-        <section className="relative py-16 bg-gray-100 app-text">
+        <section className="relative py-16 bg-gray-100 pp-text min-h-[50vh]">
             <div className="container max-w-7xl px-4 mx-auto">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-2xl -mt-64">
                     <div className="px-6">

@@ -87,14 +87,12 @@ const Signup = () => {
                                             value={formState.password}
                                             onChange={handleChange}
                                         />
-                                        <button className='btn-sign d-block rounded-full btn-main shadow-lg' type='submit'>
-                                            Create Account
+                                        <button className='btn-sign d-block rounded-full btn-main shadow-lg text-primary bg-neutral' type='submit'>
+                                            CREATE ACCOUNT
                                         </button>
                                         <p className='end font-bold'>Already have an account? <Link to="/login" className='text-black font-bold'>Sign In</Link></p>
                                 </form>
                             <div className='form-right'>
-                                {/* <h1>Welcome</h1> */}
-                                {/* <h1>Welcome to <span className='gradient-text'>VEGETA</span></h1> */}
                                 <p>Let's build together</p>
                             </div>
                         </div>
