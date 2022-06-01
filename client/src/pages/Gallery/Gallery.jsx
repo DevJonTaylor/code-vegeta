@@ -14,7 +14,7 @@ export default function Gallery() {
    
     return (
         <div>
-            <section className="relative block h-[300px]">
+            <section className="relative block h-[500px]">
                 <div className="bg-profile-background bg-cover bg-center absolute top-0 w-full h-full" />
             </section>
             <GalleryContent pages={pages}  />

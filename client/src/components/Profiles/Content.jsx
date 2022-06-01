@@ -10,8 +10,16 @@ import './Content.css';
 import '../Navbar/Navbar.css';
 
 const Content = ({ friendCount, username, friends, userParam, user_id, pages }) => {
-
-    console.log('these are the user login friends', friends)
+    
+    const AuthUserFriends = Auth.getProfile().data.friends;
+    // current user profile id = user_id
+    // console.log(AuthUserFriends);
+    // console.log('current user profile id: ', user_id);
+    
+    // check if the current profile user is already a friend of the logged in user
+    // if they are friends, then isFriend will be true
+    const isFriend = AuthUserFriends.includes(user_id);
+    // console.log('isFriend: ', isFriend);
 
     /**
      * Setup for deletePage event handler. As long as there is not an error and loading finishes then everything was
@@ -56,23 +64,25 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                         <div className="flex flex-wrap justify-center">
                             <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                                 <div className="-mt-20 w-40 h-40">
-                                    <img alt="Profile picture" src="https://api.lorem.space/image/face?hash=33791" className="profile-pic shadow-lg"></img>
+                                <img alt="Profile picture" src="https://api.lorem.space/image/face?hash=33791" className="profile-pic shadow-lg"></img>
                                 </div>
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
-                            {userParam ? (
+                            {userParam && !isFriend ? (
                                 <>
                                     <button className='btn-profile rounded-lg btn-second shadow-lg text-primary bg-neutral' onClick={handleClick}>ADD FRIEND</button>
                                 </>
                                 ) : (
                                 <>
-                                    <button className='btn-build rounded-lg btn-second shadow-lg text-primary bg-neutral'>
-                                        <Link to='/editor'>
-                                            START BUILDING
-                                        </Link>
-                                    </button>
                                 </>
-                                )}
+                            )}
+                            { Auth.getProfile().data.username === username &&                                 
+                                <button className='btn-build rounded-lg btn-second shadow-lg text-primary bg-neutral'>
+                                    <Link to='/editor'>
+                                        START BUILDING
+                                    </Link>
+                                </button>
+                            }
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
@@ -94,7 +104,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
 
                                                     {friendCount > 0 ? (
                                                     <>
-                                                        <span x="50%" y="60%"  text-anchor="middle"  className='text-sm luminance font-bold'>
+                                                        <span x="50%" y="60%"  textAnchor="middle"  className='text-sm luminance font-bold'>
                                                             Friends
                                                         </span>
                                                     </>
@@ -109,10 +119,11 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
 
                                                 {friendCount > 0 && 
                                                     // <ul tabIndex="0" className="dropdown-content rounded-box mt-3 w-48 bg-base-100 py-3 shadow app-text justify-content-center text-color">
-                                                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48 justify-content-center bg-neutral">
+                                                    <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48 justify-content-center bg-neutral">
                                                         {friends.map(friend => (
                                                             <li className="friends-list text-primary" key={friend._id}>
                                                                 <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
+                                                                {/* <a href={`/profile/${friend.username}`}>{friend.username}</a> */}
                                                             </li>
                                                         ))}
                                                     </ul>

@@ -25,11 +25,6 @@ const typeDefs = gql`
     clientSecret: String
   }
 
-  type Auth {
-    token: ID!
-    user: User
-  }
-
   type Query {
     me: User
     users: [User]
@@ -61,6 +56,7 @@ const typeDefs = gql`
   type Auth {
     token: ID!
     user: User
+    friends: [User]
   }
 `;
 
