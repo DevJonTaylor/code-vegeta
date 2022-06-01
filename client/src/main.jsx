@@ -22,7 +22,7 @@ import Test from "./pages/Test/Test";
 
 // establish the connection to the back-end server's /graphql endpoint
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
 });
 // URI stands for "Uniform Resource Identifier."
 

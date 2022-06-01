@@ -1,14 +1,17 @@
 const { User, Page } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+
 // import stripe
 const stripe = require('stripe')(
   'sk_test_51L3RgwGfhsrOhMHZNiEAtQIhmSnAyJMnTz5uB8FGSygAOLHAGIcoknv2IlZQBBs0rs4l9Z7PXjDlcLiiSQ0TVOfe008dDQtUrN'
 );
 
+// const stripe = require('stripe')(process.env.VITE_STRIPE_KEY);
+
 const notLoggedIn = () => {
-  throw new AuthenticationError('You need to be logged in!')
-}
+  throw new AuthenticationError('You need to be logged in!');
+};
 
 const resolvers = {
   Query: {
@@ -27,9 +30,9 @@ const resolvers = {
     // get all users
     users: async () => {
       return User.find()
-      .select('-__v -password')
-      .populate('friends')
-      .populate('pages');
+        .select('-__v -password')
+        .populate('friends')
+        .populate('pages');
     },
     // get a user by username
     user: async (parent, { username }) => {
@@ -70,10 +73,12 @@ const resolvers = {
       return { token, user };
     },
     addPage: async (parent, args, context) => {
+      if (!context.user) return notLoggedIn();
 
-      if (!context.user) return notLoggedIn()
-
-      const page = await Page.create({ ...args, username: context.user.username });
+      const page = await Page.create({
+        ...args,
+        username: context.user.username,
+      });
 
       await User.findByIdAndUpdate(
         { _id: context.user._id },
@@ -81,37 +86,37 @@ const resolvers = {
         { new: true }
       );
 
-        return page;
+      return page;
     },
     updatePage: async (parent, { _id, mycss, myhtml }, context) => {
       try {
-        if (!context.user) return notLoggedIn()
-        const updateObject = {}
-        if(mycss !== undefined) updateObject.mycss = mycss
-        if(myhtml !== undefined) updateObject.myhtml = myhtml
+        if (!context.user) return notLoggedIn();
+        const updateObject = {};
+        if (mycss !== undefined) updateObject.mycss = mycss;
+        if (myhtml !== undefined) updateObject.myhtml = myhtml;
 
-        return Page.findByIdAndUpdate( { _id }, updateObject, { new: true } )
-      } catch(error) {
-        console.error(error)
-        return Promise.reject(error)
+        return Page.findByIdAndUpdate({ _id }, updateObject, { new: true });
+      } catch (error) {
+        console.error(error);
+        return Promise.reject(error);
       }
     },
     deletePage: async (parent, { _id }, context) => {
-      if (!context.user) return notLoggedIn()
+      if (!context.user) return notLoggedIn();
 
       try {
-        const page = await Page.findOne({ _id })
+        const page = await Page.findOne({ _id });
         const user = await User.updateOne(
           { username: page.username },
           { $pull: { pages: { _id } } },
           { new: true }
-        )
-        await page.remove()
+        );
+        await page.remove();
 
-        return user
-      } catch(error) {
-        console.log(error)
-        return Promise.reject(error)
+        return user;
+      } catch (error) {
+        console.log(error);
+        return Promise.reject(error);
       }
     },
     createPaymentIntent: async () => {
@@ -146,7 +151,7 @@ const resolvers = {
           { $addToSet: { friends: friendId } },
           { new: true }
         ).populate('friends');
-    
+
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!');
