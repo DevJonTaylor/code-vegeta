@@ -11,6 +11,7 @@ const editorConfig = () => {
   const editor = grapesjs.init({
     container: "#gjs",
     fromElement: true,
+    // pageManager: true,
     height: "100%",
     width: "auto",
     canvas: {
@@ -24,6 +25,9 @@ const editorConfig = () => {
     // storageManager: false,
     // Enables progress to be saved to localStorage
     storageManager: storageManager,
+    // storageManager: {
+    //   type: 'indexeddb',
+    // },
     panels: panels,
 
     // MANAGERS
@@ -141,6 +145,8 @@ const editorConfig = () => {
     updateBtn();
   });
   updateBtn();
+
+  return editor;
 };
 
 export default editorConfig;
