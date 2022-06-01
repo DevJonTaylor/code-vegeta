@@ -88,8 +88,8 @@ const Login = () => {
                                 {/* <button className='btn-login d-block rounded-full btn-main shadow-lg' type='submit'>
                                     Sign In
                                 </button> */}
-                                <button className='btn-login d-block rounded-full btn-main shadow-lg text-primary bg-neutral' type='submit'>
-                                    Sign In
+                                <button className='btn-login d-block rounded-full btn-main shadow-lg' type='submit'>
+                                    SIGN IN
                                 </button>
                                 <p className='end font-bold'>Don't have an account? <Link to="/signup" className='text-black font-bold'>Sign Up</Link></p>
                             </form>

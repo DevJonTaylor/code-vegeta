@@ -16,8 +16,7 @@ export default function Profile() {
         variables: { username: userParam }
     });
 
-    const user = data?.me || data?.user || {};    
-    console.log(user);
+    const user = data?.me || data?.user || {};
 
     // navigate to personal profile page if username is the logged-in user's
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -30,7 +29,7 @@ export default function Profile() {
 
     if (!user?.username) {
 		return (
-		  <div className='signup-container flex flex-wrap justify-center content-center gradient-text'>
+		  <div className='signup-container flex flex-wrap justify-center content-center text-primary font-black'>
 			<p>You need to be logged in to see this page. <br />
             Use the navigation links above to sign up or log in!</p>
 		  </div>

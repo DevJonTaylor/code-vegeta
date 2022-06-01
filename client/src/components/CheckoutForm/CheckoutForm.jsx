@@ -94,7 +94,7 @@ const CheckoutForm = ({ paymentIntent }) => {
         className="btn-checkout btn-main rounded-full shadow-lg text-primary bg-neutral"
       >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          {isLoading ? <div className="spinner" id="spinner"></div> : "PAY NOW"}
         </span>
       </button>
       {/* Show any error or success messages */}
