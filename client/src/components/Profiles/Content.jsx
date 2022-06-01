@@ -150,7 +150,7 @@ const Content = ({
                           // <ul tabIndex="0" className="dropdown-content rounded-box mt-3 w-48 bg-base-100 py-3 shadow app-text justify-content-center text-color">
                           <ul
                             tabIndex="0"
-                            className="justify-content-center dropdown-content menu rounded-box w-48 bg-base-100 bg-neutral p-2 shadow"
+                            className="justify-content-center dropdown-content menu rounded-box w-48 bg-base-100 p-2 shadow"
                           >
                             {friends.map((friend) => (
                               <li
