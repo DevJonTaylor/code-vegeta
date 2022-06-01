@@ -203,7 +203,7 @@ const Content = ({
 
             <div className="mb-10 border-t border-gray-200 py-2 text-center">
               <div className="flex flex-wrap justify-center">
-                <div className="flex w-full flex-wrap items-center justify-around px-6 pt-2 pb-4 lg:w-11/12">
+                <div className="flex w-full flex-wrap items-center justify-around mt-7 px-6 pt-2 pb-4 lg:w-100">
                   {pages &&
                     pages.map((page) => (
                       <div key={page._id} class="flex flex-col items-center">
