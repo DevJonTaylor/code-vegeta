@@ -9,12 +9,6 @@ import { Navigate, useParams } from 'react-router-dom';
 
 
 const GalleryContent = ({ pages, title }) => {
-    if (!pages.length) {
-        return <h3>No Thoughts Yet</h3>;
-    }
-
-    console.log(pages)
-
 
     return (
         <section className="relative py-16 bg-gray-100 app-text min-h-[50vh]">
@@ -40,8 +34,22 @@ const GalleryContent = ({ pages, title }) => {
                         <div className="text-center my-8">
                             <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2">Public Templates</h1>
                             <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
-                                {/* <Icon name="place" size="xl" /> */}
+                                {!pages.length ? ( 
+                                <>
+                                    <div>
+                                        <p className="mt-3 mb-5 w-100">No templates available. Build the first one! </p>
+                                        <Link to='/editor'>
+                                            <button className='btn-build rounded-lg btn-second shadow-lg text-primary bg-neutral'>
+                                                START BUILDING
+                                            </button>
+                                        </Link>      
+                                    </div>
+                                </>
+                                ) : (
+                                <>
                                 <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
+                                </>
+                                )}
                             </div>
                         </div>
 
