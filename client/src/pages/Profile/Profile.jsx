@@ -48,6 +48,7 @@ export default function Profile() {
                 userParam={userParam}
                 // user id of friend
                 user_id={user._id}
+                pages={user.pages}
             />
         </div>
     );
