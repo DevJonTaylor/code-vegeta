@@ -7,6 +7,8 @@ const ThemeSwitcher = () => {
   }, []);
 
   const themes = [
+    "cupcake",
+    "bumblebee",
     "synthwave",
     "retro",
     "cyberpunk",
