@@ -78,11 +78,12 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                                 </>
                             )}
                             { Auth.getProfile().data.username === username &&                                 
-                                <button className='btn-build rounded-lg btn-second shadow-lg text-primary bg-neutral'>
-                                    <Link to='/editor'>
+                                <Link to='/editor'>
+                                    <button className='btn-build rounded-lg btn-second shadow-lg text-primary bg-neutral'>
                                         START BUILDING
-                                    </Link>
-                                </button>
+                                    </button>
+                                </Link>
+
                             }
                             </div>
                             <div className="w-full lg:w-4/12 px-4 lg:order-1">
@@ -111,7 +112,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
                                                     </>
                                                     ) : (
                                                     <>
-                                                        <span className='text-sm text-gray-700 font-black'>
+                                                        <span className='text-sm text-gray-700 font-bold'>
                                                             Friends
                                                         </span>
                                                     </>
