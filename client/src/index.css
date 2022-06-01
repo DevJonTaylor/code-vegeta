@@ -8,8 +8,12 @@
   .bg-black {
     @apply bg-zinc-900
   }
-  .btn-main {
+  /* old btn for login, signup, profile */
+  /* .btn-main {
     @apply text-sky-300 bg-zinc-900 btn-ghost hover:text-zinc-900 hover:bg-gradient-to-r hover:from-emerald-300 hover:to-sky-300 hover:btn-ghost hover:transition-colors hover:ease-in hover:duration-1000 transition-colors ease-in duration-1000
+  } */
+  .btn-main {
+    @apply hover:text-zinc-900 hover:bg-gradient-to-r hover:from-emerald-300 hover:to-sky-300 hover:btn-ghost hover:transition-colors hover:ease-in hover:duration-1000 transition-colors ease-in duration-1000 hover:border-none
   }
   .text-color {
     @apply text-zinc-500

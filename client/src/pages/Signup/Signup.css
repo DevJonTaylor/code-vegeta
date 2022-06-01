@@ -100,7 +100,9 @@
 }
 
 .btn-sign {
-    font-weight: 600;
+    font-weight: bold;
+    padding: 15px 0;
+    border-radius: 10px;
     font-size: 12px;
     width: 40%;
     margin: 0 10px;
