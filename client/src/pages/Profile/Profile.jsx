@@ -38,7 +38,7 @@ export default function Profile() {
 	}
 
     return (
-        <div className='h-[85vh]'>
+        <div >
             <Header />
             <Content
                 pages={user.pages}
@@ -49,7 +49,6 @@ export default function Profile() {
                 userParam={userParam}
                 // user id of friend
                 user_id={user._id}
-                pages={user.pages}
             />
         </div>
     );
