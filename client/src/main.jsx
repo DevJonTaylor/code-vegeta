@@ -51,6 +51,7 @@ ReactDOM.render(
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/test" element={<Test />} />
           </Route>
           {/* Keep editor out of App route to prevent headers and footers */}
           <Route path="/editor" element={<Editor />} />
