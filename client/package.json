@@ -20,6 +20,7 @@
     "grapesjs-lory-slider": "^0.1.5",
     "grapesjs-navbar": "^0.1.5",
     "grapesjs-plugin-forms": "^2.0.1",
+    "grapesjs-project-manager": "^1.0.17",
     "grapesjs-touch": "^0.1.1",
     "graphql": "^16.5.0",
     "jwt-decode": "^3.1.2",
