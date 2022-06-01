@@ -87,8 +87,8 @@ const CheckoutForm = ({ paymentIntentId }) => {
       id="payment-form"
       onSubmit={handleSubmit}
     >
-      <label class="label">
-        <span class="label-text">Amount to Be Donated</span>
+      <label className="label">
+        <span className="label-text">Amount to Be Donated</span>
       </label>
       <input
         type="number"
