@@ -13,6 +13,7 @@ import "./index.css";
 import './pages/Signup/Signup.css';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import Test from './pages/Test/Test'
 
 // establish the connection to the back-end server's /graphql endpoint
 const httpLink = createHttpLink({
@@ -34,7 +35,7 @@ const authLink = setContext((_, { headers }) => {
 // here, combine the authLink and httpLink objects so that every request retrieves the token and sets the request headers before making the request to the API
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });
 
 ReactDOM.render(
