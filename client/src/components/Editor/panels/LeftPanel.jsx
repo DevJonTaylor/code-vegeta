@@ -1,6 +1,7 @@
 import React from 'react';
 import SavePages from "../../SavePages";
 // import PageList from "../../PageList";
+import './index.css'
 
 const LeftPanel = () => {
   return (
@@ -11,6 +12,8 @@ const LeftPanel = () => {
         </p>
       </div>
       <div className="panel__basic-actions"></div>
+      {/* <div className="panel__switcher lg:hidden"></div> */}
+      {/* <div className="panel__devices lg:hidden"></div> */}
       <SavePages />
       {/* <PageList /> */}
     </div>

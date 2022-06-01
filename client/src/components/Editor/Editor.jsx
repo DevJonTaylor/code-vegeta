@@ -5,8 +5,8 @@ import editorConfig from "./editorConfig";
 
 import RunBuddy from "../RunBuddy/RunBuddy";
 
-import LeftPanel from "./panels/LeftPanel";
 import TopPanel from "./panels/TopPanel";
+import LeftPanel from "./panels/LeftPanel";
 import RightPanel from "./panels/RightPanel";
 
 const Editor = () => {
