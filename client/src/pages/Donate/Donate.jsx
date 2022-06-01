@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import { loadEnv } from "vite";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
@@ -7,11 +8,7 @@ import Loader from "../../components/Loader/Loader";
 
 import "./index.css";
 
-const stripePromise = loadStripe(
-  "pk_test_51L3RgwGfhsrOhMHZmZkwybKYLysZCcm1OBGdbHeCmlx85qbymMARL7qDcmORLqD6hVcH0jtyAkeTsKHfDZGaFNBT00h7dLI53P"
-);
-
-// const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PROMISE);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PROMISE);
 
 const Donate = () => {
   const [paymentIntent, setPaymentIntent] = useState(null);
@@ -22,13 +19,12 @@ const Donate = () => {
     },
   });
   const [loading, setLoading] = useState(true);
-  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     const generateClientSecret = async () => {
       const { data } = await axios.post(
-        "http://localhost:3001/graphql",
+        import.meta.env.VITE_GRAPHQL_ENDPOINT,
         {
           query: `
               mutation CreatePaymentIntent {
@@ -58,18 +54,10 @@ const Donate = () => {
   }, []);
 
   return (
-    
     <div className="signup-container">
-      <input
-        type="number"
-        placeholder="Type here"
-        className="input w-full max-w-xs"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
       {paymentIntent && !loading && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm paymentIntent={{ id: paymentIntent.id, amount }} />
+          <CheckoutForm paymentIntentId={paymentIntent.id} />
         </Elements>
       )}
       {loading && (
