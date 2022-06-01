@@ -87,13 +87,13 @@ const CheckoutForm = ({ paymentIntentId }) => {
       id="payment-form"
       onSubmit={handleSubmit}
     >
-      <label class="label">
-        <span class="label-text">Amount to Be Donated</span>
+      <label className="label">
+        <span className="label-text">Donated Amount</span>
       </label>
       <input
         type="number"
         placeholder="$0.00"
-        className="input w-full"
+        className="input w-full mb-3"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />

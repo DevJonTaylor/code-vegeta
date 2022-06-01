@@ -28,7 +28,7 @@ const Navbar = () => {
       {Auth.loggedIn() ? (
       <>
         <div className="flex-none">
-          <div className="dropdown-end dropdown bg-neutral text-primary">
+          <div className="dropdown-end dropdown bg-neutral text-primary pr-3 pl-6">
             <label tabIndex="0" className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
@@ -50,7 +50,7 @@ const Navbar = () => {
             </label>
             <div
               tabIndex="0"
-              className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
+              className="rounded-xl dropdown dropdown-content card-compact mt-16 bg-base-100 shadow cart-size"
             >
               <div className="card-body">
                 <span className="text-lg font-bold">8 Items</span>
@@ -83,6 +83,11 @@ const Navbar = () => {
               </li>
               <li>
                 <a>Settings</a>
+              </li>
+              <li>
+                <Link to="donate">
+                  <p>Donate</p>
+                </Link>
               </li>
               <li>
                 <a href="/" onClick={logout}>
