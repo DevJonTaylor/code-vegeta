@@ -106,11 +106,6 @@ const Navbar = () => {
               className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow app-text"
             >
               <li>
-                <Link to="gallery">
-                  <p>Gallery</p>
-                </Link>
-              </li>
-              <li>
                 <Link to="login">
                   <p>Sign In</p>
                 </Link>
