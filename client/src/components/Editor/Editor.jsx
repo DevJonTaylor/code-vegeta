@@ -3,7 +3,6 @@ import "grapesjs/dist/css/grapes.min.css";
 import "grapesjs-project-manager/dist/grapesjs-project-manager.min.css";
 import "./Editor.css";
 import editorConfig from "./config/editorConfig";
-// import styles from './template.css';
 
 import RunBuddy from "../RunBuddy/RunBuddy";
 
@@ -28,9 +27,6 @@ const Editor = () => {
           <div className="editor-canvas">
             <div id="gjs">
                 {/* TEMPLATE GOES HERE */}
-              {/* <style>
-                {styles}
-              </style> */}
               <RunBuddy />
             </div>
           </div>

@@ -13,19 +13,18 @@ const LeftPanel = () => {
 	};
 
   return (
-    <div className="panel__left border-r-2 border-neutral bg-gradient-to-b from-neutral to-base-100">
-
-      {/* <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
-        <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
+    <div className="panel__left border-r-2 border-neutral bg-gradient-to-b from-secondary to-accent">
+      <div className="rounded-lg border-0 p-3 text-center transition ease-out hover:ease-in">
+        <p className="bg-gradient-to-r from-neutral to-base-100 bg-clip-text text-4xl font-black text-transparent selection:bg-transparent">
           <a href="/">V</a>
         </p>
-      </div> */}
+      </div>
       <div className="text-center border-0 p-3">
         <div className="dropdown dropdown-hover p-3 bg-neutral text-primary btn-ghost transition ease-out hover:ease-in rounded-lg">
             <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-4xl text-transparent selection:bg-transparent">
               <a className="font-black" href="/">V</a>
             </p>
-            {Auth.loggedIn() && 
+            {Auth.loggedIn() &&
               <ul
                 tabIndex="0"
                 className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow app-text dropdown-lp"
