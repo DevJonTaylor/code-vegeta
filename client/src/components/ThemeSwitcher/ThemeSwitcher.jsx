@@ -7,21 +7,20 @@ const ThemeSwitcher = () => {
   }, []);
 
   const themes = [
-    "cupcake",
-    "bumblebee",
     "synthwave",
-    "retro",
     "cyberpunk",
-    "halloween",
+    "valentine",
+    "forest",
     "aqua",
-    "wireframe",
     "luxury",
-    "dracula",
-    "business",
     "acid",
     "night",
     "coffee",
-    "winter",
+    "lemonade",
+    "cupcake",
+    "cmyk",
+    "halloween",
+    "dracula",
   ];
 
   return (
