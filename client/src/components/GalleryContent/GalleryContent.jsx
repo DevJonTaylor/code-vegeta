@@ -56,7 +56,9 @@ const GalleryContent = ({ pages, title }) => {
                                         pages.map(page => (
                                             <div key={page._id} className="mb-16 w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg">
                                                 <Link to={`/profile/${page.username}`}>
-                                                    <p className='bg-neutral text-primary py-2'>Built By | {page.username}</p>
+                                                    <div className='bg-neutral py-2'>
+                                                        <p className='text-primary font-bold hover:animate-pulse'>Built By | {page.username}</p>
+                                                    </div>
                                                 </Link>
                                                 <iframe height="100%" width='100%' srcDoc={`<html>
                                                 <head>
