@@ -20,7 +20,6 @@ body {
 header {
   padding: 20px 35px;
   background-color: var(--tertiary-color);
-  background-image: url('https://laszlo-ratesic.github.io/run-buddy/assets/images/hero-bg.jpg');
   background-size: cover;
   background-position: 80%;
   background-attachment: fixed;
