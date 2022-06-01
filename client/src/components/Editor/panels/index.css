@@ -4,3 +4,8 @@
         flex-direction: column;
     }
 }
+
+/* LEFT PANEL DROPDOWN @ V*/
+.dropdown-lp {
+    z-index: 99 !important;
+}
