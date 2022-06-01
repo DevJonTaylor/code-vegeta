@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import './Content.css';
+import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
@@ -11,6 +12,8 @@ const GalleryContent = ({ pages, title }) => {
     if (!pages.length) {
         return <h3>No Thoughts Yet</h3>;
     }
+
+    console.log(pages)
 
 
     return (
@@ -47,12 +50,14 @@ const GalleryContent = ({ pages, title }) => {
                                 {/* <p className="w-full text-color text-lg font-light leading-relaxed mt-6 mb-4">
                                       TEMPLATES HERE
                                 </p> */}
-                                <div className="w-full lg:w-11/12 flex justify-between flex-wrap items-center px-10 pt-8">
+                                <div className="w-full lg:w-11/12 flex justify-around flex-wrap items-center px-10 pt-8">
 
                                     {pages &&
                                         pages.map(page => (
-                                            <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg">
-
+                                            <div key={page._id} className="mb-16 w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg">
+                                                <Link to={`/profile/${page.username}`}>
+                                                    <p className='bg-neutral text-primary py-2'>Built By | {page.username}</p>
+                                                </Link>
                                                 <iframe height="100%" width='100%' srcDoc={`<html>
                                                 <head>
                                                     <meta charset="utf-8">
