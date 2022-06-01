@@ -47,7 +47,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
     };
 
     return (
-        <section className="relative py-16 bg-gray-100 pp-text h-[100vh]">
+        <section className="relative py-16 bg-gray-100 pp-text min-h-[50vh]">
             <div className="container max-w-7xl px-4 mx-auto">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-2xl -mt-64">
                     <div className="px-6">
