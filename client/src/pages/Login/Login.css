@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+.login-container {
+    width: 90%;
+    height: 45%;
+    min-height: 362px;
+    max-height: 440px !important;
+    min-width: 642px;
+    display: flex;
+    align-items: center;
+    border-radius: 13px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+/* LEFT SIDE OF FORM */
+.login-left {
+    opacity: 75%;
+    height: 100%;
+    width: 55%;
+    background-color: black;
+    color: white;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-left p  {
+    font-size: 20px;
+    width: 100%;
+    /* text-align: start; */
+}
+
+/* LEFT SIDE OF FORM */
+.login-right {
+    max-width: 362px !important;
+}
+
+.btn-login {
+    font-weight: 600;
+    font-size: 12px;
+    width: 25%;
+    margin: 0 10px;
+    padding: 8px;
+    display: inline;
+}

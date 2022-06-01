@@ -1,0 +1,136 @@
+@tailwind components;
+
+@layer components {
+  .gjs-block {
+    @apply btn btn-xs sm:btn-sm md:btn-md lg:btn-lg;
+  }
+  .panel__basic-actions > .gjs-pn-buttons {
+    @apply flex-col;
+  }
+  .sidebar-icon {
+    @apply btn z-50 m-1 rounded-3xl bg-neutral shadow-md shadow-accent transition-all duration-200 ease-linear hover:rounded-xl hover:bg-primary hover:text-neutral hover:shadow-neutral;
+  }
+  .sidebar-tooltip {
+    @apply absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-neutral p-2 text-xs font-bold text-accent shadow-md transition-all duration-100;
+  }
+  .topbar-tooltip {
+    @apply absolute top-14 m-2 w-auto min-w-max origin-top scale-0 rounded-md bg-neutral p-2 text-xs font-bold text-accent shadow-md transition-all duration-100;
+  }
+  .topbar-tooltip__left {
+    @apply absolute right-14 m-2 w-auto min-w-max origin-right scale-0 rounded-md bg-neutral p-2 text-xs font-bold text-accent shadow-md transition-all duration-100;
+  }
+}
+
+/* Let's highlight canvas boundaries */
+#gjs {
+  /* border: 3px solid #444; */
+}
+
+/* :root {
+  --my-color: #fff;
+} */
+
+/* [data-theme='dark'] {
+  --my-color: #000;
+}
+[data-theme='light'] {
+  --my-color: #fff;
+} */
+
+/* Reset some default styling */
+.gjs-cv-canvas {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Reset block styling */
+.gjs-block {
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  font-size: 0.3rem;
+  color: inherit;
+}
+
+.gjs-block:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+    color: hsl(var(--n) / var(--tw-text-opacity));
+}
+
+.gjs-one-bg {
+  background: transparent;
+  /* background-color: var(--my-color); */
+}
+
+.gjs-two-color {
+  color: inherit;
+}
+
+.panel__top {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  position: initial;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.panel__basic-actions {
+  position: initial;
+}
+
+.editor-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+.editor-canvas {
+  flex-grow: 1;
+}
+
+.panel__right {
+  flex-basis: 200px;
+  position: relative;
+  overflow: auto;
+}
+
+.panel__switcher {
+  position: initial;
+}
+
+.panel__devices {
+  position: initial;
+}
+
+.theme__switcher {
+  position: initial;
+}
+
+/* Vegeta Save Storage Button  */
+.btn-save-database {
+  font-size: 24px !important;
+}
+
+/* Scrollbar Styling */
+* ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+* ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+* ::-webkit-scrollbar {
+  width: 10px;
+}
+
+#root > div {
+  overflow: hidden;
+}

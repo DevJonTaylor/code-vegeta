@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Poppins:wght@100;200;300;400&display=swap");
+
+.background-image-sign {
+    /* background-image: url(./adrien-olichon-ilVYjf0J378-unsplash.jpg); */
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    background-size: none;
+    background-position: center;
+    display: flex;
+    z-index: 0;
+}
+
+.signup-container {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 50%;
+    min-width: 642px;
+}
+
+.card-body-sign {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.failed {
+    padding-bottom:20px;
+}
+
+.form-bg {
+    background-image: url(./erik-skof-1MG7FHKp3TU-unsplash.jpg);
+    background-position-x: 50%;
+    animation-delay: 0s;
+    animation-duration: 50s;
+    animation-name: panoramic;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    overflow: hidden;
+    margin: 0 auto;
+    will-change: background-position-x;
+}
+
+@keyframes panoramic {
+    0% {
+      background-position-x: 0%;
+    }
+    50% {
+      background-position-x: 100%;
+    }
+    100% {
+      background-position-x: 0%;
+    }
+}
+
+.form-container {
+    width: 90%;
+    height: 56%;
+    min-height: 375px;
+    min-width: 642px;
+    max-height: 440px !important;
+    display: flex;
+    align-items: center;
+    border-radius: 13px;
+}
+
+/* LEFT SIDE OF FORM */
+.form-left {
+    max-width: 362px !important;
+}
+
+.greeting {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.end {
+    color: white;
+    font-size: 12px;
+    padding-top: 15px;
+}
+
+.form-input {
+    text-align: center;
+    color: black;
+    opacity: 0.7;
+    width: 70%;
+    border-radius: 0.5rem;
+    padding: 5px 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-sign {
+    font-weight: 600;
+    font-size: 12px;
+    width: 150px;
+    margin: 0 10px;
+    padding: 8px;
+    display: inline;
+}
+
+/* RIGHT SIDE OF FORM */
+.form-right {
+    opacity: 75%;
+    height: 100%;
+    width: 80%;
+    background-color: black;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .form-right h1  {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: start;
+} */
+
+.form-right p  {
+    font-size: 20px;
+    width: 100%;
+    /* text-align: start; */
+}

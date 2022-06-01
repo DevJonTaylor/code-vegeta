@@ -1,0 +1,6 @@
+@media screen and (max-width: 980px) {
+    .gjs-pn-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+}
