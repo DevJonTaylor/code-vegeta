@@ -16,9 +16,9 @@ const editorConfig = () => {
     width: "auto",
     canvas: {
       // TEMPLATES
-      styles: [
-        "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
-      ],
+      // styles: [
+        // "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
+      // ],
     },
     plugins: plugins,
     pluginsOpts: pluginsOpts,
