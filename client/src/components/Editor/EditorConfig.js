@@ -16,7 +16,7 @@ const editorConfig = () => {
     canvas: {
       // TEMPLATES
       styles: [
-        "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
+        // "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
       ],
     },
     plugins: plugins,
