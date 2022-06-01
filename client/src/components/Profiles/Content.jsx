@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import { ADD_FRIEND, DELETE_PAGE } from '../../utils/mutations';
@@ -33,7 +33,8 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
      * @param id
      */
     const handleDeletePageEvent = async (_id) => {
-        await deletePage({ variables: { _id: _id } })
+        await deletePage({ variables: { _id: _id } });
+        location.reload();
     }
 
     const IsDeleteLoading = () => loading
@@ -159,7 +160,7 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
 
                         <div className="mb-10 py-2 border-t border-gray-200 text-center">
                             <div className="flex flex-wrap justify-center">
-                                <div className="w-full lg:w-11/12 flex justify-around flex-wrap items-center px-10 pt-8">
+                                <div className="w-full lg:w-11/12 flex justify-around flex-wrap items-center px-6 pt-2 pb-4">
                                     {pages &&
                                         pages.map(page => (
                                             <div key={page._id} className="w-[300px] h-[300px] border border-gray-200 text-color border rounded-lg iframe-card">

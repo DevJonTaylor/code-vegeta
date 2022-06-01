@@ -78,12 +78,14 @@
 }
 
 .greeting {
+    color: white;
     font-size: 20px;
     font-weight: bold;
     padding-bottom: 20px;
 }
 
 .end {
+    color: white;
     font-size: 12px;
     padding-top: 15px;
 }
