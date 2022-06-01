@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "grapesjs/dist/css/grapes.min.css";
 import "./Editor.css";
-import editorConfig from "./editorConfig";
+import editorConfig from "./config/editorConfig";
 // import styles from './template.css';
 
 import RunBuddy from "../RunBuddy/RunBuddy";

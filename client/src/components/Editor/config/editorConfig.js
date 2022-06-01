@@ -1,11 +1,11 @@
 import grapesjs from "grapesjs";
-import panels from "./panels";
-import blockManager from "./blockManager";
-import plugins from "./plugins/index";
-import pluginsOpts from "./plugins/options";
-import storageManager from "./storageManager";
-import styleManager from "./styleManager";
-import deviceManager from "./deviceManager";
+import panels from "../panels";
+import blockManager from "../blockManager";
+import plugins from "../plugins/index";
+import pluginsOpts from "../plugins/options";
+import storageManager from "../storageManager";
+import styleManager from "../styleManager";
+import deviceManager from "../deviceManager";
 
 const editorConfig = () => {
   const editor = grapesjs.init({
@@ -16,7 +16,7 @@ const editorConfig = () => {
     canvas: {
       // TEMPLATES
       styles: [
-        // "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
+        "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
       ],
     },
     plugins: plugins,
