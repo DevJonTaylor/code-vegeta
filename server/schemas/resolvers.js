@@ -1,13 +1,10 @@
+require('dotenv').config();
 const { User, Page } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 // import stripe
-const stripe = require('stripe')(
-  'sk_test_51L3RgwGfhsrOhMHZNiEAtQIhmSnAyJMnTz5uB8FGSygAOLHAGIcoknv2IlZQBBs0rs4l9Z7PXjDlcLiiSQ0TVOfe008dDQtUrN'
-);
-
-// const stripe = require('stripe')(process.env.VITE_STRIPE_KEY);
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 const notLoggedIn = () => {
   throw new AuthenticationError('You need to be logged in!');
