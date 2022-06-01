@@ -14,7 +14,7 @@ const Navbar = () => {
     <header className="navbar bg-neutral">
       <div className="flex-1">
         <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
-          <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
+          <p className="bg-gradient-to-r from-base-100 to-accent bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
             <Link to="/">
               VEGETA
             </Link>
