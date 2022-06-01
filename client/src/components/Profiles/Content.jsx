@@ -108,14 +108,14 @@ const Content = ({ friendCount, username, friends, userParam, user_id, pages }) 
 
                         <div className="text-center mt-1 mb-6">
                             <h1 className="text-gray-900 text-4xl font-bold leading-normal mt-0 mb-2 animate-character">{username}</h1>
-                            {Auth.loggedIn() ? (
-                            <>
-                            </>
-                            ) : (
+                            {userParam ? (
                             <>
                                 <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
-                                    <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                                </div>       
+                                    <p className="w-9/12 text-color text-sm font-light leading-relaxed mt-2 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
+                                </div>  
+                            </>
+                            ) : (
+                            <>     
                             </>
                             )} 
                         </div>
