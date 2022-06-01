@@ -20,6 +20,7 @@
 
 .card {
     width: 50%;
+    min-width: 642px;
 }
 
 .card-body-sign {
@@ -65,11 +66,10 @@
     height: 56%;
     min-height: 375px;
     min-width: 642px;
-    max-height: 640px;
+    max-height: 440px !important;
     display: flex;
     align-items: center;
     border-radius: 13px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
 /* LEFT SIDE OF FORM */

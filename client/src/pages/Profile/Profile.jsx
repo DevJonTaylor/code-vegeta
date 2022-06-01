@@ -38,7 +38,7 @@ export default function Profile() {
 	}
 
     return (
-        <div>
+        <div className='h-[85vh]'>
             <Header />
             <Content 
                 username={user.username}

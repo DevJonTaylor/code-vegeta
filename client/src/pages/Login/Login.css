@@ -6,6 +6,7 @@
     width: 90%;
     height: 45%;
     min-height: 362px;
+    max-height: 440px !important;
     min-width: 642px;
     display: flex;
     align-items: center;
