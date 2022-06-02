@@ -49,16 +49,9 @@ app
   .use(cors());
 
 // Serve up static assets
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../client/dist')));
-//   app.use(express.static(path.join(__dirname, '../client/dist/index.html')));
-// }
-
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('../client/dist'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join('../client/dist', '../client/dist/index.html'));
-  });
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.use(express.static(path.join(__dirname, '../client/dist/index.html')));
 }
 
 // Create a new instance of an Apollo server with the GraphQL schema
