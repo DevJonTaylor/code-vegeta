@@ -1,6 +1,9 @@
 {
   "name": "test-project",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.13.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

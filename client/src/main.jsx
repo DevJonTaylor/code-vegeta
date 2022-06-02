@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Editor from "./components/Editor/Editor";
 import Signup from "./pages/Signup/Signup";
@@ -49,7 +49,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <BrowserRouter>
+      <Router basename={`/`}>
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Landing />} />
@@ -64,7 +64,7 @@ root.render(
           {/* Keep editor out of App route to prevent headers and footers */}
           <Route path="/editor" element={<Editor />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </ApolloProvider>
   </React.StrictMode>
 );

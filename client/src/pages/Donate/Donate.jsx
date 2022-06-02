@@ -50,11 +50,11 @@ const Donate = () => {
       setLoading(false);
     };
 
-    generateClientSecret();
+    generateClientSecret().catch((err) => console.error(err));
   }, []);
 
   return (
-    <div className="signup-container">
+    <div className="w-full flex justify-content-center py-4">
       {paymentIntent && !loading && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm paymentIntentId={paymentIntent.id} />
