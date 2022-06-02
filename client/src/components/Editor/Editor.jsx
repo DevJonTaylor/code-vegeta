@@ -27,7 +27,7 @@ const Editor = () => {
           <div className="editor-canvas">
             <div id="gjs">
                 {/* TEMPLATE GOES HERE */}
-              <RunBuddy />
+              {/* <RunBuddy /> */}
             </div>
           </div>
           {/* RIGHTSIDE Panel with layer-, style-, and block-managers */}
