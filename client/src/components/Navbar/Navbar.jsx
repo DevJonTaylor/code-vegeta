@@ -14,7 +14,7 @@ const Navbar = () => {
     <header className="navbar bg-neutral">
       <div className="flex-1">
         <div className="btn-ghost border-0 transition ease-out hover:ease-in rounded-lg p-3">
-          <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
+          <p className="bg-gradient-to-r from-base-100 to-accent bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
             <Link to="/">
               VEGETA
             </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
       {Auth.loggedIn() ? (
       <>
         <div className="flex-none">
-          <div className="dropdown-end dropdown">
+          <div className="dropdown-end dropdown dropdown-hover bg-neutral text-primary pr-3 pl-6">
             <label tabIndex="0" className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
@@ -50,7 +50,7 @@ const Navbar = () => {
             </label>
             <div
               tabIndex="0"
-              className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
+              className="rounded-xl dropdown dropdown-content card-compact mt-16 bg-base-100 shadow cart-size"
             >
               <div className="card-body">
                 <span className="text-lg font-bold">8 Items</span>
@@ -61,7 +61,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown-end dropdown dropdown-hover p-3">
+          <div className="dropdown-end dropdown dropdown-hover p-3 bg-neutral text-primary">
             <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
               <div className="w-10 rounded-full">
                 <img src="https://api.lorem.space/image/face?hash=33791" />
@@ -69,7 +69,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex="0"
-              className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+              className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow app-text"
             >
               <li>
                 <Link to="profile">
@@ -85,6 +85,11 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
+                <Link to="donate">
+                  <p>Donate</p>
+                </Link>
+              </li>
+              <li>
                 <a href="/" onClick={logout}>
                 Logout
                 </a>
@@ -96,7 +101,7 @@ const Navbar = () => {
       ) : (
       <>
         <div className="flex-none">
-          <div className="dropdown dropdown-hover dropdown-end p-3">
+          <div className="dropdown dropdown-hover dropdown-end p-3 bg-neutral text-primary">
             <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
               <div className="w-10 rounded-full dropdown-img">
               </div>

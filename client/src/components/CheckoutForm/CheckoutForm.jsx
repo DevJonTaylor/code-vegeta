@@ -7,12 +7,13 @@ import {
 import "./index.css";
 import generateStripePayment from "../../services/stripe";
 
-const CheckoutForm = ({ paymentIntent }) => {
+const CheckoutForm = ({ paymentIntentId }) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     if (!stripe) {
@@ -56,16 +57,15 @@ const CheckoutForm = ({ paymentIntent }) => {
 
     setIsLoading(true);
 
-    const res = await generateStripePayment(paymentIntent);
+    const res = await generateStripePayment({ id: paymentIntentId, amount });
 
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/donate",
+        return_url: import.meta.env.VITE_DONATE_RETURN_URL,
       },
     });
-    console.log({ error });
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
@@ -87,11 +87,21 @@ const CheckoutForm = ({ paymentIntent }) => {
       id="payment-form"
       onSubmit={handleSubmit}
     >
+      <label className="label">
+        <span className="label-text">Donated Amount</span>
+      </label>
+      <input
+        type="number"
+        placeholder="$0.00"
+        className="input w-full mb-3"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
       <PaymentElement id="payment-element" />
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="btn-checkout btn-main rounded-full shadow-lg text-primary bg-neutral"
+        className="btn-checkout btn-main rounded-full bg-neutral text-primary shadow-lg"
       >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "PAY NOW"}

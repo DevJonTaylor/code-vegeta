@@ -7,7 +7,7 @@ const generateStripePayment = async ({ id, amount }) => {
 
   // Create PaymentIntent as soon as the page loads
   const { data } = await axios.post(
-    "http://localhost:3001/graphql",
+    import.meta.env.VITE_GRAPHQL_ENDPOINT,
     {
       query: `
           mutation UpdatePaymentIntent($id: String!, $amount: Int!) {

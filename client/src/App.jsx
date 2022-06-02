@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div className="flex flex-col text-center selection:bg-green-900">
+
       <Navbar />
 
       <main>
@@ -14,6 +15,7 @@ function App() {
       </main>
 
       <Footer />
+      
     </div>
   );
 }
