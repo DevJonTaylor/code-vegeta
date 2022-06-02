@@ -11,6 +11,8 @@ export default function Gallery() {
 
     const { loading, data } = useQuery(QUERY_PAGES);
     const pages = data?.pages || [];
+
+    
    
     return (
         <div>

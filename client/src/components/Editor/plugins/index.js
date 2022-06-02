@@ -5,6 +5,7 @@ import "grapesjs-navbar";
 // import "grapesjs-tabs";
 import gjsForms from "grapesjs-plugin-forms";
 import "../vegetaPlugin";
+import "grapesjs-project-manager";
 
 const plugins = [
   gjsForms,

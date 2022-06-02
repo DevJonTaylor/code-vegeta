@@ -11,19 +11,23 @@ const editorConfig = () => {
   const editor = grapesjs.init({
     container: "#gjs",
     fromElement: true,
+    // pageManager: true,
     height: "100%",
     width: "auto",
     canvas: {
       // TEMPLATES
-      styles: [
-        "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
-      ],
+      // styles: [
+        // "https://laszlo-ratesic.github.io/run-buddy/assets/css/style.css",
+      // ],
     },
     plugins: plugins,
     pluginsOpts: pluginsOpts,
     // storageManager: false,
     // Enables progress to be saved to localStorage
     storageManager: storageManager,
+    // storageManager: {
+    //   type: 'indexeddb',
+    // },
     panels: panels,
 
     // MANAGERS
@@ -141,6 +145,8 @@ const editorConfig = () => {
     updateBtn();
   });
   updateBtn();
+
+  return editor;
 };
 
 export default editorConfig;

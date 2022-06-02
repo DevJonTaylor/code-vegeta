@@ -23,6 +23,10 @@
   will-change: background-position-y;
 }
 
+.label-text {
+  color: white !important;
+}
+
 @keyframes sliding-vertical {
   0% {
     background-position-y: 0%;

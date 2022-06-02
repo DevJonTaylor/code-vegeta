@@ -1,3 +1,5 @@
+require('dotenv').config({ path: `${__dirname}/../client/.env` });
+
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
 
@@ -31,20 +33,20 @@ const server = new ApolloServer({
 });
 
 const app = express();
-const whiteList = [
-  'http://localhost:3000',
-  'http://localhost*'
-]
+const whiteList = ['http://localhost:3000', 'http://localhost*'];
 const corsOptions = {
   origin: (origin, callback) => {
-    return callback(whiteList.indexOf(origin) !== -1 ? null : new Error('Not Allowed'), true)
-  }
-}
+    return callback(
+      whiteList.indexOf(origin) !== -1 ? null : new Error('Not Allowed'),
+      true
+    );
+  },
+};
 
 app
   .use(express.urlencoded({ extended: false }))
   .use(express.json())
-  .use(cors())
+  .use(cors());
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {

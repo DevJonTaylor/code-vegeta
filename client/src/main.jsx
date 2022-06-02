@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Editor from "./components/Editor/Editor";
@@ -10,14 +10,19 @@ import Donate from "./pages/Donate/Donate";
 import Gallery from "./pages/Gallery/Gallery";
 import App from "./App";
 import "./index.css";
-import './pages/Signup/Signup.css';
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
-import { setContext } from '@apollo/client/link/context'
-import Test from './pages/Test/Test'
+import "./pages/Signup/Signup.css";
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import Test from "./pages/Test/Test";
 
 // establish the connection to the back-end server's /graphql endpoint
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
 });
 // URI stands for "Uniform Resource Identifier."
 
@@ -35,10 +40,13 @@ const authLink = setContext((_, { headers }) => {
 // here, combine the authLink and httpLink objects so that every request retrieves the token and sets the request headers before making the request to the API
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
@@ -57,12 +65,8 @@ ReactDOM.render(
           <Route path="/editor" element={<Editor />} />
         </Routes>
       </BrowserRouter>
-
     </ApolloProvider>
-      </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 console.log(process.env.NODE_ENV);
-
-
