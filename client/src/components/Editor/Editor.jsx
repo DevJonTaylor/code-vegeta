@@ -13,7 +13,7 @@ import RightPanel from "./panels/RightPanel";
 
 const Editor = () => {
   useEffect(() => {
-    return editorConfig;
+    editorConfig();
   }, []);
 
   return (
