@@ -1,7 +1,6 @@
 import React from "react";
 import poweredBy from "./powered-by-vitawind-dark.png";
 
-
 const Footer = () => {
   return (
     <footer className="flex w-full items-center justify-around bg-neutral">
@@ -28,7 +27,7 @@ const Footer = () => {
           {" | "}
           <a
             className="text-primary transition-all hover:text-blue-400"
-            href="/donate"
+            href="/#/donate"
             rel="noopener noreferrer"
           >
             Donate
