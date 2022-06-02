@@ -11,13 +11,6 @@
     z-index: 0;
 }
 
-.signup-container {
-    width: 100%;
-    height: 85vh;
-    display: flex;
-    justify-content: space-around;
-}
-
 .card {
     width: 50%;
     min-width: 642px;

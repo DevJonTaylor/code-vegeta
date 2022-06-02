@@ -25,12 +25,12 @@ const LeftPanel = () => {
                 className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow app-text dropdown-lp"
               >
                 <li>
-                  <a href="/profile">
+                  <a href="/#/profile">
                     Profile
                   </a>
                 </li>
                 <li>
-                    <a href="/gallery">
+                    <a href="/#/gallery">
                       Gallery
                     </a>
                   </li>

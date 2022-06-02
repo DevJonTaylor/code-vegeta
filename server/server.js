@@ -50,7 +50,8 @@ app
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client')));
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.use(express.static(path.join(__dirname, '../client/dist/index.html')));
 }
 
 // Create a new instance of an Apollo server with the GraphQL schema
