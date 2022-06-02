@@ -50,7 +50,7 @@ const Donate = () => {
       setLoading(false);
     };
 
-    generateClientSecret();
+    generateClientSecret().catch((err) => console.error(err));
   }, []);
 
   return (
