@@ -82,34 +82,36 @@ const CheckoutForm = ({ paymentIntentId }) => {
   };
 
   return (
-    <form
-      className="form-checkout checkout-bg app-text"
-      id="payment-form"
-      onSubmit={handleSubmit}
-    >
-      <label className="label">
-        <span className="label-text">Donated Amount</span>
-      </label>
-      <input
-        type="number"
-        placeholder="$0.00"
-        className="input w-full mb-3"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <PaymentElement id="payment-element" />
-      <button
-        disabled={isLoading || !stripe || !elements}
-        id="submit"
-        className="btn-checkout btn-main rounded-full bg-neutral text-primary shadow-lg"
+    <div className="donate-container">
+      <form
+        className="form-checkout checkout-bg app-text"
+        id="payment-form"
+        onSubmit={handleSubmit}
       >
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "PAY NOW"}
-        </span>
-      </button>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
-    </form>
+        <label className="label">
+          <span className="label-text">Donated Amount</span>
+        </label>
+        <input
+          type="number"
+          placeholder="$0.00"
+          className="input w-full mb-3"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <PaymentElement id="payment-element" />
+        <button
+          disabled={isLoading || !stripe || !elements}
+          id="submit"
+          className="btn-checkout btn-main rounded-full bg-neutral text-primary shadow-lg"
+        >
+          <span id="button-text">
+            {isLoading ? <div className="spinner" id="spinner"></div> : "PAY NOW"}
+          </span>
+        </button>
+        {/* Show any error or success messages */}
+        {message && <div id="payment-message">{message}</div>}
+      </form>
+    </div>
   );
 };
 
